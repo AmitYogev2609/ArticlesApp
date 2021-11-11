@@ -15,7 +15,6 @@ namespace ArticlesApp.Views
         public LogInPage()
         {
             InitializeComponent();
-            this.BindingContext = new LogInViewModel();
         }
     }
 }
