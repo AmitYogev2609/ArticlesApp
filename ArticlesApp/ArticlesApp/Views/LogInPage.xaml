@@ -9,8 +9,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Image Source="Logo.png"   />
-            <Frame StyleClass="frame" >
-                <Entry  Placeholder="Email"/>
+            <Frame  >
+                <Entry Placeholder="Email"/>
             </Frame>
         </StackLayout>
     </ContentPage.Content>
