@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Image Source="Logo.png"   />
-            <Frame  >
+            <Frame>
                 <Entry Placeholder="Email"/>
             </Frame>
         </StackLayout>

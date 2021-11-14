@@ -1,11 +1,10 @@
 ﻿Frame {
-    position: absolute;
     width: 319px;
     height: 53px;
-    left: 21px;
-    top: 301px;
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.51);
+    margin-left: 21px;
+    margin-top: 301px;
+    background-color: white;
+    /*border: 1px solid rgba(0, 0, 0, 0.51);
     box-sizing: border-box;
-    border-radius: 30px;
+    border-radius: 30px;*/
 }
