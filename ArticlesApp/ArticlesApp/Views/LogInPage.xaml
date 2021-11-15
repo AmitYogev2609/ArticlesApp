@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Views.LogInPage"
+             xmlns:local="clr-namespace:ArticlesApp;assembly=ArticlesApp"
+             xmlns:datepicker="clr-namespace:ArticlesApp.Renderer" 
              BackgroundColor="#F8FBFF">
     <ContentPage.Resources>
         <StyleSheet Source="/Styles/First.css"/>
@@ -10,8 +12,15 @@
         <StackLayout>
             <Image Source="Logo.png"  StyleClass="Logo" />
             <Frame >
-                <Entry Placeholder="Email" StyleClass="Entry"/>
+                <local:MyEntry Placeholder="Email" StyleClass="Entry" />
             </Frame>
+            <Frame >
+                <local:MyEntry Placeholder="Password" StyleClass="Entry" />
+            </Frame>
+            <Button BackgroundColor="#2934D0" CornerRadius="20" Text="Next" TextColor="White" FontFamily="Rubik" FontSize="14"/>
+            <Line Stroke="black" X1="0" Y1="50" X2="500"  Y2="70" />
+            <Button BackgroundColor="#F8FBFF"  Text="Next" TextColor="#2934D0" FontFamily="Rubik" FontSize="14" VerticalOptions="EndAndExpand"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

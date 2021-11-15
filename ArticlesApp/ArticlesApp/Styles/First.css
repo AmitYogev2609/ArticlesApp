@@ -3,7 +3,7 @@
 }
 Frame {
     background-color: white;
-    border: 1px;
+    border: solid 1.5px;
     border-color: rgba(0, 0, 0, 0.51);
     border-radius: 30;
     
