@@ -7,19 +7,22 @@
              BackgroundColor="#F8FBFF">
     <ContentPage.Resources>
         <StyleSheet Source="/Styles/First.css"/>
+        
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="Logo.png"  StyleClass="Logo" />
-            <Frame >
-                <local:MyEntry Placeholder="Email" StyleClass="Entry" />
+        <StackLayout Spacing="20">
+            <Image Source="Logo.png"  StyleClass="Logo"  />
+            <Frame VerticalOptions="Center" HeightRequest="40">
+                <local:MyEntry Placeholder="Email" StyleClass="Entry" PlaceholderColor="{Binding border }"/>
             </Frame>
-            <Frame >
-                <local:MyEntry Placeholder="Password" StyleClass="Entry" />
+            <Frame VerticalOptions="Center" HeightRequest="40" >
+                <local:MyEntry Placeholder="Password" StyleClass="Entry" PlaceholderColor="{Binding border }"/>
             </Frame>
-            <Button BackgroundColor="#2934D0" CornerRadius="20" Text="Next" TextColor="White" FontFamily="Rubik" FontSize="14"/>
-            <Line Stroke="black" X1="0" Y1="50" X2="500"  Y2="70" />
-            <Button BackgroundColor="#F8FBFF"  Text="Next" TextColor="#2934D0" FontFamily="Rubik" FontSize="14" VerticalOptions="EndAndExpand"/>
+            <Button BackgroundColor="#2934D0" CornerRadius="20" Text="Next" TextColor="White" FontFamily="Rubik" FontSize="14" 
+                    HeightRequest="70"/>
+            <Line Stroke="black" X1="0" Y1="60" X2="500"  Y2="60" />
+            <Button BackgroundColor="#F8FBFF"  Text="Press to create acount" TextColor="#2934D0"
+                    FontFamily="Rubik" FontSize="14" HeightRequest="35" VerticalOptions="End"/>
             
         </StackLayout>
     </ContentPage.Content>
