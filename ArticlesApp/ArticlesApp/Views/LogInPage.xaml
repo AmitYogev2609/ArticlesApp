@@ -10,19 +10,19 @@
         
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Spacing="20">
-            <Image Source="Logo.png"  StyleClass="Logo"  />
-            <Frame VerticalOptions="Center" HeightRequest="40">
-                <local:MyEntry Placeholder="Email" StyleClass="Entry" PlaceholderColor="{Binding border }"/>
+        <StackLayout Spacing="13" >
+            <Image Source="Logo.png"  StyleClass="Logo" HeightRequest="250"/>
+            <Frame VerticalOptions="Center" >
+                <local:MyEntry Placeholder="Email"  PlaceholderColor="{Binding border }" HeightRequest="20"/>
             </Frame>
-            <Frame VerticalOptions="Center" HeightRequest="40" >
-                <local:MyEntry Placeholder="Password" StyleClass="Entry" PlaceholderColor="{Binding border }"/>
+            <Frame VerticalOptions="Center"  >
+                <local:MyEntry Placeholder="Password"  PlaceholderColor="{Binding border }" HeightRequest="20"/>
             </Frame>
             <Button BackgroundColor="#2934D0" CornerRadius="20" Text="Next" TextColor="White" FontFamily="Rubik" FontSize="14" 
-                    HeightRequest="70"/>
-            <Line Stroke="black" X1="0" Y1="60" X2="500"  Y2="60" />
-            <Button BackgroundColor="#F8FBFF"  Text="Press to create acount" TextColor="#2934D0"
-                    FontFamily="Rubik" FontSize="14" HeightRequest="35" VerticalOptions="End"/>
+                    HeightRequest="55"/>
+            <Line Stroke="black" X1="0" Y1="60" X2="500"  Y2="60"  />
+            <Button BackgroundColor="#F8FBFF" StyleClass="bt" Text="Press to create acount" TextColor="#2934D0"
+                    FontFamily="Rubik" FontSize="14" HeightRequest="55" VerticalOptions="End"/>
             
         </StackLayout>
     </ContentPage.Content>

@@ -31,6 +31,7 @@ namespace ArticlesApp.Droid
                 this.Control.SetPadding(35, 0, 0, 0);
                 this.Control.TextSize = 18;
                 
+                
             }
         }
 
