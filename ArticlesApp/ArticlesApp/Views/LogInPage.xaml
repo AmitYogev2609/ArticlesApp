@@ -7,17 +7,20 @@
              BackgroundColor="#F8FBFF">
     <ContentPage.Resources>
         <StyleSheet Source="/Styles/First.css"/>
-        
+        <Style TargetType="local:MyEntry" x:Key="Entry">
+            <Setter Property="PlaceholderColor" Value="{Binding border}"/>
+            <Setter Property="HeightRequest" Value="25"/>
+        </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="10,25,10,0" >
             <StackLayout></StackLayout>
             <Image Source="Logo.png"  StyleClass="Logo"  />
             <Frame  >
-                <local:MyEntry Placeholder="Email"  PlaceholderColor="{Binding border }" HeightRequest="25"/>
+                <local:MyEntry Placeholder="Email"  Style="{StaticResource Entry}"  />
             </Frame>
             <Frame  >
-                <local:MyEntry Placeholder="Password"  PlaceholderColor="{Binding border }" HeightRequest="25"  />
+                <local:MyEntry Placeholder="Password"  Style="{StaticResource Entry}"  />
             </Frame>
             <Button BackgroundColor="#2934D0" CornerRadius="30" Text="Next" TextColor="White" FontFamily="Rubik" FontSize="14" 
                     HeightRequest="55" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" WidthRequest="380"/>
