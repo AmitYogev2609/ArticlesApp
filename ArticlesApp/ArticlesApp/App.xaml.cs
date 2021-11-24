@@ -17,7 +17,7 @@ namespace ArticlesApp
         {
             InitializeComponent();
 
-            MainPage = new LogInPage();
+            MainPage = new NavigationPage( new LogInPage());
         }
 
         protected override void OnStart()

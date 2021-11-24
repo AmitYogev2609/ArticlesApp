@@ -15,7 +15,14 @@ namespace ArticlesApp.Views
         public LogInPage()
         {
             InitializeComponent();
-            this.BindingContext=new LogInViewModel();
+            LogInViewModel context = new LogInViewModel();
+            context.NavigateToPageEvent += NavigateToAsync;
+            this.BindingContext = context;
         }
+        public async void NavigateToAsync(Page p)
+        {
+            await Navigation.PushAsync(p);
+        }
+        
     }
 }
