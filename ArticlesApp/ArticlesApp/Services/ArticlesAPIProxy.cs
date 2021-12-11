@@ -108,6 +108,14 @@ namespace ArticlesApp.Services
             }
         }
 
+        public async Task<string> GetPasswordResetCode(string email)
+        {
+            return null;
+        }
+        public Task<bool> resetPassword(string email,string newPassword)
+        {
+            return true;
+        }
         public string GetBasePhotoUri() { return this.basePhotosUri; }
 
         

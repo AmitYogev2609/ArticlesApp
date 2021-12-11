@@ -17,12 +17,14 @@ namespace ArticlesApp.ViewModels
     public class ForgotPassWordViewModel
     {
         public string Email { get; set; }
+        private string resetcode; 
         public Action<Page> NavigateToPageEvent;
         public int PaswordResetCode { get; set; }
         //chel if the email exicst in the server database if it is the server send back a password reset code and sends email to user
         public async void chekEmailAndGetCode()
         {
-
+            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+            resetcode = await proxy.GetPasswordResetCode(this.Email);
             if(true)
             {
                 Page page = new Page();
