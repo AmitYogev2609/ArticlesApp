@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using ArticlesApp.Services;
 using ArticlesApp.Models;
+using ArticlesApp.Views;
 using Xamarin.Essentials;
 using System.Linq;
 
@@ -169,13 +170,23 @@ namespace ArticlesApp.ViewModels
         public static void MoveToMainPge()
         { }
         public ICommand SignInCommand => new Command(MoveToSignIn);
-
+        
 
         public Action<Page> NavigateToPageEvent;
         public void MoveToSignIn()
         {
-            Page sign = new Page();
+            Page sign = new SignIn();
             NavigateToPageEvent?.Invoke(sign);
+        }
+        public void MoveToForgetPassWord()
+        {
+            Page page = new Page();
+            page.BindingContext = new ForgotPassWordViewModel()
+            {
+                Email = this.Email,
+                
+            };
+            NavigateToPageEvent?.Invoke(page);
         }
       
 

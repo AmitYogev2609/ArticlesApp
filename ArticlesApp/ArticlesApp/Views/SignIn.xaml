@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ArticlesApp.Views.SignIn">
+             x:Class="ArticlesApp.Views.SignIn"
+             xmlns:local="clr-namespace:ArticlesApp;assembly=ArticlesApp"
+             xmlns:datepicker="clr-namespace:ArticlesApp.Renderer" 
+             BackgroundColor="#FFFFFF" NavigationPage.IconColor="#000000">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="20,5,0,0">
+            <Label Text="Let's Get Started!" TextColor="#12121D" FontSize="30" FontAttributes="Bold" FontFamily="Roboto"/>
+            <Label Text="Fill your detials" FontSize="Body"   FontFamily="Roboto"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
