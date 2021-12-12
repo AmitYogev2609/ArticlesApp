@@ -148,6 +148,10 @@ namespace ArticlesApp.ViewModels
                     MoveToSignIn();
                 }
             }
+            else
+            {
+                //move to main page
+            }
         }
         
         private bool Valid()
@@ -180,7 +184,7 @@ namespace ArticlesApp.ViewModels
         }
         public void MoveToForgetPassWord()
         {
-            Page page = new Page();
+            Page page = new ForgotPasswordEnterEmail();
             page.BindingContext = new ForgotPassWordViewModel()
             {
                 Email = this.Email,
