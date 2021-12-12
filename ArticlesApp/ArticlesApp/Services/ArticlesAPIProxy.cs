@@ -112,7 +112,7 @@ namespace ArticlesApp.Services
         {
             return null;
         }
-        public Task<bool> resetPassword(string email,string newPassword)
+        public bool resetPassword(string email,string newPassword)
         {
             return true;
         }
