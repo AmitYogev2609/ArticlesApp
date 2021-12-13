@@ -14,5 +14,7 @@ namespace ArticlesApp.ViewModels
 {
     public class SignInViewModel
     {
+        public Color bordercolor { get=> new Color(0, 0, 0, 0.51);  }
+        
     }
 }

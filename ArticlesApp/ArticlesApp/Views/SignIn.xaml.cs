@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ArticlesApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,8 @@ namespace ArticlesApp.Views
         public SignIn()
         {
             InitializeComponent();
+            SignInViewModel context = new SignInViewModel();
+            this.BindingContext = context;
         }
     }
 }

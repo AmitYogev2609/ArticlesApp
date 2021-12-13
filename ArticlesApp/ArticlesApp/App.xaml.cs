@@ -17,7 +17,7 @@ namespace ArticlesApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage( new LogInPage());
+            MainPage = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
         }
 
         protected override void OnStart()

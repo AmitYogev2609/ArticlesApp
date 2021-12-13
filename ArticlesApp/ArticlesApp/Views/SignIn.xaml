@@ -6,9 +6,12 @@
              xmlns:datepicker="clr-namespace:ArticlesApp.Renderer" 
              BackgroundColor="#FFFFFF" NavigationPage.IconColor="#000000">
     <ContentPage.Content>
-        <StackLayout Padding="20,5,0,0">
+        <StackLayout Padding="18,5,0,0">
             <Label Text="Let's Get Started!" TextColor="#12121D" FontSize="30" FontAttributes="Bold" FontFamily="Roboto"/>
             <Label Text="Fill your detials" FontSize="Body"   FontFamily="Roboto"/>
+            <Frame CornerRadius="30" BorderColor="{Binding bordercolor}">
+                <StackLayout></StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

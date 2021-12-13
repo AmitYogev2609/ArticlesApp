@@ -174,7 +174,7 @@ namespace ArticlesApp.ViewModels
         public static void MoveToMainPge()
         { }
         public ICommand SignInCommand => new Command(MoveToSignIn);
-        
+        public ICommand ForgetPasswordCommand => new Command(MoveToForgetPassWord);
 
         public Action<Page> NavigateToPageEvent;
         public void MoveToSignIn()

@@ -47,8 +47,8 @@
 
                 <Button Padding="0,0,0,0" Command="{Binding LogInCommand}" BackgroundColor="#2934D0" CornerRadius="30" Text="Log In" TextColor="White" FontFamily="Rubik" FontSize="14" 
                     HeightRequest="52" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" WidthRequest="380"/>
-                
-                <Button  BackgroundColor="#F8FBFF"  Text="Forgot password" TextColor="#2934D0" FontSize="14"  />
+
+                <Button  BackgroundColor="#F8FBFF"  Text="Forgot password" TextColor="#2934D0" FontSize="14" Command="{Binding ForgetPasswordCommand}" />
             </StackLayout>
             
             <StackLayout Spacing="0" Padding="0,17">
