@@ -6,6 +6,7 @@ namespace ArticlesApp
 {
     public partial class App : Application
     {
+        public Page Login { get; set; }
         public static bool IsDevEnv
         {
             get
@@ -16,8 +17,8 @@ namespace ArticlesApp
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
+            Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
+            MainPage = Login; 
         }
 
         protected override void OnStart()

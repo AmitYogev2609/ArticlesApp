@@ -180,7 +180,7 @@ namespace ArticlesApp.ViewModels
         public void MoveToSignIn()
         {
             Page sign = new SignIn();
-            NavigateToPageEvent?.Invoke(sign);
+           NavigateToPageEvent?.Invoke(sign);
         }
         public void MoveToForgetPassWord()
         {

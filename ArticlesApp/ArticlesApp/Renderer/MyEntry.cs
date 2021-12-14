@@ -10,7 +10,7 @@ namespace ArticlesApp
         public static readonly BindableProperty FontProperty =
             BindableProperty.Create("Font", typeof(Font),
             typeof(MyEntry), new Font());
-
+        
         public Font Font
         {
             get { return (Font)GetValue(FontProperty); }

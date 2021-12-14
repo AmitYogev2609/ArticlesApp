@@ -4,14 +4,74 @@
              x:Class="ArticlesApp.Views.SignIn"
              xmlns:local="clr-namespace:ArticlesApp;assembly=ArticlesApp"
              xmlns:datepicker="clr-namespace:ArticlesApp.Renderer" 
-             BackgroundColor="#FFFFFF" NavigationPage.IconColor="#000000">
+             xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
+             BackgroundColor="#FFFFFF" NavigationPage.IconColor="Black" >
     <ContentPage.Content>
-        <StackLayout Padding="18,5,0,0">
-            <Label Text="Let's Get Started!" TextColor="#12121D" FontSize="30" FontAttributes="Bold" FontFamily="Roboto"/>
+        <StackLayout Padding="20,0,17,0" Spacing="10">
+            <StackLayout>
+            <Label Text="Let's Get Started!" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
             <Label Text="Fill your detials" FontSize="Body"   FontFamily="Roboto"/>
-            <Frame CornerRadius="30" BorderColor="{Binding bordercolor}">
-                <StackLayout></StackLayout>
+            </StackLayout>
+            
+            <StackLayout>
+            <Frame CornerRadius="37" BorderColor="{Binding bordercolor}">
+                <StackLayout Orientation="Horizontal" HeightRequest="25">
+                    <Label Text="{x:Static fontawesome:FontAwesomeIcons.Envelope}" 
+                 FontSize="25" TextColor="Black"
+                        FontFamily="{StaticResource FontAwesomeRegular }" VerticalOptions="Center" />
+                        <local:MyEntry Placeholder="Email" HorizontalOptions="StartAndExpand"/>
+                </StackLayout>
             </Frame>
+                <Label Text="Wrong Email" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+            </StackLayout>
+            
+            <StackLayout>
+                <Frame CornerRadius="37" BorderColor="{Binding bordercolor}">
+                    <StackLayout Orientation="Horizontal" HeightRequest="25">
+                        <Label Text="{x:Static fontawesome:FontAwesomeIcons.User}" 
+                 FontSize="25" TextColor="Black"
+                        FontFamily="{StaticResource FontAwesomeRegular }" VerticalOptions="Center" />
+                        <local:MyEntry Placeholder="User Name" HorizontalOptions="StartAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Label Text="Wrong Email" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+            </StackLayout>
+            <StackLayout>
+                <Frame CornerRadius="37" BorderColor="{Binding bordercolor}">
+                    <StackLayout Orientation="Horizontal" HeightRequest="25">
+                        <Label Text="{x:Static fontawesome:FontAwesomeIcons.AddressCard}" 
+                 FontSize="25" TextColor="Black"
+                        FontFamily="{StaticResource FontAwesomeRegular }" VerticalOptions="Center" />
+                        <local:MyEntry Placeholder="Full Name" HorizontalOptions="StartAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Label Text="Wrong Email" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+            </StackLayout>
+            <StackLayout>
+                <Frame CornerRadius="37" BorderColor="{Binding bordercolor}">
+                    <StackLayout Orientation="Horizontal" HeightRequest="25">
+                        <Label Text="{x:Static fontawesome:FontAwesomeIcons.BirthdayCake}" 
+                 FontSize="25" TextColor="Black"
+                        FontFamily="{StaticResource FontAwesomeSolid }" VerticalOptions="Center" />
+                        <local:MyEntry Placeholder="BirthDay" HorizontalOptions="StartAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Label Text="Wrong Email" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+            </StackLayout>
+            <StackLayout>
+                <Frame CornerRadius="37" BorderColor="{Binding bordercolor}">
+                    <StackLayout Orientation="Horizontal" HeightRequest="25">
+                        <Label  
+                 FontSize="25" TextColor="Black"
+                        FontFamily="MyIcon" Text="{x:Static fontawesome:FontIconClass.Lock}" VerticalOptions="Center" />
+                        <local:MyEntry Placeholder="Password" HorizontalOptions="StartAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Label Text="Wrong Email" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+            </StackLayout>
+            
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
