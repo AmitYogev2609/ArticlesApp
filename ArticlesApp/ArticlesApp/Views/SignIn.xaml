@@ -25,7 +25,7 @@
                         <local:MyEntry Placeholder="Email" HorizontalOptions="StartAndExpand" Text="{Binding Email}"/>
                 </StackLayout>
             </Frame>
-                <Label Text="{Binding EmailError}" IsVisible="{Binding ShowError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+                <Label Text="{Binding EmailError}"  TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
             </StackLayout>
             
             <StackLayout>
