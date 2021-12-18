@@ -22,7 +22,8 @@
                     <Label Text="{x:Static fontawesome:FontAwesomeIcons.Envelope}" 
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeRegular }"  />
-                        <local:MyEntry Placeholder="Email" HorizontalOptions="StartAndExpand" Text="{Binding Email}"/>
+                        <local:MyEntry x:Name="EmailEntry" Placeholder="Email"  HorizontalOptions="StartAndExpand" WidthRequest="300" Text="{Binding Email}" 
+                             Completed="EmailEntry_Completed"   />
                 </StackLayout>
             </Frame>
                 <Label Text="{Binding EmailError}"  TextColor="Red" FontSize="13" Padding="24,0,0,0"/>

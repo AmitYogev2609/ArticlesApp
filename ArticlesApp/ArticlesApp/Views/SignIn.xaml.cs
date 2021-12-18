@@ -18,5 +18,10 @@ namespace ArticlesApp.Views
             SignInViewModel context = new SignInViewModel();
             this.BindingContext = context;
         }
+
+        public void EmailEntry_Completed(object sender, EventArgs e)
+        {
+            ((SignInViewModel)this.BindingContext).ValidateEmail();
+        }
     }
 }

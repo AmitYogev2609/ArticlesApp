@@ -21,6 +21,7 @@ namespace ArticlesApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        private ArticlesAPIProxy Proxy = ArticlesAPIProxy.CreateProxy();
         public Color bordercolor { get=> new Color(0, 0, 0);  }
         #region Email
         private string email;
@@ -31,20 +32,17 @@ namespace ArticlesApp.ViewModels
                 {
                     email = value;
                     OnPropertyChanged(nameof(Email));
+                    
                 }
-                if (email != "" || email != null)
-                {
-                    this.EmailBorderColor = new Color(0, 0, 0);
-                    this.showerror = false;
-                }
+                
             } }
-        private bool showerror;
-        public bool ShowError { get=>showerror; set
+        private bool isemailvalid;
+        public bool IsEmailValid { get=>isemailvalid; set
             {
-                if(showerror!=value)
+                if(isemailvalid!=value)
                 {
-                    showerror = value;
-                    OnPropertyChanged(nameof(ShowError));
+                    isemailvalid = value;
+                    OnPropertyChanged(nameof(IsEmailValid));
                 }
             } }
         private string emailerror;
@@ -85,19 +83,19 @@ namespace ArticlesApp.ViewModels
                 if (username != "" || username != null)
                 {
                     this.UserNameBorderColor = new Color(0, 0, 0);
-                    this.ShowErrorUserName = false;
+                    this.IsUserNameValid = false;
                 }
             }
         }
-        private bool showerrorusername;
-        public bool ShowErrorUserName
+        private bool is_username_valid;
+        public bool IsUserNameValid
         {
-            get => showerrorusername; set
+            get => is_username_valid; set
             {
-                if (showerrorusername != value)
+                if (is_username_valid != value)
                 {
-                    showerrorusername = value;
-                    OnPropertyChanged(nameof(ShowErrorUserName));
+                    is_username_valid = value;
+                    OnPropertyChanged(nameof(IsUserNameValid));
                 }
             }
         }
@@ -130,11 +128,58 @@ namespace ArticlesApp.ViewModels
         public SignInViewModel()
         {
             EmailBorderColor = new Color(0, 0, 0);
-            ShowError = true;
+            IsEmailValid = true;
             EmailError = "  ";
             UserNameBorderColor = new Color(0, 0, 0);
-            ShowErrorUserName = true;
+            IsUserNameValid = true;
             UserNameError = " ";
+            
         }
+        public ICommand EmailComplete => new Command(ValidateEmail);
+        public event EventHandler EmailConfirmed;
+        public  void ValidateEmail()
+        {
+            if(Email==null||Email=="")
+            {
+                this.EmailError = "Mandatory field";
+                IsEmailValid = false;
+                this.EmailBorderColor = Color.Red;
+            }
+            else
+            { 
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(Email);
+                if (email != addr.Address)
+                {
+                    EmailError = "Invalid email address";
+                    this.EmailBorderColor = Color.Red;
+                }
+                IsEmailValid = addr.Address == Email;
+            }
+            catch
+            {
+                EmailError = "Invalid email address";
+                IsEmailValid = false;
+                this.EmailBorderColor = Color.Red;
+            }
+            }
+            
+            if(this.IsEmailValid)
+            {
+                this.EmailBorderColor = new Color(0, 0, 0);
+                this.emailerror = " ";
+            }
+        }
+        private async void exist()
+        {
+            bool exists = await Proxy.EmailExists(Email);
+            if (exists == true)
+            {
+                this.EmailError = "Email address already exists";
+                IsEmailValid = false;
+            }
+        }
+        
     }
 }
