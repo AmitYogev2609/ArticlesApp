@@ -23,7 +23,7 @@
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeRegular }"  />
                         <local:MyEntry x:Name="EmailEntry" Placeholder="Email"  HorizontalOptions="StartAndExpand" WidthRequest="300" Text="{Binding Email}" 
-                             Completed="EmailEntry_Completed"   />
+                             Unfocused="EmailEntry_Unfocused" />
                 </StackLayout>
             </Frame>
                 <Label Text="{Binding EmailError}"  TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
@@ -35,21 +35,21 @@
                         <Label Text="{x:Static fontawesome:FontAwesomeIcons.User}" 
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeRegular }"  />
-                        <local:MyEntry Placeholder="User Name" Text="{Binding UserName}" />
+                        <local:MyEntry Placeholder="User Name" Text="{Binding UserName}" Unfocused="UserName_Unfocused" />
                     </StackLayout>
                 </Frame>
                 <Label Text="{Binding UserNameError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
             </StackLayout>
             <StackLayout>
-                <Frame CornerRadius="37" BorderColor="{Binding bordercolor}">
+                <Frame CornerRadius="37" BorderColor="{Binding FullNameBorderColor}">
                     <StackLayout Orientation="Horizontal" HeightRequest="22">
                         <Label Text="{x:Static fontawesome:FontAwesomeIcons.AddressCard}" 
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeRegular }" VerticalOptions="Center" />
-                        <local:MyEntry Placeholder="Full Name" HorizontalOptions="StartAndExpand"/>
+                        <local:MyEntry  Placeholder="Full Name" HorizontalOptions="StartAndExpand" Unfocused="FullName_Unfocused" Text="{Binding FullName}"/>
                     </StackLayout>
                 </Frame>
-                <Label Text="{Binding EmailError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+                <Label Text="{Binding FullNameError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
             </StackLayout>
             <StackLayout>
                 <Frame CornerRadius="37" BorderColor="{Binding bordercolor}">

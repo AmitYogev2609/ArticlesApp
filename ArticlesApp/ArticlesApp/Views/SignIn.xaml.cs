@@ -19,9 +19,20 @@ namespace ArticlesApp.Views
             this.BindingContext = context;
         }
 
-        public void EmailEntry_Completed(object sender, EventArgs e)
+       
+        private void EmailEntry_Unfocused(object sender, FocusEventArgs e)
         {
             ((SignInViewModel)this.BindingContext).ValidateEmail();
+        }
+
+        private void UserName_Unfocused(object sender, FocusEventArgs e)
+        {
+            ((SignInViewModel)this.BindingContext).ValdateUserName();
+        }
+
+        private void FullName_Unfocused(object sender, FocusEventArgs e)
+        {
+
         }
     }
 }

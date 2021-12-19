@@ -125,6 +125,63 @@ namespace ArticlesApp.ViewModels
             }
         }
         #endregion
+        #region Full Name
+        private string fullname;
+        public string FullName
+        {
+            get => fullname;
+            set
+            {
+                if (value != fullname)
+                {
+                    fullname = value;
+                    OnPropertyChanged(nameof(FullName));
+                }
+                if (fullname != "" || fullname != null)
+                {
+                    this.FullNameBorderColor = new Color(0, 0, 0);
+                    this.IsFullNameValid = false;
+                }
+            }
+        }
+        private bool is_fullname_valid;
+        public bool IsFullNameValid
+        {
+            get => is_fullname_valid; set
+            {
+                if (is_fullname_valid != value)
+                {
+                    is_fullname_valid = value;
+                    OnPropertyChanged(nameof(IsFullNameValid));
+                }
+            }
+        }
+        private string fullnameerror;
+        public string FullNameError
+        {
+            get => fullnameerror; set
+            {
+                if (fullnameerror != value)
+                {
+                    fullnameerror = value;
+                    OnPropertyChanged(nameof(FullNameError));
+                }
+            }
+        }
+        private Color fullnamebordercolor;
+        public Color FullNameBorderColor
+        {
+            get => fullnamebordercolor;
+            set
+            {
+                if (fullnamebordercolor != value)
+                {
+                    fullnamebordercolor = value;
+                    OnPropertyChanged(nameof(FullNameBorderColor));
+                }
+            }
+        }
+#endregion
         public SignInViewModel()
         {
             EmailBorderColor = new Color(0, 0, 0);
@@ -133,10 +190,12 @@ namespace ArticlesApp.ViewModels
             UserNameBorderColor = new Color(0, 0, 0);
             IsUserNameValid = true;
             UserNameError = " ";
+            FullNameBorderColor = new Color(0, 0, 0);
+            IsFullNameValid = true;
+            FullNameError = " ";
             
         }
-        public ICommand EmailComplete => new Command(ValidateEmail);
-        public event EventHandler EmailConfirmed;
+      
         public  void ValidateEmail()
         {
             if(Email==null||Email=="")
@@ -180,6 +239,24 @@ namespace ArticlesApp.ViewModels
                 IsEmailValid = false;
             }
         }
-        
+        public void ValdateUserName()
+        {
+            if (UserName == null || UserName == "")
+            {
+                this.UserNameError = "Mandatory field";
+                IsUserNameValid = false;
+                this.UserNameBorderColor = Color.Red;
+            }
+        }
+        public void ValdateFullName()
+        {
+            if (FullName == null || FullName == "")
+            {
+                this.FullNameError = "Mandatory field";
+                IsFullNameValid = false;
+                this.FullNameBorderColor = Color.Red;
+            }
+        }
+
     }
 }

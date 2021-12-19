@@ -111,7 +111,7 @@ namespace ArticlesApp.Services
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/api/email-exists?email={email}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/EmailExist?email={email}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
