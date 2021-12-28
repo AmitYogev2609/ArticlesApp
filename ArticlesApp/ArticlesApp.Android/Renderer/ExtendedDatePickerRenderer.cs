@@ -8,13 +8,13 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using ArticlesApp.Droid.Renderer;
+using ArticlesApp.Droid;
 using ArticlesApp.Renderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(ExtendedDatePicker), typeof(ExtendedDatePickerRenderer))]
-namespace ArticlesApp.Droid.Renderer
+[assembly: ExportRenderer(typeof(ArticlesApp.Renderer.ExtendedDatePicker), typeof(ArticlesApp.Droid.Render.ExtendedDatePickerRenderer))]
+namespace ArticlesApp.Droid.Render
 {
     public class ExtendedDatePickerRenderer : DatePickerRenderer
     {

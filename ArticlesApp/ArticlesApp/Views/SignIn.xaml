@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Views.SignIn"
-             xmlns:local="clr-namespace:ArticlesApp;assembly=ArticlesApp"
-             xmlns:datepicker="clr-namespace:ArticlesApp.Renderer" 
+             xmlns:local="clr-namespace:ArticlesApp.Renderer"
              xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
@@ -57,7 +56,7 @@
                         <Label Text="{x:Static fontawesome:FontAwesomeIcons.BirthdayCake}" 
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeSolid }" VerticalOptions="Center" />
-                        <local:MyEntry Placeholder="BirthDay" HorizontalOptions="StartAndExpand"/>
+                        <local:ExtendedDatePicker Date="{Binding BirthDate}" HorizontalOptions="StartAndExpand" />
                     </StackLayout>
                 </Frame>
                 <Label Text="{Binding EmailError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>

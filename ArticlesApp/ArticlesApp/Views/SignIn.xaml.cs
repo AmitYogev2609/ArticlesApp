@@ -32,7 +32,7 @@ namespace ArticlesApp.Views
 
         private void FullName_Unfocused(object sender, FocusEventArgs e)
         {
-
+            ((SignInViewModel)this.BindingContext).ValdateFullName();
         }
     }
 }

@@ -15,8 +15,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using ArticlesApp.Renderer;
 
-[assembly: ExportRenderer(typeof(ArticlesApp.MyEntry), typeof(ArticlesApp.Droid.NoUnderlineEntry))]
-namespace ArticlesApp.Droid
+[assembly: ExportRenderer(typeof(ArticlesApp.Renderer.MyEntry), typeof(ArticlesApp.Droid.Render.NoUnderlineEntry))]
+namespace ArticlesApp.Droid.Render
 {
     public class NoUnderlineEntry : EntryRenderer
     {

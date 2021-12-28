@@ -181,7 +181,58 @@ namespace ArticlesApp.ViewModels
                 }
             }
         }
-#endregion
+        #endregion
+        #region Birth date
+        private DateTime birthdate;
+        public DateTime BirthDate
+        {
+            get => birthdate; set
+            {
+                if(value != birthdate)
+                {
+                    birthdate = value;
+                    OnPropertyChanged(nameof(BirthDate));
+                }
+            } 
+        }
+        private bool is_birthdate_valid;
+        public bool IsBirthDateValid
+        {
+            get => is_birthdate_valid; set
+            {
+                if (is_birthdate_valid != value)
+                {
+                    is_birthdate_valid = value;
+                    OnPropertyChanged(nameof(IsBirthDateValid));
+                }
+            }
+        }
+        private string birthdateerror;
+        public string BirthDateError
+        {
+            get => birthdateerror; set
+            {
+                if (birthdateerror != value)
+                {
+                    birthdateerror = value;
+                    OnPropertyChanged(nameof(BirthDateError));
+                }
+            }
+        }
+        private Color birthdatebordercolor;
+        public Color BirthDateBorderColor
+        {
+            get =>birthdatebordercolor;
+            set
+            {
+                if (birthdatebordercolor != value)
+                {
+                    birthdatebordercolor = value;
+                    OnPropertyChanged(nameof(BirthDateBorderColor));
+                }
+            }
+        }
+        #endregion
         public SignInViewModel()
         {
             EmailBorderColor = new Color(0, 0, 0);
@@ -193,7 +244,10 @@ namespace ArticlesApp.ViewModels
             FullNameBorderColor = new Color(0, 0, 0);
             IsFullNameValid = true;
             FullNameError = " ";
-            
+            BirthDateBorderColor = new Color(0, 0, 0);
+            IsBirthDateValid = true;
+            BirthDateError = " ";
+           
         }
       
         public  void ValidateEmail()
@@ -253,6 +307,14 @@ namespace ArticlesApp.ViewModels
             if (FullName == null || FullName == "")
             {
                 this.FullNameError = "Mandatory field";
+                IsFullNameValid = false;
+                this.FullNameBorderColor = Color.Red;
+                
+            }
+            else if (!this.FullName.Contains(" "))
+            {
+
+                this.FullNameError = "Must contain Fisrt Name and Last Name";
                 IsFullNameValid = false;
                 this.FullNameBorderColor = Color.Red;
             }
