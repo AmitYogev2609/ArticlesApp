@@ -232,6 +232,18 @@ namespace ArticlesApp.ViewModels
                 }
             }
         }
+        private Color birthdatetextcolor;
+        public Color BirthDateTextColor
+        {
+            get => birthdatetextcolor;
+            set
+            {
+                
+                    birthdatebordercolor = new Color(0,0,0);
+                    OnPropertyChanged(nameof(BirthDateTextColor));
+                
+            }
+        }
         #endregion
         public SignInViewModel()
         {
@@ -247,6 +259,7 @@ namespace ArticlesApp.ViewModels
             BirthDateBorderColor = new Color(0, 0, 0);
             IsBirthDateValid = true;
             BirthDateError = " ";
+            BirthDateTextColor = new Color(0, 0, 0, 0.51);
            
         }
       

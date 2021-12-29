@@ -28,9 +28,9 @@ namespace ArticlesApp.Droid.Render
             base.OnElementChanged(e);
             if (Control != null)
             {
-                Control.Text = "Select birthdate";
                 this.Control.SetBackground(null);
-                this.Control.SetTextColor(Android.Graphics.Color.LightGray);
+                this.Control.Text = "Select birthdate";
+                this.Control.SetTextColor(Android.Graphics.Color.Black);
             }
         }
     }
