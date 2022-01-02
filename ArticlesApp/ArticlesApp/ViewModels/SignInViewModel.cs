@@ -186,12 +186,17 @@ namespace ArticlesApp.ViewModels
         private DateTime birthdate;
         public DateTime BirthDate
         {
-            get => birthdate; set
+            get => birthdate; 
+            set
             {
                 if(value != birthdate)
                 {
                     birthdate = value;
+                    if (this.birthdateSet)
+                        BirthDateTextColor = Color.Black;
+                    this.birthdateSet = true;
                     OnPropertyChanged(nameof(BirthDate));
+                    
                 }
             } 
         }
@@ -219,6 +224,8 @@ namespace ArticlesApp.ViewModels
                 }
             }
         }
+
+       
         private Color birthdatebordercolor;
         public Color BirthDateBorderColor
         {
@@ -232,21 +239,26 @@ namespace ArticlesApp.ViewModels
                 }
             }
         }
-        private Color birthdatetextcolor;
+        private Color textColor;
         public Color BirthDateTextColor
         {
-            get => birthdatetextcolor;
+            get => textColor;
             set
             {
-                
-                    birthdatebordercolor = new Color(0,0,0);
-                    OnPropertyChanged(nameof(BirthDateTextColor));
+                if(value!=textColor)
+                {
+                    textColor = value;
+                   OnPropertyChanged(nameof(BirthDateTextColor));
+                }
+                  
                 
             }
         }
         #endregion
+        private bool birthdateSet;
         public SignInViewModel()
         {
+            this.birthdateSet = false;
             EmailBorderColor = new Color(0, 0, 0);
             IsEmailValid = true;
             EmailError = "  ";
@@ -259,8 +271,9 @@ namespace ArticlesApp.ViewModels
             BirthDateBorderColor = new Color(0, 0, 0);
             IsBirthDateValid = true;
             BirthDateError = " ";
-            BirthDateTextColor = new Color(0, 0, 0, 0.51);
-           
+            BirthDateTextColor = new Color(0, 0, 0, 0.60);
+            BirthDate = DateTime.Now;
+            
         }
       
         public  void ValidateEmail()

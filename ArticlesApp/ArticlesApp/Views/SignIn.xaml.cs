@@ -14,9 +14,10 @@ namespace ArticlesApp.Views
     {
         public SignIn()
         {
-            InitializeComponent();
             SignInViewModel context = new SignInViewModel();
             this.BindingContext = context;
+            InitializeComponent();
+           
         }
 
        

@@ -52,7 +52,7 @@
             </StackLayout>
             <StackLayout>
 
-                <Frame CornerRadius="37" BorderColor="Black"  Padding="24,0,0,0" >
+                <Frame CornerRadius="37" BorderColor="{Binding BirthDateBorderColor}"  Padding="24,0,0,0" >
                     <Grid HeightRequest="59"  >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="25" />
@@ -63,7 +63,7 @@
                         </Grid.RowDefinitions>
                         <Label Text="{x:Static fontawesome:FontAwesomeIcons.BirthdayCake}" 
                  FontSize="24" TextColor="Black"          Grid.Column="0" Grid.Row="0"     FontFamily="{StaticResource FontAwesomeSolid }" VerticalOptions="Center" />
-                        <local:ExtendedDatePicker Date="{Binding BirthDate}" Grid.Column="1"  Grid.Row="0" TextColor="{Binding BirthDateTextColor}"  HorizontalOptions="StartAndExpand"  VerticalOptions="Center" WidthRequest="300" HeightRequest="50"   />
+                        <local:ExtendedDatePicker x:Name="thePicker" Date="{Binding BirthDate}" Grid.Column="1"  Grid.Row="0" TextColor="{Binding BirthDateTextColor}"  HorizontalOptions="StartAndExpand"  VerticalOptions="Center" WidthRequest="300" HeightRequest="50"   />
                     </Grid>
                 </Frame>
                 <Label Text="{Binding EmailError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>

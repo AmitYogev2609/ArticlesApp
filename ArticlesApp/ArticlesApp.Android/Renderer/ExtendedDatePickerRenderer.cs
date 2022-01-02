@@ -30,7 +30,6 @@ namespace ArticlesApp.Droid.Render
             {
                 this.Control.SetBackground(null);
                 this.Control.Text = "Select birthdate";
-                this.Control.SetTextColor(Android.Graphics.Color.Black);
             }
         }
     }
