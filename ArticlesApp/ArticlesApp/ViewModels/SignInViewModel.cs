@@ -488,8 +488,6 @@ namespace ArticlesApp.ViewModels
                 PasswordError = " ";
                 this.PasswordBorderColor = new Color(0, 0, 0);
             }
-
-            
         }
         private async void exist()
         {
