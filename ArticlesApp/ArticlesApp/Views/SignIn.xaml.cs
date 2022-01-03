@@ -35,5 +35,10 @@ namespace ArticlesApp.Views
         {
             ((SignInViewModel)this.BindingContext).ValdateFullName();
         }
+
+        private void BirthDatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+            ((SignInViewModel)this.BindingContext).ValdateBirthdate();
+        }
     }
 }

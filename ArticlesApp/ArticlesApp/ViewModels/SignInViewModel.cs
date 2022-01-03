@@ -9,6 +9,7 @@ using ArticlesApp.Services;
 using ArticlesApp.Models;
 using Xamarin.Essentials;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace ArticlesApp.ViewModels
 {
@@ -25,7 +26,7 @@ namespace ArticlesApp.ViewModels
         public Color bordercolor { get=> new Color(0, 0, 0);  }
         #region Email
         private string email;
-        public string Email { get=>email; 
+        public string Email { get=>email;
             set
             {
                 if(value!=email)
@@ -254,8 +255,64 @@ namespace ArticlesApp.ViewModels
                 
             }
         }
-        #endregion
         private bool birthdateSet;
+        #endregion
+        #region Password
+        private string password;
+        public string Password 
+        { 
+            get=> password;
+            set
+            {
+                if(value!=password)
+                {
+                    password = value;
+                    OnPropertyChanged(nameof(Password));
+                    ValidatePassword();
+                }
+            }
+        }
+        private bool is_password_valid;
+        public bool IsPasswordValid 
+        { 
+            get=>is_password_valid; 
+            set
+            {
+                if(is_password_valid!=value)
+                {
+                    is_password_valid = value;
+                    OnPropertyChanged(nameof(IsPasswordValid));
+                }
+
+            }
+        }
+        private string passworderror;
+        public string PasswordError 
+        { 
+            get=>passworderror; 
+            set
+            {
+                if(passworderror!=value)
+                {
+                    passworderror = value;
+                    OnPropertyChanged(nameof(PasswordError));
+                }
+            }
+        }
+        private Color passwordbordercolor;
+        public Color PasswordBorderColor 
+        { 
+            get=>passwordbordercolor;
+            set
+            {
+                if(passwordbordercolor!=value)
+                {
+                    passwordbordercolor = value;
+                    OnPropertyChanged(nameof(PasswordBorderColor));
+                }
+            }
+        }
+        #endregion
         public SignInViewModel()
         {
             this.birthdateSet = false;
@@ -273,11 +330,14 @@ namespace ArticlesApp.ViewModels
             BirthDateError = " ";
             BirthDateTextColor = new Color(0, 0, 0, 0.60);
             BirthDate = DateTime.Now;
-            
+            PasswordBorderColor = new Color(0, 0, 0);
+            IsPasswordValid = true;
+            PasswordError = " ";
         }
       
         public  void ValidateEmail()
         {
+            IsEmailValid = true;
             if(Email==null||Email=="")
             {
                 this.EmailError = "Mandatory field";
@@ -310,26 +370,25 @@ namespace ArticlesApp.ViewModels
                 this.emailerror = " ";
             }
         }
-        private async void exist()
-        {
-            bool exists = await Proxy.EmailExists(Email);
-            if (exists == true)
-            {
-                this.EmailError = "Email address already exists";
-                IsEmailValid = false;
-            }
-        }
+        
         public void ValdateUserName()
         {
+            IsUserNameValid = true;
             if (UserName == null || UserName == "")
             {
                 this.UserNameError = "Mandatory field";
                 IsUserNameValid = false;
                 this.UserNameBorderColor = Color.Red;
             }
+            if(this.IsUserNameValid)
+            {
+                this.UserNameBorderColor=new Color(0,0,0);
+                this.UserNameError = " ";
+            }
         }
         public void ValdateFullName()
         {
+            IsFullNameValid = true;
             if (FullName == null || FullName == "")
             {
                 this.FullNameError = "Mandatory field";
@@ -344,7 +403,104 @@ namespace ArticlesApp.ViewModels
                 IsFullNameValid = false;
                 this.FullNameBorderColor = Color.Red;
             }
+            if(IsFullNameValid)
+            {
+                this.FullNameBorderColor = new Color(0, 0, 0);
+                this.FullNameError = " ";
+            }
         }
+        public void ValdateBirthdate()
+        {
+            IsBirthDateValid = true;
+            if(BirthDate==default(DateTime))
+            {
+                this.BirthDateBorderColor = Color.Red;
+                this.BirthDateError = "This is a mandatory field";
+                this.IsBirthDateValid = false;
+            }
+           else if(BirthDate>=DateTime.Now)
+            {
+                this.BirthDateBorderColor = Color.Red;
+                this.BirthDateError = "date must be earlier then today";
+                this.IsBirthDateValid = false;
+            }
+            if(IsBirthDateValid)
+            {
+                this.BirthDateBorderColor = new Color(0, 0, 0);
+                this.BirthDateError = " ";
+            }
+        }
+        private void ValidatePassword()
+        {
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasLowerChar = new Regex(@"[a-z]+");
+            var input = Password;
+            PasswordError = "";
+            IsPasswordValid = true;
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                this.PasswordBorderColor = Color.Red;
+                this.PasswordError = "Mamdatory field";
+                this.IsPasswordValid = false;
+                return;
+            }
 
+            if (!(input.Length>=8&&input.Length<=12))
+            {
+                PasswordError += "Password should not be less than 8 characters and greater than 12 characters. ";
+                this.IsPasswordValid = this.IsPasswordValid && false;
+                this.PasswordBorderColor = Color.Red;
+                return;
+            }
+            if (!hasNumber.IsMatch(input))
+            {
+                PasswordError += "Password should contain At least one number. ";
+                this.IsPasswordValid = this.IsPasswordValid && false;
+                this.PasswordBorderColor = Color.Red;
+                return;
+            }
+            if (!hasLowerChar.IsMatch(input))
+            {
+                PasswordError += "Password should contain At least one lower case letter. ";
+                this.IsPasswordValid = this.IsPasswordValid && false;
+                this.PasswordBorderColor = Color.Red;
+                return;
+
+            }
+            if (input.Contains(" "))
+            {
+                PasswordError += "Password should not contain space. ";
+                this.IsPasswordValid = this.IsPasswordValid && false;
+                this.PasswordBorderColor = Color.Red;
+                return;
+            }
+            if (!hasUpperChar.IsMatch(input))
+            {
+                PasswordError += "Password should contain At least one upper case letter.";
+                this.IsPasswordValid = this.IsPasswordValid && false;
+                this.PasswordBorderColor = Color.Red;
+                return;
+            }
+            
+            if(IsPasswordValid)
+            {
+                PasswordError = " ";
+                this.PasswordBorderColor = new Color(0, 0, 0);
+            }
+
+            
+        }
+        private async void exist()
+        {
+            bool exists = await Proxy.EmailExists(Email);
+            if (exists == true)
+            {
+                this.EmailBorderColor = Color.Red;
+                this.EmailError = "Email address already exists";
+                IsEmailValid = false;
+            }
+        }
     }
+   
 }

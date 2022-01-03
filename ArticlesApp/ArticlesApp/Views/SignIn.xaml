@@ -15,13 +15,13 @@
             <Label Text="Fill your detials" FontSize="Body"   FontFamily="Roboto"/>
             </StackLayout>
             
-            <StackLayout>
+            <StackLayout >
                 <Frame CornerRadius="37" BorderColor="{Binding EmailBorderColor}">
                 <StackLayout Orientation="Horizontal" HeightRequest="22">
                     <Label Text="{x:Static fontawesome:FontAwesomeIcons.Envelope}" 
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeRegular }"  />
-                        <local:MyEntry x:Name="EmailEntry" Placeholder="Email"  HorizontalOptions="StartAndExpand" WidthRequest="300" Text="{Binding Email}" 
+                        <local:MyEntry x:Name="EmailEntry" Placeholder="Email" HorizontalOptions="StartAndExpand"  WidthRequest="300" Text="{Binding Email}" 
                              Unfocused="EmailEntry_Unfocused" />
                 </StackLayout>
             </Frame>
@@ -29,12 +29,12 @@
             </StackLayout>
             
             <StackLayout>
-                <Frame CornerRadius="37" BorderColor="{Binding bordercolor}">
+                <Frame CornerRadius="37" BorderColor="{Binding UserNameBorderColor}">
                     <StackLayout Orientation="Horizontal" HeightRequest="22">
                         <Label Text="{x:Static fontawesome:FontAwesomeIcons.User}" 
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeRegular }"  />
-                        <local:MyEntry Placeholder="User Name" Text="{Binding UserName}" Unfocused="UserName_Unfocused" WidthRequest="300"/>
+                        <local:MyEntry Placeholder="User Name" Text="{Binding UserName}" Unfocused="UserName_Unfocused" HorizontalOptions="StartAndExpand" WidthRequest="300"/>
                     </StackLayout>
                 </Frame>
                 <Label Text="{Binding UserNameError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
@@ -50,8 +50,8 @@
                 </Frame>
                 <Label Text="{Binding FullNameError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
             </StackLayout>
+            
             <StackLayout>
-
                 <Frame CornerRadius="37" BorderColor="{Binding BirthDateBorderColor}"  Padding="24,0,0,0" >
                     <Grid HeightRequest="59"  >
                         <Grid.ColumnDefinitions>
@@ -63,13 +63,13 @@
                         </Grid.RowDefinitions>
                         <Label Text="{x:Static fontawesome:FontAwesomeIcons.BirthdayCake}" 
                  FontSize="24" TextColor="Black"          Grid.Column="0" Grid.Row="0"     FontFamily="{StaticResource FontAwesomeSolid }" VerticalOptions="Center" />
-                        <local:ExtendedDatePicker x:Name="thePicker" Date="{Binding BirthDate}" Grid.Column="1"  Grid.Row="0" TextColor="{Binding BirthDateTextColor}"  HorizontalOptions="StartAndExpand"  VerticalOptions="Center" WidthRequest="300" HeightRequest="50"   />
+                        <local:ExtendedDatePicker x:Name="BirthDatePicker" Unfocused="BirthDatePicker_Unfocused" Date="{Binding BirthDate}" Grid.Column="1"  Grid.Row="0" TextColor="{Binding BirthDateTextColor}"  HorizontalOptions="StartAndExpand"  VerticalOptions="Center" WidthRequest="300" HeightRequest="50"   />
                     </Grid>
                 </Frame>
-                <Label Text="{Binding EmailError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+                <Label Text="{Binding BirthDateError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
             </StackLayout>
             <StackLayout>
-                <Frame CornerRadius="37" BorderColor="{Binding bordercolor}">
+                <Frame CornerRadius="37" BorderColor="{Binding PasswordBorderColor}">
                     <StackLayout Orientation="Horizontal" HeightRequest="22">
 
 
@@ -78,14 +78,14 @@
                                 <ffTransf:TintTransformation HexColor="#12121D" EnableSolidColor="true" />
                             </ff:CachedImage.Transformations>
                         </ffSvg:SvgCachedImage>
-                        <local:MyEntry Placeholder="Password" HorizontalOptions="StartAndExpand"/>
+                        <local:MyEntry Placeholder="Password"  Text="{Binding Password}" HorizontalOptions="StartAndExpand" WidthRequest="300"/>
                     </StackLayout>
                 </Frame>
-                <Label Text="{Binding EmailError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+                <Label Text="{Binding PasswordError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
             </StackLayout>
 
             <Button Command="{Binding SignInCommand}" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="30"
-                    FontFamily="Rubik" FontSize="15" HeightRequest="48" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350"/>
+                    FontFamily="Rubik" FontSize="15" HeightRequest="48" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350" />
 
         </StackLayout>
     </ContentPage.Content>
