@@ -489,7 +489,7 @@ namespace ArticlesApp.ViewModels
                 this.PasswordBorderColor = new Color(0, 0, 0);
             }
         }
-        private async void exist()
+        private async void EmailExist()
         {
             bool exists = await Proxy.EmailExists(Email);
             if (exists == true)
@@ -497,6 +497,16 @@ namespace ArticlesApp.ViewModels
                 this.EmailBorderColor = Color.Red;
                 this.EmailError = "Email address already exists";
                 IsEmailValid = false;
+            }
+        }
+        private async void UserNameExist()
+        {
+            bool exists = await Proxy.UserNameExists(UserName);
+            if (exists == true)
+            {
+                this.UserNameBorderColor = Color.Red;
+                this.UserNameError = "User Name address already exists";
+                IsUserNameValid = false;
             }
         }
     }

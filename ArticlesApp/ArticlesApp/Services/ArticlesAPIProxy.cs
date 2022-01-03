@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 using System.Text.Unicode;
 using System.Text.Encodings.Web;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using System.IO;
 
@@ -125,12 +126,47 @@ namespace ArticlesApp.Services
                 }
                 else
                 {
+                     await App.Current.MainPage.DisplayAlert("Somthing went wrong","plese try again later","ok");
+                    App.Current.MainPage.Navigation.PopAsync();
                     return false;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                await App.Current.MainPage.DisplayAlert("Somthing went wrong", "plese try again later", "ok");
+                App.Current.MainPage.Navigation.PopAsync();
+                return false;
+            }
+        }
+        public async Task<bool> UserNameExists(string UserName)
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/UserNameExist?email={UserName}");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    bool b = JsonSerializer.Deserialize<bool>(content, options);
+                    return b;
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Somthing went wrong", "plese try again later", "ok");
+                    App.Current.MainPage.Navigation.PopAsync();
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                await App.Current.MainPage.DisplayAlert("Somthing went wrong", "plese try again later", "ok");
+                App.Current.MainPage.Navigation.PopAsync();
                 return false;
             }
         }
