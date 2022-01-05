@@ -126,7 +126,7 @@ namespace ArticlesApp.Services
                 }
                 else
                 {
-                    
+
                     return false;
                 }
             }
