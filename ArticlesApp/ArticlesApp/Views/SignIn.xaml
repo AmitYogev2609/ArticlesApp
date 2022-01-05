@@ -84,7 +84,7 @@
                 <Label Text="{Binding PasswordError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
             </StackLayout>
 
-            <Button Command="{Binding SignInCommand}" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="30"
+            <Button Command="{Binding MoveToAddImage}" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="30"
                     FontFamily="Rubik" FontSize="15" HeightRequest="48" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350" />
 
         </StackLayout>

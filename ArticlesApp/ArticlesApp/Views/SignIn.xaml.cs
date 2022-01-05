@@ -16,11 +16,16 @@ namespace ArticlesApp.Views
         {
             SignInViewModel context = new SignInViewModel();
             this.BindingContext = context;
+            ((SignInViewModel)this.BindingContext).NavigateToPageEvent += NavigateToAsync;
             InitializeComponent();
            
         }
 
-       
+        public async void NavigateToAsync(Page p)
+        {
+            p.BindingContext = this.BindingContext;
+            await Navigation.PushAsync(p);
+        }
         private void EmailEntry_Unfocused(object sender, FocusEventArgs e)
         {
             ((SignInViewModel)this.BindingContext).ValidateEmail();

@@ -85,7 +85,7 @@ namespace ArticlesApp.Services
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?email={email}&pass={pass}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?email={email}&password={pass}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
@@ -126,16 +126,14 @@ namespace ArticlesApp.Services
                 }
                 else
                 {
-                     await App.Current.MainPage.DisplayAlert("Somthing went wrong","plese try again later","ok");
-                    App.Current.MainPage.Navigation.PopAsync();
+                    
                     return false;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                await App.Current.MainPage.DisplayAlert("Somthing went wrong", "plese try again later", "ok");
-                App.Current.MainPage.Navigation.PopAsync();
+                
                 return false;
             }
         }
@@ -143,7 +141,7 @@ namespace ArticlesApp.Services
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/UserNameExist?email={UserName}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/UserNameExist?UserName={UserName}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
@@ -157,16 +155,13 @@ namespace ArticlesApp.Services
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Somthing went wrong", "plese try again later", "ok");
-                    App.Current.MainPage.Navigation.PopAsync();
+                    
                     return false;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                await App.Current.MainPage.DisplayAlert("Somthing went wrong", "plese try again later", "ok");
-                App.Current.MainPage.Navigation.PopAsync();
                 return false;
             }
         }

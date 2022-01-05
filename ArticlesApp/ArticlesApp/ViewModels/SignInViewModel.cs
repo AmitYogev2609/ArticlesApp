@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
-using ArticlesApp.Services;
-using ArticlesApp.Models;
 using Xamarin.Essentials;
 using System.Linq;
 using System.Text.RegularExpressions;
+using ArticlesApp.Services;
+using ArticlesApp.Models;
+using ArticlesApp.Views;
 
 namespace ArticlesApp.ViewModels
 {
@@ -23,6 +24,8 @@ namespace ArticlesApp.ViewModels
         }
         #endregion
         private ArticlesAPIProxy Proxy = ArticlesAPIProxy.CreateProxy();
+        public Action<Page> NavigateToPageEvent;
+
         public Color bordercolor { get=> new Color(0, 0, 0);  }
         #region Email
         private string email;
@@ -489,7 +492,7 @@ namespace ArticlesApp.ViewModels
                 this.PasswordBorderColor = new Color(0, 0, 0);
             }
         }
-        private async void EmailExist()
+        private async Task<bool> EmailExist()
         {
             bool exists = await Proxy.EmailExists(Email);
             if (exists == true)
@@ -497,18 +500,44 @@ namespace ArticlesApp.ViewModels
                 this.EmailBorderColor = Color.Red;
                 this.EmailError = "Email address already exists";
                 IsEmailValid = false;
+                return false;
             }
+            return true;
         }
-        private async void UserNameExist()
+        private async Task<bool> UserNameExist()
         {
             bool exists = await Proxy.UserNameExists(UserName);
             if (exists == true)
             {
                 this.UserNameBorderColor = Color.Red;
-                this.UserNameError = "User Name address already exists";
+                this.UserNameError = "User name already exists";
                 IsUserNameValid = false;
+                return false;
+            }
+            return true;
+        }
+        public ICommand MoveToAddImage => new Command(ToAddPictaure);
+        public async void ToAddPictaure()
+        {
+            ValidateEmail();
+            ValdateUserName();
+            ValdateFullName();
+            ValdateBirthdate();
+            ValidatePassword();
+            
+            bool b = await UserNameExist();
+            bool t = await EmailExist();
+            if (IsEmailValid && IsUserNameValid && IsFullNameValid && IsBirthDateValid && IsPasswordValid&&b&&t)
+            {
+                Page sign = new AddImage();
+                NavigateToPageEvent?.Invoke(sign);
+            }
+            else
+            {
+                return;
             }
         }
+
     }
    
 }
