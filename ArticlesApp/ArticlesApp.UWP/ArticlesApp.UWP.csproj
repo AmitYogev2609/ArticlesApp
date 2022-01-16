@@ -145,7 +145,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="SkiaSharp">
-      <Version>2.80.3</Version>
+      <Version>2.88.0-preview.179</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Licensing">
+      <Version>19.4.0.42</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
       <Version>6.0.1</Version>
@@ -169,10 +172,10 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="XamlCSS">
-      <Version>2.2.0</Version>
+      <Version>2.2.1-pre2</Version>
     </PackageReference>
     <PackageReference Include="XamlCSS.XamarinForms">
-      <Version>2.2.0</Version>
+      <Version>2.2.1-pre2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -16,6 +16,8 @@ namespace ArticlesApp
         }
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("YOUR LICENSE KEY");
+
             InitializeComponent();
             Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
             MainPage = Login; 

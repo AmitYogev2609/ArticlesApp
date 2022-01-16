@@ -29,7 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SkiaSharp" Version="2.80.3" />
+    <PackageReference Include="SkiaSharp" Version="2.88.0-preview.179" />
+    <PackageReference Include="Syncfusion.Licensing" Version="19.4.0.42" />
     <PackageReference Include="System.Text.Json" Version="6.0.1" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
@@ -38,8 +39,8 @@
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-    <PackageReference Include="XamlCSS" Version="2.2.0" />
-    <PackageReference Include="XamlCSS.XamarinForms" Version="2.2.0" />
+    <PackageReference Include="XamlCSS" Version="2.2.1-pre2" />
+    <PackageReference Include="XamlCSS.XamarinForms" Version="2.2.1-pre2" />
   </ItemGroup>
 
   <ItemGroup>
