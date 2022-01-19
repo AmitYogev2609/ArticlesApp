@@ -373,7 +373,6 @@ namespace ArticlesApp.ViewModels
                 this.emailerror = " ";
             }
         }
-        
         public void ValdateUserName()
         {
             IsUserNameValid = true;
@@ -516,6 +515,7 @@ namespace ArticlesApp.ViewModels
             }
             return true;
         }
+        
         public ICommand MoveToAddImage => new Command(ToAddPictaure);
         public async void ToAddPictaure()
         {

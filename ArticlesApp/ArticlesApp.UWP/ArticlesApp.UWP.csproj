@@ -148,10 +148,16 @@
       <Version>2.88.0-preview.179</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Licensing">
-      <Version>19.4.0.42</Version>
+      <Version>19.4.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfImageEditor">
+      <Version>19.4.0.43</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
       <Version>6.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.1.1.1-beta</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading">
       <Version>2.4.11.982</Version>
