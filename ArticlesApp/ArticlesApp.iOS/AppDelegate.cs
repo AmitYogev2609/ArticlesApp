@@ -23,6 +23,7 @@ namespace ArticlesApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Syncfusion.SfImageEditor.XForms.iOS.SfImageEditorRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

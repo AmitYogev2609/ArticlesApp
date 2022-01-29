@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArticlesApp.Views.ChooseInterest" NavigationPage.IconColor="Black">
+    <ContentPage.Content>
+        <StackLayout Spacing="25" Padding="0,0,0,20">
+            <StackLayout Padding="25,0,0,0">
+                <Label Text="Uplod your profile picture" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
+                <Label Text="press the image icon" FontSize="Body"   FontFamily="Roboto"/>
+            </StackLayout>
+            <ScrollView>
+                <CollectionView ItemsSource="{Binding Interests}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="30" BorderColor="Black">
+                                <Label Text="{Binding InterestName }"/>
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+            </ScrollView>
+            <Button  TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="29"
+                    FontFamily="Rubik" FontSize="15" HeightRequest="54"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350"  />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

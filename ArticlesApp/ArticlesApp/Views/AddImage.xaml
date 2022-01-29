@@ -2,12 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Views.AddImage"
-              BackgroundColor="#FFFFFF" NavigationPage.IconColor="Black">
+             BackgroundColor="White" NavigationPage.IconColor="Black"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:Icons="clr-namespace:ArticlesApp.Fonts"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Spacing="25" Padding="0,0,0,20">
+            <StackLayout Padding="25,0,0,0">
+            <Label Text="Uplod your profile picture" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
+            <Label Text="press the image icon" FontSize="Body"   FontFamily="Roboto"/>
+            </StackLayout>
+            <StackLayout>
+            <controls:CircleImage x:Name="ProfileImage" WidthRequest="230" HeightRequest="230" Aspect="Fill" BorderColor="Black" BorderThickness="2" />
+            <Button   BackgroundColor="#2934D0" CornerRadius="5" HeightRequest="40" WidthRequest="40" 
+                   Clicked="MoveToPopUp"  Text="{x:Static Icons:FontIconClass.FileImage}"
+                   xct:ShadowEffect.Color="#2934D0" xct:TouchEffect.AnimationDuration="50" xct:TouchEffect.PressedScale="1.1" 
+                   HorizontalOptions="Center" VerticalOptions="Center" Margin="-18" FontFamily="MyIcon" FontSize="20" TextColor="White"/>
+            </StackLayout>
+            <Button Command="{Binding MovetoChoose}" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="29"
+                    FontFamily="Rubik" FontSize="15" HeightRequest="54"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350"  />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

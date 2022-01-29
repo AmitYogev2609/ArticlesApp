@@ -165,6 +165,36 @@ namespace ArticlesApp.Services
                 return false;
             }
         }
+        public async Task<List<Interest>> GetInitialInterests()
+        {
+            HttpResponseMessage response = null;
+            try
+            {
+                 response = await this.client.GetAsync($"{this.baseUri}/GetInitialInterests");
+                if(response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content= await response.Content.ReadAsStringAsync();
+                    List<Interest> interests= JsonSerializer.Deserialize<List<Interest>>(content, options);
+                    return interests;
+                }
+                else
+                {
+                    return null;
+                }
+
+                    
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
         public async Task<string> GetPasswordResetCode(string email)
         {
             return null;
@@ -178,3 +208,4 @@ namespace ArticlesApp.Services
         
     }
 }
+//http://10.0.2.2:60411/ArtiFindAPI/GetInitialInterests

@@ -11,10 +11,13 @@ using System.Text.RegularExpressions;
 using ArticlesApp.Services;
 using ArticlesApp.Models;
 using ArticlesApp.Views;
+using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
+
 
 namespace ArticlesApp.ViewModels
 {
-    public class SignInViewModel: INotifyPropertyChanged
+    public class SignInViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -24,40 +27,53 @@ namespace ArticlesApp.ViewModels
         }
         #endregion
         private ArticlesAPIProxy Proxy = ArticlesAPIProxy.CreateProxy();
-        public Action<Page> NavigateToPageEvent;
+        public Action NavigateToPageEvent;
+        public Action NavigateToEditeImage;
 
-        public Color bordercolor { get=> new Color(0, 0, 0);  }
+        #region sign up
+        public Color border { get => new Color(0, 0, 0, 0.51); }
+
+        public Color bordercolor { get => new Color(0, 0, 0); }
         #region Email
         private string email;
-        public string Email { get=>email;
+        public string Email
+        {
+            get => email;
             set
             {
-                if(value!=email)
+                if (value != email)
                 {
                     email = value;
                     OnPropertyChanged(nameof(Email));
-                    
+
                 }
-                
-            } }
+
+            }
+        }
         private bool isemailvalid;
-        public bool IsEmailValid { get=>isemailvalid; set
+        public bool IsEmailValid
+        {
+            get => isemailvalid; set
             {
-                if(isemailvalid!=value)
+                if (isemailvalid != value)
                 {
                     isemailvalid = value;
                     OnPropertyChanged(nameof(IsEmailValid));
                 }
-            } }
+            }
+        }
         private string emailerror;
-        public string EmailError { get=>emailerror; set
-            { 
-                if(emailerror!=value)
+        public string EmailError
+        {
+            get => emailerror; set
+            {
+                if (emailerror != value)
                 {
                     emailerror = value;
                     OnPropertyChanged(nameof(EmailError));
                 }
-            } }
+            }
+        }
         private Color emailbordercolor;
         public Color EmailBorderColor
         {
@@ -190,19 +206,19 @@ namespace ArticlesApp.ViewModels
         private DateTime birthdate;
         public DateTime BirthDate
         {
-            get => birthdate; 
+            get => birthdate;
             set
             {
-                if(value != birthdate)
+                if (value != birthdate)
                 {
                     birthdate = value;
                     if (this.birthdateSet)
                         BirthDateTextColor = Color.Black;
                     this.birthdateSet = true;
                     OnPropertyChanged(nameof(BirthDate));
-                    
+
                 }
-            } 
+            }
         }
         private bool is_birthdate_valid;
         public bool IsBirthDateValid
@@ -229,11 +245,11 @@ namespace ArticlesApp.ViewModels
             }
         }
 
-       
+
         private Color birthdatebordercolor;
         public Color BirthDateBorderColor
         {
-            get =>birthdatebordercolor;
+            get => birthdatebordercolor;
             set
             {
                 if (birthdatebordercolor != value)
@@ -249,25 +265,25 @@ namespace ArticlesApp.ViewModels
             get => textColor;
             set
             {
-                if(value!=textColor)
+                if (value != textColor)
                 {
                     textColor = value;
-                   OnPropertyChanged(nameof(BirthDateTextColor));
+                    OnPropertyChanged(nameof(BirthDateTextColor));
                 }
-                  
-                
+
+
             }
         }
         private bool birthdateSet;
         #endregion
         #region Password
         private string password;
-        public string Password 
-        { 
-            get=> password;
+        public string Password
+        {
+            get => password;
             set
             {
-                if(value!=password)
+                if (value != password)
                 {
                     password = value;
                     OnPropertyChanged(nameof(Password));
@@ -276,12 +292,12 @@ namespace ArticlesApp.ViewModels
             }
         }
         private bool is_password_valid;
-        public bool IsPasswordValid 
-        { 
-            get=>is_password_valid; 
+        public bool IsPasswordValid
+        {
+            get => is_password_valid;
             set
             {
-                if(is_password_valid!=value)
+                if (is_password_valid != value)
                 {
                     is_password_valid = value;
                     OnPropertyChanged(nameof(IsPasswordValid));
@@ -290,12 +306,12 @@ namespace ArticlesApp.ViewModels
             }
         }
         private string passworderror;
-        public string PasswordError 
-        { 
-            get=>passworderror; 
+        public string PasswordError
+        {
+            get => passworderror;
             set
             {
-                if(passworderror!=value)
+                if (passworderror != value)
                 {
                     passworderror = value;
                     OnPropertyChanged(nameof(PasswordError));
@@ -303,12 +319,12 @@ namespace ArticlesApp.ViewModels
             }
         }
         private Color passwordbordercolor;
-        public Color PasswordBorderColor 
-        { 
-            get=>passwordbordercolor;
+        public Color PasswordBorderColor
+        {
+            get => passwordbordercolor;
             set
             {
-                if(passwordbordercolor!=value)
+                if (passwordbordercolor != value)
                 {
                     passwordbordercolor = value;
                     OnPropertyChanged(nameof(PasswordBorderColor));
@@ -336,41 +352,48 @@ namespace ArticlesApp.ViewModels
             PasswordBorderColor = new Color(0, 0, 0);
             IsPasswordValid = true;
             PasswordError = " ";
+            Interests = new List<Interest>();
         }
-      
-        public  void ValidateEmail()
+        public async void getInterest()
+        {
+            Interests = Proxy.GetInitialInterests().Result;
+
+        }
+        public void ValidateEmail()
         {
             IsEmailValid = true;
-            if(Email==null||Email=="")
+            if (Email == null || Email == "")
             {
                 this.EmailError = "Mandatory field";
                 IsEmailValid = false;
                 this.EmailBorderColor = Color.Red;
             }
             else
-            { 
-            try
             {
-                var addr = new System.Net.Mail.MailAddress(Email);
-                if (email != addr.Address)
+                try
+                {
+                    var addr = new System.Net.Mail.MailAddress(Email);
+
+                    IsEmailValid = addr.Address == Email;
+
+                    if (!IsEmailValid)
+                    {
+                        EmailError = "Invalid email address";
+                        this.EmailBorderColor = Color.Red;
+                    }
+                }
+                catch
                 {
                     EmailError = "Invalid email address";
+                    IsEmailValid = false;
                     this.EmailBorderColor = Color.Red;
                 }
-                IsEmailValid = addr.Address == Email;
             }
-            catch
-            {
-                EmailError = "Invalid email address";
-                IsEmailValid = false;
-                this.EmailBorderColor = Color.Red;
-            }
-            }
-            
-            if(this.IsEmailValid)
+
+            if (this.IsEmailValid)
             {
                 this.EmailBorderColor = new Color(0, 0, 0);
-                this.emailerror = " ";
+                this.EmailError = " ";
             }
         }
         public void ValdateUserName()
@@ -382,9 +405,9 @@ namespace ArticlesApp.ViewModels
                 IsUserNameValid = false;
                 this.UserNameBorderColor = Color.Red;
             }
-            if(this.IsUserNameValid)
+            if (this.IsUserNameValid)
             {
-                this.UserNameBorderColor=new Color(0,0,0);
+                this.UserNameBorderColor = new Color(0, 0, 0);
                 this.UserNameError = " ";
             }
         }
@@ -396,7 +419,7 @@ namespace ArticlesApp.ViewModels
                 this.FullNameError = "Mandatory field";
                 IsFullNameValid = false;
                 this.FullNameBorderColor = Color.Red;
-                
+
             }
             else if (!this.FullName.Contains(" "))
             {
@@ -405,7 +428,7 @@ namespace ArticlesApp.ViewModels
                 IsFullNameValid = false;
                 this.FullNameBorderColor = Color.Red;
             }
-            if(IsFullNameValid)
+            if (IsFullNameValid)
             {
                 this.FullNameBorderColor = new Color(0, 0, 0);
                 this.FullNameError = " ";
@@ -414,19 +437,19 @@ namespace ArticlesApp.ViewModels
         public void ValdateBirthdate()
         {
             IsBirthDateValid = true;
-            if(BirthDate==default(DateTime))
+            if (BirthDate == default(DateTime))
             {
                 this.BirthDateBorderColor = Color.Red;
                 this.BirthDateError = "This is a mandatory field";
                 this.IsBirthDateValid = false;
             }
-           else if(BirthDate>=DateTime.Now)
+            else if (BirthDate >= DateTime.Now)
             {
                 this.BirthDateBorderColor = Color.Red;
                 this.BirthDateError = "date must be earlier then today";
                 this.IsBirthDateValid = false;
             }
-            if(IsBirthDateValid)
+            if (IsBirthDateValid)
             {
                 this.BirthDateBorderColor = new Color(0, 0, 0);
                 this.BirthDateError = " ";
@@ -448,7 +471,7 @@ namespace ArticlesApp.ViewModels
                 return;
             }
 
-            if (!(input.Length>=8&&input.Length<=12))
+            if (!(input.Length >= 8 && input.Length <= 12))
             {
                 PasswordError += "Password should not be less than 8 characters and greater than 12 characters. ";
                 this.IsPasswordValid = this.IsPasswordValid && false;
@@ -484,8 +507,8 @@ namespace ArticlesApp.ViewModels
                 this.PasswordBorderColor = Color.Red;
                 return;
             }
-            
-            if(IsPasswordValid)
+
+            if (IsPasswordValid)
             {
                 PasswordError = " ";
                 this.PasswordBorderColor = new Color(0, 0, 0);
@@ -515,7 +538,7 @@ namespace ArticlesApp.ViewModels
             }
             return true;
         }
-        
+
         public ICommand MoveToAddImage => new Command(ToAddPictaure);
         public async void ToAddPictaure()
         {
@@ -524,20 +547,80 @@ namespace ArticlesApp.ViewModels
             ValdateFullName();
             ValdateBirthdate();
             ValidatePassword();
-            
-            bool b = await UserNameExist();
-            bool t = await EmailExist();
-            if (IsEmailValid && IsUserNameValid && IsFullNameValid && IsBirthDateValid && IsPasswordValid&&b&&t)
+
+
+            bool con = true;
+            //bool b = await UserNameExist();
+            //bool t = await EmailExist();
+            //con= b&& t;
+            if (IsEmailValid && IsUserNameValid && IsFullNameValid && IsBirthDateValid && IsPasswordValid && con)
             {
-                Page sign = new AddImage();
-                NavigateToPageEvent?.Invoke(sign);
+
+                NavigateToPageEvent?.Invoke();
             }
             else
             {
                 return;
             }
         }
+        #endregion
+        FileResult imageFileResult;
+        public ImageSource imgSource;
+        public event Action<ImageSource> SetImageSourceEvent;
+        public ICommand PickImageFromDeviceCommand => new Command(OnPickImage);
+        public async void OnPickImage()
+        {
+            FileResult result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions()
+            {
+                Title = "בחר תמונה"
+            });
+
+            if (result != null)
+            {
+                this.imageFileResult = result;
+
+                var stream = await result.OpenReadAsync();
+                imgSource =  ImageSource.FromStream(() => stream);
+                MovetoEditeimage();
+                
+            }
+        }
+
+        ///The following command handle the take photo button
+        public ICommand ImageFromCameraCommand => new Command(OnCameraImage);
+        public async void OnCameraImage()
+        {
+            var result = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions()
+            {
+                Title = "צלם תמונה"
+            });
+
+            if (result != null)
+            {
+                this.imageFileResult = result;
+                var stream = await result.OpenReadAsync();
+                 imgSource = ImageSource.FromStream(() => stream);
+                MovetoEditeimage();
+               
+            }
+        }
+        public ICommand MovetoChoose => new Command(moveToChooseInterest);
+        public void moveToChooseInterest()
+        {
+            NavigateToPageEvent?.Invoke();
+            getInterest();
+
+        }
+
+        public  void MovetoEditeimage()
+        {
+            
+            NavigateToEditeImage?.Invoke();
+            
+            if (SetImageSourceEvent != null)
+                SetImageSourceEvent(imgSource);
+        }
+        public List<Interest> Interests;
 
     }
-   
 }

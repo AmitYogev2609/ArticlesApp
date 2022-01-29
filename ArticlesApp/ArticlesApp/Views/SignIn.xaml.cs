@@ -7,6 +7,7 @@ using ArticlesApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace ArticlesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -21,9 +22,9 @@ namespace ArticlesApp.Views
            
         }
 
-        public async void NavigateToAsync(Page p)
+        public async void NavigateToAsync()
         {
-            p.BindingContext = this.BindingContext;
+            Page p = new AddImage((SignInViewModel)this.BindingContext);
             await Navigation.PushAsync(p);
         }
         private void EmailEntry_Unfocused(object sender, FocusEventArgs e)

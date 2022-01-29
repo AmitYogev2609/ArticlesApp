@@ -121,8 +121,8 @@ namespace ArticlesApp.ViewModels
         #endregion
         public LogInViewModel()
         {
-            this.EmailBorderColor = new Color(0, 0, 0, 0.51);
-            this.PasswordBorderColor = new Color(0, 0, 0, 0.51);
+            this.EmailBorderColor = new Color(0, 0, 0);
+            this.PasswordBorderColor = new Color(0, 0, 0);
             this.IsEmailErorrVisible = false;
             this.IsPasswordErorrVisible = false;
         }

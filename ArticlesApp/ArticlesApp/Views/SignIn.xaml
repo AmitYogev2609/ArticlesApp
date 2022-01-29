@@ -8,6 +8,12 @@
              xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:ffTransf="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              BackgroundColor="#FFFFFF" NavigationPage.IconColor="Black" >
+    <ContentPage.Resources>
+        <Style TargetType="local:MyEntry" x:Key="Entry">
+            <Setter Property="PlaceholderColor" Value="{Binding border}"/>
+
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="20,0,17,0" Spacing="7">
             <StackLayout>
@@ -21,8 +27,8 @@
                     <Label Text="{x:Static fontawesome:FontAwesomeIcons.Envelope}" 
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeRegular }"  />
-                        <local:MyEntry x:Name="EmailEntry" Placeholder="Email" HorizontalOptions="StartAndExpand"  WidthRequest="300" Text="{Binding Email}" 
-                             Unfocused="EmailEntry_Unfocused" />
+                        <local:MyEntry x:Name="EmailEntry" Placeholder="Email" HorizontalOptions="StartAndExpand" TextColor="Black"  WidthRequest="300" Text="{Binding Email}" 
+                             Unfocused="EmailEntry_Unfocused" Style="{StaticResource Entry}"/>
                 </StackLayout>
             </Frame>
                 <Label Text="{Binding EmailError}"  TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
@@ -34,7 +40,7 @@
                         <Label Text="{x:Static fontawesome:FontAwesomeIcons.User}" 
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeRegular }"  />
-                        <local:MyEntry Placeholder="User Name" Text="{Binding UserName}" Unfocused="UserName_Unfocused" HorizontalOptions="StartAndExpand" WidthRequest="300"/>
+                        <local:MyEntry Placeholder="User Name" Text="{Binding UserName}" TextColor="Black" Unfocused="UserName_Unfocused" HorizontalOptions="StartAndExpand" WidthRequest="300" Style="{StaticResource Entry}"/>
                     </StackLayout>
                 </Frame>
                 <Label Text="{Binding UserNameError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
@@ -45,7 +51,7 @@
                         <Label Text="{x:Static fontawesome:FontAwesomeIcons.AddressCard}" 
                  FontSize="24" TextColor="Black"
                         FontFamily="{StaticResource FontAwesomeRegular }" VerticalOptions="Center" />
-                        <local:MyEntry  Placeholder="Full Name" HorizontalOptions="StartAndExpand" WidthRequest="300" Unfocused="FullName_Unfocused" Text="{Binding FullName}"/>
+                        <local:MyEntry TextColor="Black"  Placeholder="Full Name" HorizontalOptions="StartAndExpand" WidthRequest="300" Unfocused="FullName_Unfocused" Text="{Binding FullName}" Style="{StaticResource Entry}"/>
                     </StackLayout>
                 </Frame>
                 <Label Text="{Binding FullNameError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
@@ -78,14 +84,15 @@
                                 <ffTransf:TintTransformation HexColor="#12121D" EnableSolidColor="true" />
                             </ff:CachedImage.Transformations>
                         </ffSvg:SvgCachedImage>
-                        <local:MyEntry Placeholder="Password"  Text="{Binding Password}" HorizontalOptions="StartAndExpand" WidthRequest="300"/>
+                        <local:MyEntry Placeholder="Password" TextColor="Black"  Text="{Binding Password}" HorizontalOptions="StartAndExpand" WidthRequest="300" Style="{StaticResource Entry}"/>
                     </StackLayout>
                 </Frame>
                 <Label Text="{Binding PasswordError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
             </StackLayout>
 
-            <Button Command="{Binding MoveToAddImage}" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="30"
-                    FontFamily="Rubik" FontSize="15" HeightRequest="48" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350" />
+            <Button Command="{Binding MoveToAddImage}" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0" 
+                    CornerRadius="30" FontFamily="Rubik" FontSize="15" HeightRequest="48"
+                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350" />
 
         </StackLayout>
     </ContentPage.Content>

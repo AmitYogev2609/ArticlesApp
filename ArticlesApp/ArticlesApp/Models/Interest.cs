@@ -11,7 +11,7 @@ namespace ArticlesApp.Models
             ArticleInterestTypes = new List<ArticleInterestType>();
             FollwedInterests = new List<FollwedInterest>();
         }
-
+      
         public int InterestId { get; set; }
         public string InterestName { get; set; }
 
