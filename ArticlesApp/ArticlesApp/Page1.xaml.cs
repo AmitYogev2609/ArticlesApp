@@ -17,7 +17,6 @@ namespace ArticlesApp
         {
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
             Task<List<Interest>> taskinterests=  proxy.GetInitialInterests();
-            taskinterests.Wait();
             List<Interest> interests= taskinterests.Result;
             InitializeComponent();
             test.ItemsSource = interests;

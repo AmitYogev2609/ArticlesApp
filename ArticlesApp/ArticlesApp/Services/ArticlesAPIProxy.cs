@@ -167,10 +167,10 @@ namespace ArticlesApp.Services
         }
         public async Task<List<Interest>> GetInitialInterests()
         {
-            HttpResponseMessage response = null;
+             
             try
             {
-                 response = await this.client.GetAsync($"{this.baseUri}/GetInitialInterests");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetInitialInterests");
                 if(response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions

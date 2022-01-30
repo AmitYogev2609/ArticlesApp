@@ -157,7 +157,7 @@
       <Version>19.4.0.47</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
-      <Version>6.0.2-mauipre.1.22054.8</Version>
+      <Version>6.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>3.1.1.1-beta</Version>

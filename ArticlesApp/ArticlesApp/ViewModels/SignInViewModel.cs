@@ -354,9 +354,11 @@ namespace ArticlesApp.ViewModels
             PasswordError = " ";
             Interests = new List<Interest>();
         }
-        public async void getInterest()
+        public  void getInterest()
         {
-            Interests = Proxy.GetInitialInterests().Result;
+            Task<List<Interest>> Tkin =  Proxy.GetInitialInterests();
+            Tkin.Wait();
+            Interests = Tkin.Result;
 
         }
         public void ValidateEmail()
@@ -550,9 +552,9 @@ namespace ArticlesApp.ViewModels
 
 
             bool con = true;
-            //bool b = await UserNameExist();
-            //bool t = await EmailExist();
-            //con= b&& t;
+            bool b = await UserNameExist();
+            bool t = await EmailExist();
+            con= b&& t;
             if (IsEmailValid && IsUserNameValid && IsFullNameValid && IsBirthDateValid && IsPasswordValid && con)
             {
 
@@ -621,6 +623,6 @@ namespace ArticlesApp.ViewModels
                 SetImageSourceEvent(imgSource);
         }
         public List<Interest> Interests;
-
+        //public List<Interest> get
     }
 }
