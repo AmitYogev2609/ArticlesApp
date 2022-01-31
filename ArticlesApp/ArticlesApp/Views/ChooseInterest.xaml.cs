@@ -16,6 +16,8 @@ namespace ArticlesApp.Views
         {
             this.BindingContext = context;
             InitializeComponent();
+            list.ItemsSource = context.Interests;
+            
         }
     }
 }

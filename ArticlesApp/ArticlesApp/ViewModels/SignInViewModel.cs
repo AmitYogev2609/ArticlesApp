@@ -352,13 +352,14 @@ namespace ArticlesApp.ViewModels
             PasswordBorderColor = new Color(0, 0, 0);
             IsPasswordValid = true;
             PasswordError = " ";
-            Interests = new List<Interest>();
         }
-        public  void getInterest()
+        public async Task getInterest()
         {
-            Task<List<Interest>> Tkin =  Proxy.GetInitialInterests();
-            Tkin.Wait();
-            Interests = Tkin.Result;
+            List<Interest> lst = await Proxy.GetInitialInterests();
+
+            Interests = new ObservableCollection<Interest>(lst);
+
+
 
         }
         public void ValidateEmail()
@@ -607,10 +608,11 @@ namespace ArticlesApp.ViewModels
             }
         }
         public ICommand MovetoChoose => new Command(moveToChooseInterest);
-        public void moveToChooseInterest()
+        public async void moveToChooseInterest()
         {
+           await getInterest();
             NavigateToPageEvent?.Invoke();
-            getInterest();
+          
 
         }
 
@@ -622,7 +624,7 @@ namespace ArticlesApp.ViewModels
             if (SetImageSourceEvent != null)
                 SetImageSourceEvent(imgSource);
         }
-        public List<Interest> Interests;
+        public ObservableCollection<Interest> Interests;
         //public List<Interest> get
     }
 }

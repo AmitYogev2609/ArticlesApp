@@ -3,17 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Views.ChooseInterest" NavigationPage.IconColor="Black">
     <ContentPage.Content>
-        <StackLayout Spacing="25" Padding="0,0,0,20">
-            <StackLayout Padding="25,0,0,0">
-                <Label Text="Uplod your profile picture" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
+        <StackLayout Spacing="25" Padding="0,0,0,20" BackgroundColor="White">
+            <StackLayout Padding="25,0,0,0" BackgroundColor="White">
+                <Label Text="choose your intrest" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
                 <Label Text="press the image icon" FontSize="Body"   FontFamily="Roboto"/>
             </StackLayout>
-            <ScrollView>
-                <CollectionView ItemsSource="{Binding Interests}">
-                    <CollectionView.ItemTemplate>
+            <ScrollView >
+                <CollectionView ItemsSource="{Binding Interests}" x:Name="list" >
+                    <CollectionView.ItemsLayout >
+                        <LinearItemsLayout ItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate >
                         <DataTemplate>
                             <Frame CornerRadius="30" BorderColor="Black">
-                                <Label Text="{Binding InterestName }"/>
+                                <Label Text="{Binding InterestName }" TextColor="Red"/>
                             </Frame>
 
                         </DataTemplate>

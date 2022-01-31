@@ -21,10 +21,10 @@ namespace ArticlesApp.Views
             bc.NavigateToPageEvent += NavigateToPageAsync;
             InitializeComponent();
         }
-        public void NavigateToPageAsync()
+        public async void NavigateToPageAsync()
         {
             Page page = new ChooseInterest((SignInViewModel)this.BindingContext);
-            Navigation.PushAsync(page);
+             await Navigation.PushAsync(page);
         }
         public void OnSetImageSource(ImageSource imgSource)
         {
