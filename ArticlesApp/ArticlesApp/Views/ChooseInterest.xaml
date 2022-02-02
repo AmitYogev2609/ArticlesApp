@@ -9,13 +9,13 @@
                 <Label Text="press the image icon" FontSize="Body"   FontFamily="Roboto"/>
             </StackLayout>
             <ScrollView >
-                <CollectionView ItemsSource="{Binding Interests}" x:Name="list" >
-                    <CollectionView.ItemsLayout >
-                        <LinearItemsLayout ItemSpacing="5"/>
+                <CollectionView ItemsSource="{Binding Interests}" x:Name="list" FlowDirection="LeftToRight" >
+                    <CollectionView.ItemsLayout  >
+                        <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate >
                         <DataTemplate>
-                            <Frame CornerRadius="30" BorderColor="Black">
+                            <Frame CornerRadius="30" BorderColor="Black" >
                                 <Label Text="{Binding InterestName }" TextColor="Red"/>
                             </Frame>
 
