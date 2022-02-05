@@ -1,24 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ArticlesApp.Views.ChooseInterest" NavigationPage.IconColor="Black">
+             x:Class="ArticlesApp.Views.ChooseInterest" NavigationPage.IconColor="Black"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+>
     <ContentPage.Content>
         <StackLayout Spacing="25" Padding="0,0,0,20" BackgroundColor="White">
             <StackLayout Padding="25,0,0,0" BackgroundColor="White">
                 <Label Text="choose your intrest" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
                 <Label Text="press the image icon" FontSize="Body"   FontFamily="Roboto"/>
             </StackLayout>
-            <ScrollView >
-                <CollectionView ItemsSource="{Binding Interests}" x:Name="list" FlowDirection="LeftToRight" >
-                    <CollectionView.ItemsLayout  >
-                        <LinearItemsLayout ItemSpacing="8" Orientation="Vertical"/>
+            <ScrollView Padding="2,0,10,0">
+                <CollectionView ItemsSource="{Binding Interests}" x:Name="list" FlowDirection="LeftToRight" SelectionMode="Multiple" >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2"  HorizontalItemSpacing="5" VerticalItemSpacing="5" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate >
                         <DataTemplate>
-                            <Frame CornerRadius="30" BorderColor="Black" >
-                                <Label Text="{Binding InterestName }" TextColor="Red"/>
-                            </Frame>
+                            <Frame BorderColor="Black" CornerRadius="30" HeightRequest="20">
 
+                                <Label  Text="{Binding InterestName}" TextColor="Black"   VerticalOptions="Center" 
+                                        HorizontalOptions="CenterAndExpand" FontSize="15" />
+
+                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     

@@ -2,21 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Page1"
-                          xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
-                          xmlns:local="clr-namespace:ArticlesApp.Renderer">
+                        
+              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     <ContentPage.Content>
-        <StackLayout >
-            <CollectionView x:Name="test">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame CornerRadius="30" BorderColor="Black">
-                        <Label Text="{Binding InterestName }"/>
-                    </Frame>
+        <StackLayout Padding="25" >
 
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+            <yummy:PancakeView CornerRadius="60,60,60,60" Border="{yummy:BorderMarkup Color=#000000, Thickness='2'}" 
+                               HeightRequest="30"  HorizontalOptions="CenterAndExpand" WidthRequest="200">
 
-            </CollectionView>
+                <Label  Text="Machine learning" TextColor="Black"   VerticalOptions="Center" 
+                                        HorizontalOptions="CenterAndExpand" FontSize="20" />
+
+            </yummy:PancakeView>
+
 
 
         </StackLayout>

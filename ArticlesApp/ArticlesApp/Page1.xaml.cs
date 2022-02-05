@@ -15,11 +15,11 @@ namespace ArticlesApp
     {
         public Page1()
         {
-            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
-            Task<List<Interest>> taskinterests=  proxy.GetInitialInterests();
-            List<Interest> interests= taskinterests.Result;
+            //ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+            //Task<List<Interest>> taskinterests = proxy.GetInitialInterests();
+            //List<Interest> interests = taskinterests.Result;
             InitializeComponent();
-            test.ItemsSource = interests;
+            //test.ItemsSource = interests;
         }
     }
 }
