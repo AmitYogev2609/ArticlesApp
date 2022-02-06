@@ -4,25 +4,29 @@
              x:Class="ArticlesApp.Views.ChooseInterest" NavigationPage.IconColor="Black"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
 >
-    <ContentPage.Content>
+    <ContentPage.Content x:Name="theContent">
         <StackLayout Spacing="25" Padding="0,0,0,20" BackgroundColor="White">
             <StackLayout Padding="25,0,0,0" BackgroundColor="White">
-                <Label Text="choose your intrest" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
+                <Label Text="choose your interest" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
                 <Label Text="press the image icon" FontSize="Body"   FontFamily="Roboto"/>
             </StackLayout>
             <ScrollView Padding="2,0,10,0">
-                <CollectionView ItemsSource="{Binding Interests}" x:Name="list" FlowDirection="LeftToRight" SelectionMode="Multiple" >
+                <CollectionView x:Name="interest" ItemsSource="{Binding Interests}"  FlowDirection="LeftToRight" 
+                                SelectionMode="Multiple"  SelectionChanged="interest_SelectionChanged" >
                     <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="2"  HorizontalItemSpacing="5" VerticalItemSpacing="5" />
+                        <GridItemsLayout Orientation="Vertical" Span="3"  HorizontalItemSpacing="5" VerticalItemSpacing="7" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate >
                         <DataTemplate>
-                            <Frame BorderColor="Black" CornerRadius="30" HeightRequest="20">
-
+                            <ContentView Padding="1,0,1,0" >
+                                <yummy:PancakeView CornerRadius="30" Border="{yummy:BorderMarkup Color=#000000, Thickness='2'}" 
+                               HeightRequest="35"  HorizontalOptions="CenterAndExpand" Padding="5" WidthRequest="200" >
                                 <Label  Text="{Binding InterestName}" TextColor="Black"   VerticalOptions="Center" 
                                         HorizontalOptions="CenterAndExpand" FontSize="15" />
+                                
+                                </yummy:PancakeView>
 
-                            </Frame>
+                            </ContentView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     

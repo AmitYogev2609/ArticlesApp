@@ -8,7 +8,7 @@
         <StackLayout Padding="25" >
 
             <yummy:PancakeView CornerRadius="60,60,60,60" Border="{yummy:BorderMarkup Color=#000000, Thickness='2'}" 
-                               HeightRequest="30"  HorizontalOptions="CenterAndExpand" WidthRequest="200">
+                               HeightRequest="30"  HorizontalOptions="CenterAndExpand" WidthRequest="200" BackgroundColor="Blue">
 
                 <Label  Text="Machine learning" TextColor="Black"   VerticalOptions="Center" 
                                         HorizontalOptions="CenterAndExpand" FontSize="20" />

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ArticlesApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms.PancakeView;
 
 namespace ArticlesApp.Views
 {
@@ -16,8 +17,26 @@ namespace ArticlesApp.Views
         {
             this.BindingContext = context;
             InitializeComponent();
-            list.ItemsSource = context.Interests;
+            interest.ItemsSource = context.Interests;
+            
             
         }
+
+        //private PancakeView SearchPancake(string term)
+        //{
+            
+        //}
+        private void interest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        //private void interest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    foreach (var item in interest.SelectedItems)
+        //    {
+
+        //    }
+        //}
     }
 }

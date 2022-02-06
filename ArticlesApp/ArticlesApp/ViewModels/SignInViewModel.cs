@@ -17,6 +17,52 @@ using System.Collections.ObjectModel;
 
 namespace ArticlesApp.ViewModels
 {
+    public class InterestWithColor: INotifyPropertyChanged
+    {
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+        private Color backgroundColor;
+        public Color BackgroundColor
+        {
+            get => backgroundColor;
+            set
+            {
+                if (value != backgroundColor)
+                {
+                    backgroundColor = value;
+                    OnPropertyChanged(nameof(BackgroundColor));
+
+                }
+
+            }
+        }
+
+        private Interest interest;
+        public Interest Interest
+        {
+            get => interest;
+            set
+            {
+                if (value != interest)
+                {
+                    interest = value;
+                    OnPropertyChanged(nameof(Interest));
+
+                }
+
+            }
+        }
+        public InterestWithColor(Interest interest)
+        {
+            BackgroundColor = Color.White;
+            this.Interest = interest;
+        }
+    }
     public class SignInViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
@@ -356,10 +402,13 @@ namespace ArticlesApp.ViewModels
         public async Task getInterest()
         {
             List<Interest> lst = await Proxy.GetInitialInterests();
+            
+            Interests = new ObservableCollection<InterestWithColor>();
 
-            Interests = new ObservableCollection<Interest>(lst);
-
-
+            foreach (var item in lst)
+            {
+                Interests.Add(new InterestWithColor(item));
+            }
 
         }
         public void ValidateEmail()
@@ -624,7 +673,7 @@ namespace ArticlesApp.ViewModels
             if (SetImageSourceEvent != null)
                 SetImageSourceEvent(imgSource);
         }
-        public ObservableCollection<Interest> Interests;
+        public ObservableCollection<InterestWithColor> Interests;
         //public List<Interest> get
     }
 }
