@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ArticlesApp.ViewModels;
+using ArticlesApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PancakeView;
@@ -19,14 +20,10 @@ namespace ArticlesApp.Views
             InitializeComponent();
             
             interest.ItemsSource = context.Interests;
-            
-            
+            interest.IsEnabled = false;
         }
 
-        //private PancakeView SearchPancake(string term)
-        //{
-            
-        //}
+        
         private void interest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             foreach (InterestWithColor item in interest.ItemsSource)
@@ -37,14 +34,24 @@ namespace ArticlesApp.Views
             {
                 item.BackgroundColor = Color.FromHex("#2EEB4C");
             }
+            if(interest.SelectedItems.Count>=3)
+            {
+                interest.IsEnabled = true;
+            }
+            else interest.IsEnabled = false;
         }
 
-        //private void interest_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    foreach (var item in interest.SelectedItems)
-        //    {
+        private void MoveToSignUp(object sender, EventArgs e)
+        {
+            SignInViewModel context= (SignInViewModel)this.BindingContext;
+            List<Interest> MyInterests = new List<Interest>();
+            foreach (InterestWithColor item in interest.SelectedItems)
+            {
+                MyInterests.Add(item.GetInterest());
+            }
+            context.MoveToSignUp(MyInterests);
+        }
 
-        //    }
-        //}
+        
     }
 }

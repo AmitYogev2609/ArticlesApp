@@ -21,10 +21,11 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Spacing="25" Padding="0,0,0,20" BackgroundColor="White">
+        <StackLayout Spacing="15" Padding="0,0,0,20" BackgroundColor="White">
             <StackLayout Padding="25,0,0,0" BackgroundColor="White">
-                <Label Text="choose your interest" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
-                <Label Text="press the image icon" FontSize="Body"   FontFamily="Roboto"/>
+                <Label Text="Choose your interest" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
+                <Label Text="Pick at least 3" FontSize="Body"   FontFamily="Roboto"/>
+                
             </StackLayout>
             <ScrollView Padding="5,0,5,0">
                 <CollectionView x:Name="interest" ItemsSource="{Binding Interests}"  FlowDirection="LeftToRight" 
@@ -49,7 +50,7 @@
                     
                 </CollectionView>
             </ScrollView>
-            <Button  TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="29"
+            <Button  TextColor="#F8FBFF"  Text="Register" Clicked="MoveToSignUp" BackgroundColor ="#2934D0"  CornerRadius="29"
                     FontFamily="Rubik" FontSize="15" HeightRequest="54"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350"  />
         </StackLayout>
     </ContentPage.Content>

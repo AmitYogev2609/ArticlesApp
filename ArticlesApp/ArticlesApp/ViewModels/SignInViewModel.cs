@@ -62,6 +62,16 @@ namespace ArticlesApp.ViewModels
             BackgroundColor = Color.White;
             this.Interest = interest;
         }
+        public Interest GetInterest()
+        {
+            return new Interest()
+            {
+                ArticleInterestTypes = interest.ArticleInterestTypes,
+                FollwedInterests = interest.FollwedInterests,
+                InterestId = interest.InterestId,
+                InterestName = interest.InterestName
+            };
+        }
     }
     public class SignInViewModel : INotifyPropertyChanged
     {
@@ -398,6 +408,7 @@ namespace ArticlesApp.ViewModels
             PasswordBorderColor = new Color(0, 0, 0);
             IsPasswordValid = true;
             PasswordError = " ";
+            IsSetImageSourceEvent = false;
         }
         public ObservableCollection<InterestWithColor> Interests;
 
@@ -658,6 +669,7 @@ namespace ArticlesApp.ViewModels
                
             }
         }
+        public List<InterestWithColor> selected;
         public ICommand MovetoChoose => new Command(moveToChooseInterest);
         public async void moveToChooseInterest()
         {
@@ -673,8 +685,24 @@ namespace ArticlesApp.ViewModels
             NavigateToEditeImage?.Invoke();
             
             if (SetImageSourceEvent != null)
+            { 
                 SetImageSourceEvent(imgSource);
+                IsSetImageSourceEvent = true;
+            }
+
         }
-        //public List<Interest> get
+        private bool isSetImageSourceEvent ;
+        public bool IsSetImageSourceEvent { get=>isSetImageSourceEvent; 
+            set
+            {
+                if(isSetImageSourceEvent != value)
+                    isSetImageSourceEvent = value;
+                OnPropertyChanged(nameof(IsSetImageSourceEvent));
+            } 
+        }
+        public void MoveToSignUp(List<Interest> MyInterests)
+        {
+
+        }
     }
 }

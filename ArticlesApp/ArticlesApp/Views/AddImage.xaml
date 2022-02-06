@@ -20,7 +20,7 @@
                    HorizontalOptions="Center" VerticalOptions="Center" Margin="-18" FontFamily="MyIcon" FontSize="20" TextColor="White"/>
             </StackLayout>
             <Button Command="{Binding MovetoChoose}" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="29"
-                    FontFamily="Rubik" FontSize="15" HeightRequest="54"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350"  />
+                    FontFamily="Rubik" FontSize="15" HeightRequest="54"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350" IsEnabled="{Binding IsSetImageSourceEvent}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
