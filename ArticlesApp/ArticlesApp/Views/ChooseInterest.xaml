@@ -2,26 +2,43 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Views.ChooseInterest" NavigationPage.IconColor="Black"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
->
-    <ContentPage.Content x:Name="theContent">
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.Resources>
+        <Style TargetType="ContentView">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
         <StackLayout Spacing="25" Padding="0,0,0,20" BackgroundColor="White">
             <StackLayout Padding="25,0,0,0" BackgroundColor="White">
                 <Label Text="choose your interest" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
                 <Label Text="press the image icon" FontSize="Body"   FontFamily="Roboto"/>
             </StackLayout>
-            <ScrollView Padding="2,0,10,0">
+            <ScrollView Padding="5,0,5,0">
                 <CollectionView x:Name="interest" ItemsSource="{Binding Interests}"  FlowDirection="LeftToRight" 
-                                SelectionMode="Multiple"  SelectionChanged="interest_SelectionChanged" >
+                                SelectionMode="Multiple"  SelectionChanged="interest_SelectionChanged"  >
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="3"  HorizontalItemSpacing="5" VerticalItemSpacing="7" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate >
                         <DataTemplate>
-                            <ContentView Padding="1,0,1,0" >
+                            <ContentView Padding="2,0,2,0" >
                                 <yummy:PancakeView CornerRadius="30" Border="{yummy:BorderMarkup Color=#000000, Thickness='2'}" 
-                               HeightRequest="35"  HorizontalOptions="CenterAndExpand" Padding="5" WidthRequest="200" >
-                                <Label  Text="{Binding InterestName}" TextColor="Black"   VerticalOptions="Center" 
+         
+                               HeightRequest="35"  HorizontalOptions="CenterAndExpand" Padding="5" WidthRequest="200" BackgroundColor="{Binding BackgroundColor}" >
+                                    <Label  Text="{Binding Interest.InterestName}" TextColor="Black"   VerticalOptions="Center" 
                                         HorizontalOptions="CenterAndExpand" FontSize="15" />
                                 
                                 </yummy:PancakeView>

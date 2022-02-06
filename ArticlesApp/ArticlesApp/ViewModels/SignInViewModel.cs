@@ -399,6 +399,8 @@ namespace ArticlesApp.ViewModels
             IsPasswordValid = true;
             PasswordError = " ";
         }
+        public ObservableCollection<InterestWithColor> Interests;
+
         public async Task getInterest()
         {
             List<Interest> lst = await Proxy.GetInitialInterests();
@@ -673,7 +675,6 @@ namespace ArticlesApp.ViewModels
             if (SetImageSourceEvent != null)
                 SetImageSourceEvent(imgSource);
         }
-        public ObservableCollection<InterestWithColor> Interests;
         //public List<Interest> get
     }
 }

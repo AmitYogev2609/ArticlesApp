@@ -17,6 +17,7 @@ namespace ArticlesApp.Views
         {
             this.BindingContext = context;
             InitializeComponent();
+            
             interest.ItemsSource = context.Interests;
             
             
@@ -28,7 +29,14 @@ namespace ArticlesApp.Views
         //}
         private void interest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            foreach (InterestWithColor item in interest.ItemsSource)
+            {
+                item.BackgroundColor = Color.White;
+            }
+            foreach(InterestWithColor item in interest.SelectedItems)
+            {
+                item.BackgroundColor = Color.FromHex("#2EEB4C");
+            }
         }
 
         //private void interest_SelectionChanged(object sender, SelectionChangedEventArgs e)
