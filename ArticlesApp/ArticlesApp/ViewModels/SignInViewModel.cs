@@ -408,7 +408,6 @@ namespace ArticlesApp.ViewModels
             PasswordBorderColor = new Color(0, 0, 0);
             IsPasswordValid = true;
             PasswordError = " ";
-            IsSetImageSourceEvent = false;
         }
         public ObservableCollection<InterestWithColor> Interests;
 
@@ -687,19 +686,10 @@ namespace ArticlesApp.ViewModels
             if (SetImageSourceEvent != null)
             { 
                 SetImageSourceEvent(imgSource);
-                IsSetImageSourceEvent = true;
             }
 
         }
-        private bool isSetImageSourceEvent ;
-        public bool IsSetImageSourceEvent { get=>isSetImageSourceEvent; 
-            set
-            {
-                if(isSetImageSourceEvent != value)
-                    isSetImageSourceEvent = value;
-                OnPropertyChanged(nameof(IsSetImageSourceEvent));
-            } 
-        }
+       
         public void MoveToSignUp(List<Interest> MyInterests)
         {
 

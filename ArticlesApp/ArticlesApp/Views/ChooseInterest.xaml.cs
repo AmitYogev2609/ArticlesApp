@@ -20,7 +20,7 @@ namespace ArticlesApp.Views
             InitializeComponent();
             
             interest.ItemsSource = context.Interests;
-            interest.IsEnabled = false;
+            finish.IsEnabled = false;
         }
 
         
@@ -34,11 +34,14 @@ namespace ArticlesApp.Views
             {
                 item.BackgroundColor = Color.FromHex("#2EEB4C");
             }
+            if(interest.SelectedItems!=null)
+            { 
             if(interest.SelectedItems.Count>=3)
             {
-                interest.IsEnabled = true;
+                finish.IsEnabled = true;
             }
-            else interest.IsEnabled = false;
+            else finish.IsEnabled = false;
+            }
         }
 
         private void MoveToSignUp(object sender, EventArgs e)

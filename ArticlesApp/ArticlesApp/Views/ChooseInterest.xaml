@@ -50,7 +50,7 @@
                     
                 </CollectionView>
             </ScrollView>
-            <Button  TextColor="#F8FBFF"  Text="Register" Clicked="MoveToSignUp" BackgroundColor ="#2934D0"  CornerRadius="29"
+            <Button x:Name="finish" TextColor="#F8FBFF"  Text="Register" Clicked="MoveToSignUp" BackgroundColor ="#2934D0"  CornerRadius="29"
                     FontFamily="Rubik" FontSize="15" HeightRequest="54"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350"  />
         </StackLayout>
     </ContentPage.Content>
