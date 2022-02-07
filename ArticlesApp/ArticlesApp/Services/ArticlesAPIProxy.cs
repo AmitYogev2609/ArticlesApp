@@ -195,6 +195,34 @@ namespace ArticlesApp.Services
                 return null;
             }
         }
+        public async Task<bool> SignUp(User newUser,FileInfo img)
+        {
+            try
+            {
+                var multipartFormDataContent = new MultipartFormDataContent();
+                var fileContent = new ByteArrayContent(File.ReadAllBytes(img.Name));
+                multipartFormDataContent.Add(fileContent, "file");
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.Hebrew, UnicodeRanges.BasicLatin),
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize<User>(newUser, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+                multipartFormDataContent.Add(content, "myJsonObject");
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUp", multipartFormDataContent);
+                if(response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
         public async Task<string> GetPasswordResetCode(string email)
         {
             return null;

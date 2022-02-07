@@ -13,6 +13,7 @@ using ArticlesApp.Models;
 using ArticlesApp.Views;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
+using ArticlesApp.DTO;
 
 
 namespace ArticlesApp.ViewModels
@@ -64,13 +65,7 @@ namespace ArticlesApp.ViewModels
         }
         public Interest GetInterest()
         {
-            return new Interest()
-            {
-                ArticleInterestTypes = interest.ArticleInterestTypes,
-                FollwedInterests = interest.FollwedInterests,
-                InterestId = interest.InterestId,
-                InterestName = interest.InterestName
-            };
+            return  Interest;
         }
     }
     public class SignInViewModel : INotifyPropertyChanged
@@ -689,9 +684,52 @@ namespace ArticlesApp.ViewModels
             }
 
         }
-       
+        private string GetLast()
+        {
+            int lst = FullName.IndexOf(' ');
+            string str = FullName.Substring(lst+1);
+            return str;
+        }
+        private string GetFirst()
+        {
+            int lst = FullName.IndexOf(' ');
+            string str = FullName.Substring(0, lst);
+            return str;
+        }
+
         public void MoveToSignUp(List<Interest> MyInterests)
         {
+            User newUser = new User()
+            {
+                Email=this.Email,
+                UserName=this.UserName,
+                LastName= GetLast(),
+                FirstName= GetFirst(),
+                BirthDay=this.BirthDate,
+                Pswd=this.Password,
+                IsManger=false,
+
+            };
+            foreach (var item in MyInterests)
+            {
+                FollwedInterest follwedInterest = new FollwedInterest()
+                {
+                    Interest=item,
+                    InterestId=item.InterestId
+                };
+                newUser.FollwedInterests.Add(follwedInterest);
+            }
+            FileInfo file;
+            if (imageFileResult != null)
+            {
+                file = new FileInfo()
+                {
+                    Name = this.imageFileResult.FullPath
+                };
+            }
+            else
+                file = null;
+
 
         }
     }
