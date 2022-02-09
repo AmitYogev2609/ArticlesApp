@@ -8,6 +8,8 @@ using ArticlesApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PancakeView;
+using Xamarin.CommunityToolkit.Extensions;
+
 
 namespace ArticlesApp.Views
 {
@@ -54,7 +56,10 @@ namespace ArticlesApp.Views
             }
             context.MoveToSignUp(MyInterests);
         }
-
+        private  void NavigteToLoading( LoadingPopUp page)
+        {
+             //Navigation.ShowPopup(page);
+        }
         
     }
 }

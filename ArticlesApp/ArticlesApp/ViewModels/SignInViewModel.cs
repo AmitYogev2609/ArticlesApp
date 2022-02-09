@@ -14,6 +14,8 @@ using ArticlesApp.Views;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using ArticlesApp.DTO;
+using Xamarin.CommunityToolkit.Extensions;
+using ArticlesApp.ViewModels;
 
 
 namespace ArticlesApp.ViewModels
@@ -80,6 +82,7 @@ namespace ArticlesApp.ViewModels
         private ArticlesAPIProxy Proxy = ArticlesAPIProxy.CreateProxy();
         public Action NavigateToPageEvent;
         public Action NavigateToEditeImage;
+        public Action NavigateToLoading;
 
         #region sign up
         public Color border { get => new Color(0, 0, 0, 0.51); }
@@ -730,7 +733,7 @@ namespace ArticlesApp.ViewModels
             else
                 file = null;
 
-
+           
         }
     }
 }
