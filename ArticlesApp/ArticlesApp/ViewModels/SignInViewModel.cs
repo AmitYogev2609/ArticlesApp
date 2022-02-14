@@ -409,15 +409,19 @@ namespace ArticlesApp.ViewModels
         }
         public ObservableCollection<InterestWithColor> Interests;
 
-        public async Task getInterest()
+        public void getInterest()
         {
-            List<Interest> lst = await Proxy.GetInitialInterests();
+            
+            
             
             Interests = new ObservableCollection<InterestWithColor>();
 
-            foreach (var item in lst)
+            foreach (var item in ((App)App.Current).Interests)
             {
-                Interests.Add(new InterestWithColor(item));
+                if(item.IsMajor)
+                { 
+                    Interests.Add(new InterestWithColor(item));
+                }
             }
 
         }
@@ -668,9 +672,9 @@ namespace ArticlesApp.ViewModels
         }
         public List<InterestWithColor> selected;
         public ICommand MovetoChoose => new Command(moveToChooseInterest);
-        public async void moveToChooseInterest()
+        public  void moveToChooseInterest()
         {
-           await getInterest();
+            getInterest();
             NavigateToPageEvent?.Invoke();
           
 

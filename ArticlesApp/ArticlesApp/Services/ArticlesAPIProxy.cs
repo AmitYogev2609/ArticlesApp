@@ -170,7 +170,7 @@ namespace ArticlesApp.Services
              
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetInitialInterests");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetInterests");
                 if(response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions

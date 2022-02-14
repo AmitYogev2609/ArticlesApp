@@ -3,11 +3,14 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ArticlesApp.Views;
 using ArticlesApp.ViewModels;
+using ArticlesApp.Models;
+using System.Collections.Generic;
 namespace ArticlesApp
 {
     public partial class App : Application
     {
         public Page Login { get; set; }
+        public List<Interest> Interests { get; set; }
         public static bool IsDevEnv
         {
             get
