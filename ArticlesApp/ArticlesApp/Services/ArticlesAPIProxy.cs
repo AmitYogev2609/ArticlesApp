@@ -12,7 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using System.IO;
-
+using ArticlesApp.DTO;
 namespace ArticlesApp.Services
 {
     class ArticlesAPIProxy
@@ -165,7 +165,7 @@ namespace ArticlesApp.Services
                 return false;
             }
         }
-        public async Task<List<Interest>> GetInitialInterests()
+        public async Task<List<Interest>> GetInterests()
         {
              
             try
@@ -195,7 +195,7 @@ namespace ArticlesApp.Services
                 return null;
             }
         }
-        public async Task<bool> SignUp(User newUser,FileInfo img)
+        public async Task<bool> SignUp(User newUser,DTO.FileInfo img)
         {
             try
             {
@@ -211,7 +211,7 @@ namespace ArticlesApp.Services
                 string jsonObject = JsonSerializer.Serialize<User>(newUser, options);
                 StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
                 multipartFormDataContent.Add(content, "myJsonObject");
-                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUp", multipartFormDataContent);
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUpWithImage", multipartFormDataContent);
                 if(response.IsSuccessStatusCode)
                 {
                     return true;
@@ -219,6 +219,32 @@ namespace ArticlesApp.Services
                 return false;
             }
             catch(Exception e)
+            {
+                return false;
+            }
+        }
+        public async Task<bool> SignUP(User newUser)
+        {
+            try
+            {
+                
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.Hebrew, UnicodeRanges.BasicLatin),
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize<User>(newUser, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+                
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUp", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
             {
                 return false;
             }

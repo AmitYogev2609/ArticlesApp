@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArticlesApp.Views.loadingStartPage"
+              BackgroundColor="#F8FBFF">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,20,0,80">
+            <StackLayout>
+                <Image Source="Logo.png"  StyleClass="Logo"  />
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+                <Label Text="Loading..." FontSize="Subtitle"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

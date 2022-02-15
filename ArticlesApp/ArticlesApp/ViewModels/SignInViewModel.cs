@@ -704,7 +704,7 @@ namespace ArticlesApp.ViewModels
             return str;
         }
 
-        public void MoveToSignUp(List<Interest> MyInterests)
+        public async void MoveToSignUp(List<Interest> MyInterests)
         {
             User newUser = new User()
             {
@@ -721,7 +721,7 @@ namespace ArticlesApp.ViewModels
             {
                 FollwedInterest follwedInterest = new FollwedInterest()
                 {
-                    Interest=item,
+                   
                     InterestId=item.InterestId
                 };
                 newUser.FollwedInterests.Add(follwedInterest);
@@ -736,8 +736,24 @@ namespace ArticlesApp.ViewModels
             }
             else
                 file = null;
+            bool issucces;
+            if(file==null)
+            {
+                issucces = await Proxy.SignUP(newUser);
+            }
+            else
+            {
+                issucces = await Proxy.SignUp(newUser, file);
+            }
+            
+           if(issucces)
+            {
+                finishsign();
+            }
+        }
+        public void finishsign()
+        {
 
-           
         }
     }
 }
