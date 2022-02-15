@@ -214,7 +214,7 @@ namespace ArticlesApp.Services
                 HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUpWithImage", multipartFormDataContent);
                 if(response.IsSuccessStatusCode)
                 {
-                    return true;
+                   return true;
                 }
                 return false;
             }
