@@ -23,7 +23,7 @@ namespace ArticlesApp
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTY1Nzk3QDMxMzkyZTM0MmUzMGdKZ1JlTzM1elE3T2RpZXVwSHRuOC8xd09uc3prSGptOC9jdXU2WTQ0QXc9");
-
+            Interests = new List<Interest>();
             InitializeComponent();
            MainPage= new loadingStartPage();
            
