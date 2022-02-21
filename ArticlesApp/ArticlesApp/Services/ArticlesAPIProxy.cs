@@ -13,6 +13,8 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using System.IO;
 using ArticlesApp.DTO;
+using System.Net.Http.Headers;
+
 namespace ArticlesApp.Services
 {
     class ArticlesAPIProxy
@@ -201,7 +203,8 @@ namespace ArticlesApp.Services
             {
                 var multipartFormDataContent = new MultipartFormDataContent();
                 var fileContent = new ByteArrayContent(File.ReadAllBytes(img.Name));
-                multipartFormDataContent.Add(fileContent, "file");
+                fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                multipartFormDataContent.Add(fileContent, "file", "kuku.jpg");
                 JsonSerializerOptions options = new JsonSerializerOptions
                 {
                     ReferenceHandler = ReferenceHandler.Preserve,
