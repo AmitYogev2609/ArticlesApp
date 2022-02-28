@@ -33,13 +33,13 @@ namespace ArticlesApp
         {
             try
             {
-                List<Interest> list = new List<Interest>();
-                ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
-                list = await proxy.GetInterests();
-                ((App)App.Current).Interests = list;
-                Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
-                //Login = new Page1();
-                MainPage = Login;
+                //List<Interest> list = new List<Interest>();
+                //ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+                //list = await proxy.GetInterests();
+                //((App)App.Current).Interests = list;
+                //Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
+                ////Login = new Page1();
+                MainPage = new Page1();
             }
             catch (Exception ex)
             {

@@ -2,21 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Page1"
-                        
-              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+            xmlns:richtext="clr-namespace:Syncfusion.XForms.RichTextEditor;assembly=Syncfusion.SfRichTextEditor.XForms">
+               <!--xmlns:RichText="clr-namespace:Syncfusion.XForms.RichTextEditor;assembly=Syncfusion.SfRichTextEditor.XForms"-->      
+             
     <ContentPage.Content>
         <StackLayout Padding="25" >
-
-            <yummy:PancakeView CornerRadius="60,60,60,60" Border="{yummy:BorderMarkup Color=#000000, Thickness='2'}" 
-                               HeightRequest="30"  HorizontalOptions="CenterAndExpand" WidthRequest="200" BackgroundColor="Blue">
-
-                <Label  Text="Machine learning" TextColor="Black"   VerticalOptions="Center" 
-                                        HorizontalOptions="CenterAndExpand" FontSize="20" />
-
-            </yummy:PancakeView>
-
-
-
+            <richtext:SfRichTextEditor VerticalOptions="FillAndExpand" Text= "The rich text editor component is WYSIWYG editor that provides the best user experience to create and update the content"  />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
