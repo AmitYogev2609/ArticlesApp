@@ -4,7 +4,6 @@
              x:Class="ArticlesApp.Page1"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
             xmlns:richtext="clr-namespace:Syncfusion.XForms.RichTextEditor;assembly=Syncfusion.SfRichTextEditor.XForms">
-               <!--xmlns:RichText="clr-namespace:Syncfusion.XForms.RichTextEditor;assembly=Syncfusion.SfRichTextEditor.XForms"-->      
              
     <ContentPage.Content>
         <StackLayout Padding="25" >
