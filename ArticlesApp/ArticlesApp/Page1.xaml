@@ -8,7 +8,7 @@
              
     <ContentPage.Content>
         <StackLayout  >
-            <richtext:SfRichTextEditor x:Name="texteditor" MaximumHeightRequest="50" AutoSize="Disabled" VerticalOptions="FillAndExpand" Text= "The rich text editor component is WYSIWYG editor that provides the best user experience to create and update the content"  />
+            <richtext:SfRichTextEditor x:Name="texteditor" MaximumHeightRequest="50" AutoSize="Disabled" VerticalOptions="FillAndExpand" Text= "The rich text editor component is WYSIWYG editor that provides the best user experience to create and update the content"  ImageInsertCommand="{Binding ImageCommand}"/>
             <Button Text="save" x:Name="save" Clicked="save_Clicked" BackgroundColor="Red"/>
 
         </StackLayout>
