@@ -39,7 +39,7 @@ namespace ArticlesApp
                 //((App)App.Current).Interests = list;
                 //Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
                 ////Login = new Page1();
-                MainPage = new Page1();
+                MainPage = new NavigationPage(  new Page1());
             }
             catch (Exception ex)
             {

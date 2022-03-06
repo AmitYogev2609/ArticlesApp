@@ -21,5 +21,11 @@ namespace ArticlesApp
             InitializeComponent();
             //test.ItemsSource = interests;
         }
+
+        private void save_Clicked(object sender, EventArgs e)
+        {
+            string htmltext = texteditor.HtmlText;
+            Navigation.PushAsync(new WebViewTest(htmltext));
+        }
     }
 }
