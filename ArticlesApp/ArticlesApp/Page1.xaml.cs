@@ -69,6 +69,7 @@ namespace ArticlesApp
                 {
                     Syncfusion.XForms.RichTextEditor.ImageSource imageSource = new Syncfusion.XForms.RichTextEditor.ImageSource();
                     imageSource.ImageStream = imageStream;
+                    imageSource.SaveOption = ImageSaveOption.Base64;
                     imageInsertedEventArgs.ImageSourceCollection.Add(imageSource);
                 }
             }
