@@ -37,9 +37,10 @@ namespace ArticlesApp
                 //ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
                 //list = await proxy.GetInterests();
                 //((App)App.Current).Interests = list;
-                //Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
+                Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
                 ////Login = new Page1();
-                MainPage = new NavigationPage(  new Page1());
+                //MainPage = new NavigationPage(  new Page1());
+                MainPage = Login;
             }
             catch (Exception ex)
             {

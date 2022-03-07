@@ -21,7 +21,7 @@
             <Label Text="Fill your detials" FontSize="Body"   FontFamily="Roboto"/>
             </StackLayout>
             
-            <StackLayout >
+            <StackLayout  Padding="0,5,0,0">
                 <Frame CornerRadius="37" BorderColor="{Binding EmailBorderColor}">
                 <StackLayout Orientation="Horizontal" HeightRequest="22">
                     <Label Text="{x:Static fontawesome:FontAwesomeIcons.Envelope}" 
