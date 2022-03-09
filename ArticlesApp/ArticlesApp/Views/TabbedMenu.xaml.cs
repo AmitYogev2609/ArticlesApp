@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace ArticlesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TabbedMenu : TabbedPage
+    public partial class TabbedMenu : ContentPage
     {
         public TabbedMenu()
         {

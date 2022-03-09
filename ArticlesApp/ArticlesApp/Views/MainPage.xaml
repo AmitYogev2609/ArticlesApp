@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Views.MainPage"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False"
                           xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
+
 >
-    <ContentPage.Content>
+    <ContentView.Content>
        
             <AbsoluteLayout  >
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,500,50000" BackgroundColor="White">
                 
             </StackLayout>
-            <ImageButton AbsoluteLayout.LayoutBounds="250,400" BackgroundColor="Transparent" Source="buton.png"/>
+            <ImageButton AbsoluteLayout.LayoutBounds="250,400,70,70" BackgroundColor="Transparent" Source="buton.png"/>
         </AbsoluteLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </ContentView.Content>
+</ContentView>

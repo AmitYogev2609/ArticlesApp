@@ -1,19 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ArticlesApp.Views;assembly=ArticlesApp"
              x:Class="ArticlesApp.Views.TabbedMenu"
-             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            android:TabbedPage.ToolbarPlacement="Bottom"
-            >
-    <NavigationPage NavigationPage.HasNavigationBar="False" IconImageSource="{OnPlatform Android=ic_homeicon}" Scale="2" >
-        <x:Arguments>
-            <local:MainPage/>
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage IconImageSource="{OnPlatform Android=ic_SerachIcon}" Scale="24" >
-        <x:Arguments>
-            <local:SearchPage/>
-        </x:Arguments>
-    </NavigationPage>
-</TabbedPage>
+                        xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
+
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+
+    <Grid>
+        <xct:TabView
+                TabStripPlacement="Bottom"
+                TabStripBackgroundColor="White"
+            TabStripBorderColor="Black"
+                TabStripHeight="60"
+                TabIndicatorColor="Yellow"
+                TabContentBackgroundColor="Yellow">
+
+            <xct:TabViewItem
+                Text="{x:Static fontawesome:FontIconClass.Home}" 
+                FontFamily="MyIcon"
+                   Scale="2"
+                   TextColorSelected="Black"
+                   FontSize="16">
+                <local:MainPage/>
+            </xct:TabViewItem>
+
+            <xct:TabViewItem
+                    Icon="circle.png"
+                    Text="Tab 2"
+                    TextColor="White"
+                    TextColorSelected="Yellow"
+                    FontSize="12">
+                <Grid>
+                    <Label    
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="TabContent2" />
+                </Grid>
+            </xct:TabViewItem>
+        </xct:TabView>
+    </Grid>
+
+
+
+
+</ContentPage>

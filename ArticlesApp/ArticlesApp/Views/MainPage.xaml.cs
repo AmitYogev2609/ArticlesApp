@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace ArticlesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentView
     {
         public MainPage()
         {
