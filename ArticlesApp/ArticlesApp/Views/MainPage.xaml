@@ -4,16 +4,18 @@
              x:Class="ArticlesApp.Views.MainPage"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False"
-                          xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
-
+             xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
 >
     <ContentView.Content>
        
             <AbsoluteLayout  >
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,500,50000" BackgroundColor="White">
-                
+                <StackLayout Orientation="Horizontal" Padding="20,10,0,0" HorizontalOptions="StartAndExpand">
+                    <Label FontFamily="OldStandardTT" Text="ArtiFind"  FontSize="35" TextColor="#303985"/>
+                    <ImageButton Source="paperplane.jpg" HorizontalOptions="End" WidthRequest="25"/>
+                </StackLayout>
             </StackLayout>
-            <ImageButton AbsoluteLayout.LayoutBounds="250,400,70,70" BackgroundColor="Transparent" Source="buton.png"/>
+            <ImageButton AbsoluteLayout.LayoutBounds="310,490,65,65" BackgroundColor="Transparent" Clicked="ImageButton_Clicked" Source="buton.png"/>
         </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

@@ -19,6 +19,7 @@
     <None Remove="Fonts\FontAwesome5Regular.otf" />
     <None Remove="Fonts\FontAwesome5Solid.otf" />
     <None Remove="Fonts\materialicons.ttf" />
+    <None Remove="Fonts\OldStandardTTRegular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,7 @@
     <EmbeddedResource Include="Fonts\FontAwesome5Regular.otf" />
     <EmbeddedResource Include="Fonts\FontAwesome5Solid.otf" />
     <EmbeddedResource Include="Fonts\materialicons.ttf" />
+    <EmbeddedResource Include="Fonts\OldStandardTTRegular.ttf" />
   </ItemGroup>
 
   <ItemGroup>

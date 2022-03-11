@@ -14,7 +14,7 @@ namespace ArticlesApp.Droid
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "12.2.0.155")]
 	public partial class Resource
 	{
 		
@@ -28094,88 +28094,91 @@ namespace ArticlesApp.Droid
 			public const int notify_panel_notification_icon_bg = 2131165373;
 			
 			// aapt resource value: 0x7F0700BE
-			public const int popup_forms_android_close_icon = 2131165374;
+			public const int paperplane = 2131165374;
 			
 			// aapt resource value: 0x7F0700BF
-			public const int popup_forms_android_shadow = 2131165375;
+			public const int popup_forms_android_close_icon = 2131165375;
 			
 			// aapt resource value: 0x7F0700C0
-			public const int popup_forms_dark_theme_close_icon = 2131165376;
+			public const int popup_forms_android_shadow = 2131165376;
 			
 			// aapt resource value: 0x7F0700C1
-			public const int popup_forms_light_theme_close_icon = 2131165377;
+			public const int popup_forms_dark_theme_close_icon = 2131165377;
 			
 			// aapt resource value: 0x7F0700C2
-			public const int preference_list_divider_material = 2131165378;
+			public const int popup_forms_light_theme_close_icon = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int profileconpng = 2131165379;
+			public const int preference_list_divider_material = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int roundCornerButton = 2131165380;
+			public const int profileconpng = 2131165380;
 			
 			// aapt resource value: 0x7F0700C5
-			public const int savebutton = 2131165381;
+			public const int roundCornerButton = 2131165381;
 			
 			// aapt resource value: 0x7F0700C6
-			public const int searchIcon = 2131165382;
+			public const int savebutton = 2131165382;
 			
 			// aapt resource value: 0x7F0700C7
-			public const int Separator = 2131165383;
+			public const int searchIcon = 2131165383;
 			
 			// aapt resource value: 0x7F0700C8
-			public const int sfcheckbox_animation = 2131165384;
+			public const int Separator = 2131165384;
 			
 			// aapt resource value: 0x7F0700C9
-			public const int sfcheckbox_checked = 2131165385;
+			public const int sfcheckbox_animation = 2131165385;
 			
 			// aapt resource value: 0x7F0700CA
-			public const int sfcheckbox_checked_indeterminate = 2131165386;
+			public const int sfcheckbox_checked = 2131165386;
 			
 			// aapt resource value: 0x7F0700CB
-			public const int sfcheckbox_checked_unchecked = 2131165387;
+			public const int sfcheckbox_checked_indeterminate = 2131165387;
 			
 			// aapt resource value: 0x7F0700CC
-			public const int sfcheckbox_indeterminate = 2131165388;
+			public const int sfcheckbox_checked_unchecked = 2131165388;
 			
 			// aapt resource value: 0x7F0700CD
-			public const int sfcheckbox_indeterminate_checked = 2131165389;
+			public const int sfcheckbox_indeterminate = 2131165389;
 			
 			// aapt resource value: 0x7F0700CE
-			public const int sfcheckbox_indeterminate_unchecked = 2131165390;
+			public const int sfcheckbox_indeterminate_checked = 2131165390;
 			
 			// aapt resource value: 0x7F0700CF
-			public const int sfcheckbox_unchecked = 2131165391;
+			public const int sfcheckbox_indeterminate_unchecked = 2131165391;
 			
 			// aapt resource value: 0x7F0700D0
-			public const int sfcheckbox_unchecked_checked = 2131165392;
+			public const int sfcheckbox_unchecked = 2131165392;
 			
 			// aapt resource value: 0x7F0700D1
-			public const int sfcheckbox_unchecked_indeterminate = 2131165393;
+			public const int sfcheckbox_unchecked_checked = 2131165393;
 			
 			// aapt resource value: 0x7F0700D2
-			public const int test_custom_background = 2131165394;
+			public const int sfcheckbox_unchecked_indeterminate = 2131165394;
 			
 			// aapt resource value: 0x7F0700D3
-			public const int text_color_button = 2131165395;
+			public const int test_custom_background = 2131165395;
 			
 			// aapt resource value: 0x7F0700D4
-			public const int toolbaritem_background = 2131165396;
+			public const int text_color_button = 2131165396;
 			
 			// aapt resource value: 0x7F0700D5
-			public const int toolbaritem_pressed = 2131165397;
+			public const int toolbaritem_background = 2131165397;
 			
 			// aapt resource value: 0x7F0700D6
-			public const int tooltip_frame_dark = 2131165398;
+			public const int toolbaritem_pressed = 2131165398;
 			
 			// aapt resource value: 0x7F0700D7
-			public const int tooltip_frame_light = 2131165399;
-			
-			// aapt resource value: 0x7F0700D9
-			public const int undoButton = 2131165401;
+			public const int tooltip_frame_dark = 2131165399;
 			
 			// aapt resource value: 0x7F0700D8
-			public const int undo_redo_background = 2131165400;
+			public const int tooltip_frame_light = 2131165400;
+			
+			// aapt resource value: 0x7F0700DA
+			public const int undoButton = 2131165402;
+			
+			// aapt resource value: 0x7F0700D9
+			public const int undo_redo_background = 2131165401;
 			
 			static Drawable()
 			{

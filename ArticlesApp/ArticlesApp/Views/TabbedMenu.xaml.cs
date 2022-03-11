@@ -15,6 +15,8 @@ namespace ArticlesApp.Views
         public TabbedMenu()
         {
             InitializeComponent();
+
+
         }
     }
 }

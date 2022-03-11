@@ -3,43 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ArticlesApp.Views;assembly=ArticlesApp"
              x:Class="ArticlesApp.Views.TabbedMenu"
-                        xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
+             xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
 
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
-
-    <Grid>
+    <StackLayout>
         <xct:TabView
                 TabStripPlacement="Bottom"
+             
                 TabStripBackgroundColor="White"
             TabStripBorderColor="Black"
                 TabStripHeight="60"
-                TabIndicatorColor="Yellow"
-                TabContentBackgroundColor="Yellow">
+              x:Name="tabbedview" >
 
             <xct:TabViewItem
                 Text="{x:Static fontawesome:FontIconClass.Home}" 
                 FontFamily="MyIcon"
-                   Scale="2"
+                  
                    TextColorSelected="Black"
-                   FontSize="16">
+                   FontSize="36"
+                x:Name="HomeTab">
+                
                 <local:MainPage/>
             </xct:TabViewItem>
 
             <xct:TabViewItem
-                    Icon="circle.png"
-                    Text="Tab 2"
-                    TextColor="White"
-                    TextColorSelected="Yellow"
-                    FontSize="12">
-                <Grid>
-                    <Label    
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="TabContent2" />
-                </Grid>
+                    Text="{x:Static fontawesome:FontIconClass.Magnify}" 
+                FontFamily="MyIcon"
+                 
+                    TextColorSelected="Black"
+                
+                    FontSize="36"
+                x:Name="SearchTab">
+                <local:SearchPage/>
+            </xct:TabViewItem>
+            <xct:TabViewItem
+                    Text="{x:Static fontawesome:FontIconClass.Star}" 
+                FontFamily="MyIcon"
+                  
+                    TextColorSelected="Black"
+                
+                    FontSize="36"
+              >
+                <local:SearchPage/>
+            </xct:TabViewItem>
+            <xct:TabViewItem
+                    Text="{x:Static fontawesome:FontIconClass.FaceProfile}" 
+                FontFamily="MyIcon"
+                 
+                    TextColorSelected="Black"
+                
+                    FontSize="36"
+               >
+                <local:SearchPage/>
             </xct:TabViewItem>
         </xct:TabView>
-    </Grid>
+    </StackLayout>
 
 
 

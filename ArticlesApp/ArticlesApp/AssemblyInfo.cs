@@ -6,3 +6,4 @@ using Xamarin.Forms;
 [assembly: ExportFont("FontAwesome5Regular.otf", Alias = "FARegular")]
 [assembly: ExportFont("FontAwesome5Solid.otf", Alias = "FASolid")]
 [assembly: ExportFont("materialicons.ttf", Alias = "MyIcon")]
+[assembly: ExportFont("OldStandardTTRegular.ttf", Alias = "OldStandardTT")]

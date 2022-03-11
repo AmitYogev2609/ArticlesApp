@@ -16,5 +16,11 @@ namespace ArticlesApp.Views
         {
             InitializeComponent();
         }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            Page page =  new Page1();
+            Navigation.PushAsync(page);
+        }
     }
 }

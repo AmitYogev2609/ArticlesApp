@@ -41,7 +41,7 @@ namespace ArticlesApp
                 ////Login = new Page1();
                 // MainPage = Login;
                 //                MainPage = new NavigationPage(new Page1());
-                MainPage = new TabbedMenu();
+                MainPage = new NavigationPage( new TabbedMenu());
             }
             catch (Exception ex)
             {
