@@ -119,6 +119,7 @@ namespace ArticlesApp.ViewModels
             }
         }
         #endregion
+
         public LogInViewModel()
         {
             this.EmailBorderColor = new Color(0, 0, 0);
@@ -126,15 +127,21 @@ namespace ArticlesApp.ViewModels
             this.IsEmailErorrVisible = false;
             this.IsPasswordErorrVisible = false;
         }
-        public ICommand LogInCommand => new Command(onPress); 
+        public ICommand LogInCommand => new Command(onPress);
+        public Action<LoadingPopUp> NavigateToLoading;
+
         public async void onPress()
         {
             if (!Valid())
                 return;
+            LoadingPopUp popup = new LoadingPopUp();
+            NavigateToLoading?.Invoke(popup);
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
-            User user = await proxy.LoginAsync(Email, Password);
-           
-            if (user == null)
+            ((App)App.Current).User = await proxy.LoginAsync(Email, Password);
+            popup.DismisPopUP();
+            ((App)App.Current).MainPage = new NavigationPage(new TabbedMenu(email, password));
+
+            if (((App)App.Current).User == null)
             { 
                 bool answer = await App.Current.MainPage.DisplayAlert("LogIn faild", "Email or password are wrong", "Try again", "create an acount");
                 if (answer)
@@ -150,7 +157,8 @@ namespace ArticlesApp.ViewModels
             }
             else
             {
-                //move to main page
+                ((App)App.Current).MainPage = new NavigationPage(new TabbedMenu(email,password));
+
             }
         }
         

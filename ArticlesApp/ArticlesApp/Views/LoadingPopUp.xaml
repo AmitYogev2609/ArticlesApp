@@ -3,11 +3,12 @@
            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:Icons="clr-namespace:ArticlesApp.Fonts"
-             VerticalOptions="End" Size="400,120"
-           x:Class="ArticlesApp.Views.LoadingPopUp">
+             VerticalOptions="Center" Size="400,120"
+           x:Class="ArticlesApp.Views.LoadingPopUp"
+           IsLightDismissEnabled="False">
 
     <StackLayout Orientation="Horizontal">
-        
+        <Label Text="loading"/>
     </StackLayout>
 
 </xct:Popup>

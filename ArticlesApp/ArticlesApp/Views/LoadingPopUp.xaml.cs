@@ -16,5 +16,9 @@ namespace ArticlesApp.Views
         {
             InitializeComponent();
         }
+        public void DismisPopUP()
+        {
+            Dismiss("");
+        }
     }
 }

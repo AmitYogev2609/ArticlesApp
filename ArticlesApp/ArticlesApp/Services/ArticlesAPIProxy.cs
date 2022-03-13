@@ -252,9 +252,93 @@ namespace ArticlesApp.Services
                 return false;
             }
         }
-        public async Task<List<Article>> GetArticles()
+        public async Task<List<Article>> GetUserArticles()
         {
-            return null;
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetArticles");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<Article> articles = JsonSerializer.Deserialize<List<Article>>(content, options);
+                    return articles;
+                }
+                else
+                {
+                    return null;
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+       
+        public async Task<List<User>> GetUsers()
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetUser");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<User> users = JsonSerializer.Deserialize<List<User>>(content, options);
+                    return users;
+                }
+                else
+                {
+                    return null;
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        public async Task<List<Article>> GetAllArticles()
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetAllArticles");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<Article> articles = JsonSerializer.Deserialize<List<Article>>(content, options);
+                    return articles;
+                }
+                else
+                {
+                    return null;
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
         }
         public async Task<string> GetPasswordResetCode(string email)
         {

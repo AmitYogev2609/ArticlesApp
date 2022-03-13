@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArticlesApp.Views.AddArticleDetail"
+             NavigationPage.IconColor="Black"
+             xmlns:local="clr-namespace:ArticlesApp.Renderer"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout Spacing="50" Padding="7,0,7,0">
+            <Label Text="Fill article detial" Margin="0,0,0,-20" Padding="8,0,0,0"
+                TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto" />
+            <yummy:PancakeView Border="{yummy:BorderMarkup Color=#000000, Thickness='1'}" HeightRequest="40">
+            <local:MyEntry Placeholder="Enter Title" Text="{Binding Title}" FontSize="20" FontAttributes="Bold"/>
+            </yummy:PancakeView>
+            <Editor  x:Name="editor" Placeholder="Description(optinal)" Text="{Binding Description}" HeightRequest="90" MaxLength="255"/>
+
+
+            <combobox:SfComboBox Watermark="Select interests" HeightRequest="50" x:Name="interstComboBox"  IsEditableMode="True" MultiSelectMode="Token" TokensWrapMode="Wrap" IsSelectedItemsVisibleInDropDown="false"/>
+
+            <combobox:SfComboBox Watermark="Select Usres" HeightRequest="50" x:Name="UserComboBox" IsEditableMode="True" MultiSelectMode="Token" TokensWrapMode="Wrap" IsSelectedItemsVisibleInDropDown="false" />
+            <Button  TextColor="#F8FBFF"  Text="Next"  BackgroundColor ="#2934D0"  CornerRadius="29"
+                    FontFamily="Rubik" FontSize="15" HeightRequest="54"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350" Margin="0,0,0,25" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

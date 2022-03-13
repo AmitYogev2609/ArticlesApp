@@ -12,7 +12,10 @@ namespace ArticlesApp
     public partial class App : Application
     {
         public Page Login { get; set; }
+        public List<Article> Articles { get; set; }
+        public List<User> Users { get; set; }
         public List<Interest> Interests { get; set; }
+        public User User { get; set; }
         public static bool IsDevEnv
         {
             get
@@ -24,6 +27,8 @@ namespace ArticlesApp
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTY1Nzk3QDMxMzkyZTM0MmUzMGdKZ1JlTzM1elE3T2RpZXVwSHRuOC8xd09uc3prSGptOC9jdXU2WTQ0QXc9");
             Interests = new List<Interest>();
+            Users=new List<User>();
+            Articles=new List<Article>();
             InitializeComponent();
            MainPage= new loadingStartPage();
            
@@ -33,15 +38,17 @@ namespace ArticlesApp
         {
             try
             {
-                //List<Interest> list = new List<Interest>();
-                //ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
-                //list = await proxy.GetInterests();
-                //((App)App.Current).Interests = list;
+                List<Interest> list = new List<Interest>();
+                ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+                list = await proxy.GetInterests();
+                ((App)App.Current).Interests = list;
+                ((App)App.Current).Users = await proxy.GetUsers();
+                ((App)App.Current).Articles = await proxy.GetAllArticles();
                 //Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
                 ////Login = new Page1();
                 // MainPage = Login;
                 //                MainPage = new NavigationPage(new Page1());
-                MainPage = new NavigationPage( new TabbedMenu());
+                MainPage = new NavigationPage(new TabbedMenu("amity2609@gmail.com", "1234")) { BarBackgroundColor = Color.White };
             }
             catch (Exception ex)
             {

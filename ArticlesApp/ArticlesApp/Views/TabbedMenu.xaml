@@ -19,42 +19,36 @@
             <xct:TabViewItem
                 Text="{x:Static fontawesome:FontIconClass.Home}" 
                 FontFamily="MyIcon"
-                  
-                   TextColorSelected="Black"
-                   FontSize="36"
-                   FontSizeSelected="36"
+                TextColorSelected="Black"
+                FontSize="36"
+                FontSizeSelected="36"
                 x:Name="HomeTab">
-                
                 <local:MainPage/>
             </xct:TabViewItem>
 
             <xct:TabViewItem
-                    Text="{x:Static fontawesome:FontIconClass.Magnify}" 
+                Text="{x:Static fontawesome:FontIconClass.Magnify}" 
                 FontFamily="MyIcon"
-                 
-                    TextColorSelected="Black"
-                
-                    FontSize="36"
-                x:Name="SearchTab">
+                TextColorSelected="Black"
+                FontSize="36"
+                x:Name="SearchTab"
+                FontSizeSelected="36">
                 <local:SearchPage/>
             </xct:TabViewItem>
             <xct:TabViewItem
-                    Text="{x:Static fontawesome:FontIconClass.Star}" 
+                Text="{x:Static fontawesome:FontIconClass.Star}" 
                 FontFamily="MyIcon"
-                  
-                    TextColorSelected="Black"
-                
-                    FontSize="36"
-              >
+                TextColorSelected="Black"
+                FontSize="36"
+                FontSizeSelected="36">
                 <local:SearchPage/>
             </xct:TabViewItem>
             <xct:TabViewItem
-                    Text="{x:Static fontawesome:FontIconClass.FaceProfile}" 
-                FontFamily="MyIcon"
-                 
-                    TextColorSelected="Black"
-                
-                    FontSize="36"
+                Text="{x:Static fontawesome:FontIconClass.Account}" 
+                FontFamily="MyIcon" 
+                TextColorSelected="Black"
+                FontSize="36"
+                FontSizeSelected="36"
                >
                 <local:SearchPage/>
             </xct:TabViewItem>

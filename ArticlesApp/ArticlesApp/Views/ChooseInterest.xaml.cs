@@ -20,7 +20,7 @@ namespace ArticlesApp.Views
         {
             this.BindingContext = context;
             InitializeComponent();
-            
+            context.NavigateToLoading += NavigteToLoading;
             interest.ItemsSource = context.Interests;
             finish.IsEnabled = false;
         }
@@ -58,7 +58,7 @@ namespace ArticlesApp.Views
         }
         private  void NavigteToLoading( LoadingPopUp page)
         {
-             //Navigation.ShowPopup(page);
+             Navigation.ShowPopup(page);
         }
         
     }

@@ -16,6 +16,8 @@ using System.Collections.ObjectModel;
 using ArticlesApp.DTO;
 using Xamarin.CommunityToolkit.Extensions;
 using ArticlesApp.ViewModels;
+using Xamarin.CommunityToolkit.UI.Views;
+
 
 
 namespace ArticlesApp.ViewModels
@@ -82,7 +84,7 @@ namespace ArticlesApp.ViewModels
         private ArticlesAPIProxy Proxy = ArticlesAPIProxy.CreateProxy();
         public Action NavigateToPageEvent;
         public Action NavigateToEditeImage;
-        public Action NavigateToLoading;
+        public Action<LoadingPopUp> NavigateToLoading;
 
         #region sign up
         public Color border { get => new Color(0, 0, 0, 0.51); }
@@ -751,8 +753,14 @@ namespace ArticlesApp.ViewModels
                 finishsign();
             }
         }
-        public void finishsign()
+        public async void finishsign()
         {
+            LoadingPopUp popup = new LoadingPopUp();
+            NavigateToLoading?.Invoke(popup);
+            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+           ((App)App.Current).User = await proxy.LoginAsync(Email, Password);
+            popup.DismisPopUP();
+            ((App)App.Current).MainPage = new NavigationPage(new TabbedMenu(email, password));
 
         }
     }
