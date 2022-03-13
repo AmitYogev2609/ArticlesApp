@@ -22,5 +22,6 @@ namespace ArticlesApp.Views
             Page page =  new Page1();
             Navigation.PushAsync(page);
         }
+         
     }
 }

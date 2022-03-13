@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ArticlesApp.Models;
+using ArticlesApp.Services;
+using ArticlesApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,5 +20,6 @@ namespace ArticlesApp.Views
 
 
         }
+       
     }
 }

@@ -252,6 +252,10 @@ namespace ArticlesApp.Services
                 return false;
             }
         }
+        public async Task<List<Article>> GetArticles()
+        {
+            return null;
+        }
         public async Task<string> GetPasswordResetCode(string email)
         {
             return null;

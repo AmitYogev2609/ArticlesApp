@@ -22,6 +22,7 @@
                   
                    TextColorSelected="Black"
                    FontSize="36"
+                   FontSizeSelected="36"
                 x:Name="HomeTab">
                 
                 <local:MainPage/>
