@@ -10,6 +10,7 @@ using ArticlesApp.Services;
 using Xamarin.CommunityToolkit.UI.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 namespace ArticlesApp.ViewModels
 {
     public class MainPageViewModel
@@ -19,15 +20,34 @@ namespace ArticlesApp.ViewModels
         public Action<Popup> NavigateToPopup;
         public MainPageViewModel()
         {
+            List<Article> articles = new List<Article>();
+            if (((App)App.Current).User != null)
+            {
+                foreach (Followeduser followedUser in ((App)App.Current).User.FolloweduserFollowings)
+                    foreach (AuthorsArticle author in followedUser.User.AuthorsArticles)
+                    {
+                        if (!articles.Contains(author.Article))
+                            articles.Add(author.Article);
+                    }
 
+                foreach (FollwedInterest followedInterest in ((App)App.Current).User.FollwedInterests)
+                    foreach (ArticleInterestType type in followedInterest.Interest.ArticleInterestTypes)
+                    {
+                        if (!articles.Contains(type.Article))
+                            articles.Add(type.Article);
+                    }
+                Articles = new ObservableCollection<Article>(articles.OrderByDescending(a => a.ArticleId));
+            }
+            else
+                Articles = new ObservableCollection<Article>();
+            
         }
         public async void readData()
         {
-            Popup loading= new LoadingPopUp();
-            NavigateToPopup?.Invoke(loading);
-            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
-            Articles=new ObservableCollection<Article>( await proxy.GetUserArticles());
-            ((LoadingPopUp)loading).DismisPopUP();
+
+            //****
+
+            
         }
     }
 }
