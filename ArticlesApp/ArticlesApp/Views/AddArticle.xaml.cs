@@ -30,16 +30,15 @@ namespace ArticlesApp.Views
     public partial class AddArticle : ContentPage
     {
         public AddArticle(AddArticleViewModel context)
-        { try
+        { 
+            try
             { 
 
-            this.BindingContext = context;
+                this.BindingContext = context;
                 InitializeComponent();
 
                 texteditor.Text += context.Description;
-            context.navigateTopopUP = MoveToPopUp;
-            using (context.MainImageStream )
-            {
+                context.navigateTopopUP = MoveToPopUp;
                 if (context.MainImageStream != null)
                 {
                     Syncfusion.XForms.RichTextEditor.ImageSource imageSource = new Syncfusion.XForms.RichTextEditor.ImageSource();
@@ -47,7 +46,6 @@ namespace ArticlesApp.Views
                     imageSource.SaveOption = ImageSaveOption.Base64;
                     texteditor.InsertImage(imageSource);
                 }
-            }
             }
             catch(Exception e)
             {
