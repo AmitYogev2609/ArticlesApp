@@ -16,8 +16,9 @@ namespace ArticlesApp.Views
     {
         public  AddArticleDetail()
         {
-            AddArticle context= new AddArticle();
+            AddArticleViewModel context= new AddArticleViewModel();
             this.BindingContext = context;
+            context.NavigateToPageEvent += NavigateToPage;
             InitializeComponent();
             interstComboBox.DataSource = ((App)App.Current).Interests;
             interstComboBox.DisplayMemberPath = "InterestName";
@@ -25,7 +26,12 @@ namespace ArticlesApp.Views
             UserComboBox.DisplayMemberPath = "UserName";
            
         }
-        
+        public void NavigateToPage()
+        {
+            Page page = new AddImageArticle((AddArticleViewModel)this.BindingContext);
+            
+            Navigation.PushAsync(page);
+        }
         
     }
 }

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArticlesApp.Views.AddArticle"
+             NavigationPage.IconColor="Black"
+             BackgroundColor="White"
+             xmlns:richtext="clr-namespace:Syncfusion.XForms.RichTextEditor;assembly=Syncfusion.SfRichTextEditor.XForms"
+>
+    <ContentPage.Content>
+        <StackLayout>
+            <richtext:SfRichTextEditor x:Name="texteditor" MaximumHeightRequest="50" AutoSize="Disabled" VerticalOptions="FillAndExpand" Text= "{Binding Text}"  ImageInsertCommand="{Binding ImageCommand}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

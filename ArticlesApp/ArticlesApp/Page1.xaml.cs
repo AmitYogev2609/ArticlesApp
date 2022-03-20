@@ -57,7 +57,7 @@ namespace ArticlesApp
             this.GetImage(imageInsertedEventArgs);
         }
 
-        async void GetImage(ImageInsertedEventArgs imageInsertedEventArgs)
+        async void GetImage(ImageInsertedEventArgs imageInsertedEventArgs )
         {
             var result = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions()
             {

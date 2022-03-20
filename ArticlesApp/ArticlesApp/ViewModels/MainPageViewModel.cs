@@ -11,6 +11,8 @@ using Xamarin.CommunityToolkit.UI.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using Xamarin.Essentials;
+using System.Windows.Input;
 namespace ArticlesApp.ViewModels
 {
     public class MainPageViewModel
@@ -18,6 +20,7 @@ namespace ArticlesApp.ViewModels
         public ObservableCollection<Article> Articles;
         public Color diviedColor { get=>new Color(196, 196, 196, 0.29);  }
         public Action<Popup> NavigateToPopup;
+        public Action NavigateToPageEvent;
         public MainPageViewModel()
         {
             List<Article> articles = new List<Article>();
@@ -42,7 +45,8 @@ namespace ArticlesApp.ViewModels
                 Articles = new ObservableCollection<Article>();
             
         }
-        public async void readData()
+      
+        public async void ReadData()
         {
 
             //****
