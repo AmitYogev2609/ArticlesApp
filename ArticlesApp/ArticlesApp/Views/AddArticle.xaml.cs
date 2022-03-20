@@ -32,6 +32,7 @@ namespace ArticlesApp.Views
         public AddArticle(AddArticleViewModel context)
         { try
             { 
+
             this.BindingContext = context;
                 InitializeComponent();
 
