@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArticlesApp.Views.showBeforeUpload"
+             xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <WebView x:Name="webview"  />
+            <Button AbsoluteLayout.LayoutBounds="330,465,65,65" 
+                 CornerRadius="33" BackgroundColor="#2934D0"  TextColor="White" FontSize="34"   Text="{x:Static fontawesome:FontIconClass.Upload}" FontFamily="MyIcon"/>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

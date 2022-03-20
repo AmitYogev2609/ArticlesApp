@@ -21,7 +21,7 @@ using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Threading;
-
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace ArticlesApp.ViewModels
 {
@@ -80,7 +80,7 @@ namespace ArticlesApp.ViewModels
         public ICommand PickImageFromDeviceCommand => new Command(OnPickImage);
         public async void OnPickImage()
         {
-            FileResult result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions()
+            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions()
             {
                 Title = "בחר תמונה"
             });
@@ -127,9 +127,11 @@ namespace ArticlesApp.ViewModels
         }
 
         //ADD Article
+        
         public Action NaviagteToAddarticle;
-        public ICommand navigateto => new Command(toAddArti);
+        public ICommand ToWrite => new Command(toAddArti);
         public Stream MainImageStream;
+        
         public async void toAddArti()
         {
             MainImageStream = await imageFileResult.OpenReadAsync();
@@ -148,6 +150,7 @@ namespace ArticlesApp.ViewModels
                 }
             }
         }
+        public string HtmlText;
         //add image to article
         public ICommand ImageCommand { get; set; }
         void LoadImage(object obj)
@@ -155,28 +158,18 @@ namespace ArticlesApp.ViewModels
             ImageInsertedEventArgs imageInsertedEventArgs = (obj as ImageInsertedEventArgs);
             this.GetImage(imageInsertedEventArgs);
         }
-        public Action navigateTopopUP;
-        public ICommand ImageFromCamera => new Command(fromcamre);
-        public ICommand PickImageFromDevice => new Command(fromdevice);
-        public async void fromcamre()
+        
+        async void GetImage(ImageInsertedEventArgs imageInsertedEventArgs)
         {
-            FileResult= await MediaPicker.CapturePhotoAsync(new MediaPickerOptions()
-            {
-                Title = "צלם תמונה"
-            });
-        }
-        public async void fromdevice()
-        {
-            FileResult = await MediaPicker.PickPhotoAsync(new MediaPickerOptions()
+            //FileResult FileResult= await MediaPicker.CapturePhotoAsync(new MediaPickerOptions()
+            //{
+            //    Title = "צלם תמונה"
+            //});
+
+            FileResult FileResult = await MediaPicker.PickPhotoAsync(new MediaPickerOptions()
             {
                 Title = "בחר תמונה"
             });
-        }
-        public FileResult FileResult;
-        async void GetImage(ImageInsertedEventArgs imageInsertedEventArgs)
-        {
-            navigateTopopUP?.Invoke();
-           
             using (Stream imageStream = await FileResult.OpenReadAsync())
             {
                 if (imageStream != null)
@@ -188,8 +181,47 @@ namespace ArticlesApp.ViewModels
                 }
             }
         }
+        public ICommand ToUpload => new Command(navitoUpload);
+        public Action NavigateToUpload;
+        public void navitoUpload()
+        {
+            NavigateToUpload?.Invoke();
+        }
+        public Command PickPDFCommand => new Command(ClickedOnPDF); //User chose to upload pdf files.
+        private async void ClickedOnPDF() //Work in progress
+        {
+            try
+            {
+                var pickResult = await FilePicker.PickMultipleAsync(new PickOptions() //Maybe only let user pick one? WORK IN PROGRESS.
+                {
+                    FileTypes = FilePickerFileType.Pdf,
+                    PickerTitle = "Pick PDF"
+                }); ;
 
-        
+                if (pickResult != null)
+                {
+                    
+
+                    foreach (var pdf in pickResult)
+                    {
+                      
+                        var stream = await pdf.OpenReadAsync();
+                        string directory = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, Android.OS.Environment.DirectoryDownloads);
+                        string file = Path.Combine(directory, "temp.pdf");
+                        System.IO.File.WriteAllBytes(file, File.ReadAllBytes(pdf.FullPath));
+                    }
+                  
+                }
+            }
+
+            catch //User opted out or something went wrong
+            {
+
+            }
+
+        }
+
+
 
     }
 

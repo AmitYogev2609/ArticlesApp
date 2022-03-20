@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace ArticlesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PopupAddimage :Popup
+    public partial class SelectTypePopUp : Popup
     {
-        public PopupAddimage(AddArticleViewModel context)
+        public SelectTypePopUp(AddArticleViewModel context)
         {
             this.BindingContext = context;
             InitializeComponent();

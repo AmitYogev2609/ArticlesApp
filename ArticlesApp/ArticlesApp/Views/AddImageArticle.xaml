@@ -21,7 +21,7 @@
                    Clicked="MoveToPopUp"  Text="{x:Static Icons:FontIconClass.FileImage}"
                    xct:ShadowEffect.Color="#2934D0" xct:TouchEffect.AnimationDuration="50" xct:TouchEffect.PressedScale="1.1" 
                    HorizontalOptions="Center" VerticalOptions="Center" Margin="-18" FontFamily="MyIcon" FontSize="20" TextColor="White"/>
-            <Button Command="{Binding navigateto}" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="29"
+            <Button Clicked="topopUP" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0"  CornerRadius="29"
                     FontFamily="Rubik" FontSize="15" HeightRequest="54" Margin="0,0,0,30"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350"  />
         </StackLayout>
     </ContentPage.Content>

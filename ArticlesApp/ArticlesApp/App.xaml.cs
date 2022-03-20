@@ -44,34 +44,38 @@ namespace ArticlesApp
                 ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
                 list = await proxy.GetInterests();
                 ((App)App.Current).Interests = list;
-               
-                try
-                { 
-                foreach(Interest interest in list)
-                    foreach(ArticleInterestType type in interest.ArticleInterestTypes)
-                    {
-                        if(!((App)App.Current).Articles.Contains(type.Article))
-                        ((App)App.Current).Articles.Add(type.Article);
+                List<Article> articles = await proxy.GetAllArticles();
+                List<User> users = await proxy.GetUsers();
+                ((App)App.Current).Articles=articles;
+                ((App)App.Current).Users=users;
+                //try
+                //{ 
+                //foreach(Interest interest in list)
+                //    foreach(ArticleInterestType type in interest.ArticleInterestTypes)
+                //    {
+                //        if(!((App)App.Current).Articles.Contains(type.Article))
+                //        ((App)App.Current).Articles.Add(type.Article);
 
-                    }
-                foreach (Interest interest1 in list)
-                    foreach (FollwedInterest follwed in interest1.FollwedInterests)
-                    {
-                        if(!((App)App.Current).Users.Contains(follwed.User))
-                            ((App)App.Current).Users.Add(follwed.User);
+                //    }
+                //foreach (Interest interest1 in list)
+                //    foreach (FollwedInterest follwed in interest1.FollwedInterests)
+                //    {
+                //        if(!((App)App.Current).Users.Contains(follwed.User))
+                //            ((App)App.Current).Users.Add(follwed.User);
 
-                    }
-                }
-                catch(Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+                //    }
+                //}
+                //catch(Exception e)
+                //{
+                //    Console.WriteLine(e.Message);
+                //}
 
                 //Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
                 ////Login = new Page1();
                 // MainPage = Login;
-                //                MainPage = new NavigationPage(new Page1());
-                MainPage = new NavigationPage(new TabbedMenu("amity2609@gmail.com", "1234")) { BarBackgroundColor = Color.White };
+                              // MainPage = new NavigationPage(new Page1());
+                MainPage = new NavigationPage(new TabbedMenu("amity2609@gmail.com", "1234")) { BarBackgroundColor = Color.White,BarTextColor=Color.Black };
+                
             }
             catch (Exception ex)
             {

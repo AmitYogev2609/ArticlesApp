@@ -17,6 +17,8 @@ namespace ArticlesApp.Models
         public int ArticleId { get; set; }
         public string Text { get; set; }
         public string ArticleName { get; set; }
+        public string Description { get; set; }
+
 
         public virtual ICollection<ArticleInterestType> ArticleInterestTypes { get; set; }
         public virtual ICollection<ArticleReport> ArticleReports { get; set; }

@@ -5,11 +5,15 @@
              NavigationPage.IconColor="Black"
              BackgroundColor="White"
              xmlns:richtext="clr-namespace:Syncfusion.XForms.RichTextEditor;assembly=Syncfusion.SfRichTextEditor.XForms"
->
-    <ContentPage.Content>
-        <StackLayout>
-            <richtext:SfRichTextEditor x:Name="texteditor" MaximumHeightRequest="50" AutoSize="Disabled" VerticalOptions="FillAndExpand" Text= "{Binding Text}"  ImageInsertCommand="{Binding ImageCommand}"/>
+             Title="{Binding Title}"
+              xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
+              >
+    <ContentPage.Content >
+        <AbsoluteLayout x:Name="page1">
+            <richtext:SfRichTextEditor  x:Name="texteditor" MaximumHeightRequest="50" AutoSize="Disabled" VerticalOptions="FillAndExpand" Text= "{Binding Text}"  ImageInsertCommand="{Binding ImageCommand}"/>
+            <Button AbsoluteLayout.LayoutBounds="330,465,65,65" 
+                 CornerRadius="33" BackgroundColor="#2934D0"  TextColor="White" FontSize="34" Clicked="Button_Clicked"   Text="{x:Static fontawesome:FontIconClass.Upload}" FontFamily="MyIcon"/>
 
-        </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -17,6 +17,7 @@ namespace ArticlesApp.Views
         public AddImageArticle(AddArticleViewModel context)
         {
             this.BindingContext = context;
+            context.NavigateToUpload += NavigateToUploadFile;
             context.NaviagteToAddarticle += NavigaeToPage;
             InitializeComponent();
             
@@ -28,9 +29,19 @@ namespace ArticlesApp.Views
             Navigation.ShowPopup(new AddImagePopUp(this.BindingContext));
 
         }
+        private void topopUP(object sender, EventArgs e)
+        {
+            Navigation.ShowPopup(new SelectTypePopUp((AddArticleViewModel)this.BindingContext));
+
+        }
         private void NavigaeToPage()
         {
             Page page = new AddArticle((AddArticleViewModel)this.BindingContext);
+            Navigation.PushAsync(page);
+        }
+        private void NavigateToUploadFile()
+        {
+            Page page= new UploadFile((AddArticleViewModel)this.BindingContext);
             Navigation.PushAsync(page);
         }
         public void OnSetImageSource(ImageSource imgSource)

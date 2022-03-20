@@ -11,7 +11,7 @@
             <Label Text="Fill article detial" Margin="0,0,0,-20" Padding="8,0,0,0"
                 TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto" />
             <yummy:PancakeView Border="{yummy:BorderMarkup Color=#000000, Thickness='1'}" HeightRequest="40">
-            <local:MyEntry Placeholder="Enter Title" Text="{Binding Title}" FontSize="20" FontAttributes="Bold"/>
+                <local:MyEntry Placeholder="Enter Title" Text="{Binding Title}" FontSize="20" FontAttributes="Bold"/>
             </yummy:PancakeView>
             <Editor  x:Name="editor" Placeholder="Description(optinal)" Text="{Binding Description}" HeightRequest="90" MaxLength="255"/>
 

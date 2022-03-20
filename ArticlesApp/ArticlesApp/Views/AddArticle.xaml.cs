@@ -31,32 +31,33 @@ namespace ArticlesApp.Views
     {
         public AddArticle(AddArticleViewModel context)
         { 
-            try
-            { 
+            
 
                 this.BindingContext = context;
                 InitializeComponent();
+                byte[] imgbyt = File.ReadAllBytes(context.imageFileResult.FullPath);
+                string base64img = Convert.ToBase64String(imgbyt);
 
-                texteditor.Text += context.Description;
-                context.navigateTopopUP = MoveToPopUp;
-                if (context.MainImageStream != null)
+
+                double with = App.Current.MainPage.Width;
+            double w = page1.Height;
+            double height = App.Current.MainPage.Height;
+            
+                if (texteditor.Text == null || texteditor.Text == "")
                 {
-                    Syncfusion.XForms.RichTextEditor.ImageSource imageSource = new Syncfusion.XForms.RichTextEditor.ImageSource();
-                    imageSource.ImageStream = context.MainImageStream;
-                    imageSource.SaveOption = ImageSaveOption.Base64;
-                    texteditor.InsertImage(imageSource);
+                    texteditor.Text = $@"{context.Description}
+            <p><img src =""data:image/png;base64,{base64img}"" Width=""{with - 30}"" height=""250""/></p>";
                 }
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+                
+                
+            AbsoluteLayout.SetLayoutBounds(texteditor, new Rectangle(0, 0, App.Current.MainPage.Width, App.Current.MainPage.Height-60));
         }
 
-        private void MoveToPopUp()
+        private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.ShowPopup(new AddImagePopUp(this.BindingContext));
-
+            ((AddArticleViewModel)this.BindingContext).HtmlText = texteditor.HtmlText;
+            Page page = new showBeforeUpload((AddArticleViewModel)this.BindingContext);
+            Navigation.PushAsync(page);
         }
     }
 }
