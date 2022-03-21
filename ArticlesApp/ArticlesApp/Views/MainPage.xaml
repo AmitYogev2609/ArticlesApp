@@ -41,14 +41,14 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        
                                     </Grid.ColumnDefinitions>
-                                    <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Source="me.png" WidthRequest="70" />
-                                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="Title" HorizontalOptions="Center" Padding="0,7,0,0"/>
-                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="des" HorizontalOptions="Center"/>
-                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding}"/>
-                                    <Label Grid.Row="2" Grid.Column="2" Text="Date"/>
-                                    <Label Grid.Row="2" Grid.Column="3" Text="!"/>
+                                    <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Source="{Binding PhotoUrl}" WidthRequest="70" />
+                                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Article.ArticleName}" HorizontalOptions="Center" Padding="0,7,0,0"/>
+                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Article.Description}" HorizontalOptions="Center"/>
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding athours}"/>
+                                    <Label Grid.Row="2" Grid.Column="2" Text="{Binding date}"/>
+                                   
                                 </Grid>
                             </yummy:PancakeView>
                         </DataTemplate>

@@ -18,6 +18,7 @@ namespace ArticlesApp.Models
         public string HtmlText { get; set; }
         public string ArticleName { get; set; }
         public string Description { get; set; }
+        public DateTime PublishDate { get; set; }
 
 
         public virtual ICollection<ArticleInterestType> ArticleInterestTypes { get; set; }

@@ -15,9 +15,32 @@ using Xamarin.Essentials;
 using System.Windows.Input;
 namespace ArticlesApp.ViewModels
 {
+    public class ArticleWithPicture
+    {
+        public Article Article { get; set; }
+        public string PhotoUrl { get; set; }
+        public string date { get=>Article.PublishDate.ToShortDateString();  }
+        public string athours { get; set; }
+        public ArticleWithPicture(Article article)
+        {
+            ArticlesAPIProxy proxy= ArticlesAPIProxy.CreateProxy();
+            string uri = $"{proxy.GetBasePhotoUri()}ArticleImage/{article.ArticleId}.png";
+            Article= article;
+            athours = getAthours(article);
+        }
+        private string getAthours(Article article)
+        {
+            string str= "by:";
+            foreach (var item in Article.AuthorsArticles)
+            {
+                str += $" {item.User.UserName},";
+            }
+            return str;
+        }
+    }
     public class MainPageViewModel
     {
-        public ObservableCollection<Article> Articles;
+        public ObservableCollection<ArticleWithPicture> Articles;
         public Color diviedColor { get=>new Color(196, 196, 196, 0.29);  }
         public Action<Popup> NavigateToPopup;
         public Action NavigateToPageEvent;
@@ -39,10 +62,16 @@ namespace ArticlesApp.ViewModels
                         if (!articles.Contains(type.Article))
                             articles.Add(type.Article);
                     }
-                Articles = new ObservableCollection<Article>(articles.OrderByDescending(a => a.ArticleId));
+                List<ArticleWithPicture> list = new List<ArticleWithPicture>();
+                foreach (var article in articles)
+                {
+                    list.Add(new ArticleWithPicture(article));
+                }
+                
+                Articles = new ObservableCollection<ArticleWithPicture>(list.OrderByDescending(a => a.Article.ArticleId));
             }
             else
-                Articles = new ObservableCollection<Article>();
+                Articles = new ObservableCollection<ArticleWithPicture>();
             
         }
       

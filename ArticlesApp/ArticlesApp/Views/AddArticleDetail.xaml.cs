@@ -8,6 +8,9 @@ using ArticlesApp.Services;
 using ArticlesApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace ArticlesApp.Views
 {
@@ -24,12 +27,17 @@ namespace ArticlesApp.Views
             interstComboBox.DisplayMemberPath = "InterestName";
             UserComboBox.DataSource = ((App)App.Current).Users;
             UserComboBox.DisplayMemberPath = "UserName";
+            
            
         }
         public void NavigateToPage()
         {
             Page page = new AddImageArticle((AddArticleViewModel)this.BindingContext);
-            
+          
+           object interests=interstComboBox.SelectedItem;
+            Type type = interstComboBox.SelectedItem.GetType();
+            string str = type.FullName;
+            //List<Interest> intr=interests.ToList<Interest>();
             Navigation.PushAsync(page);
         }
         

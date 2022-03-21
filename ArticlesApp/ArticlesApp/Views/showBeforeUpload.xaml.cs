@@ -28,17 +28,21 @@ namespace ArticlesApp.Views
             if (!htmlText.Contains("html"))
             { 
           
-            htmlText = htmlText.Replace("width=\"auto\"", $"width =\"{width - 50}\"");
-            hmlsource.Html = "<html>\n<body>\n";
+            //htmlText = htmlText.Replace("width=\"auto\"", $"width =\"{width - 50}\"");
+            hmlsource.Html = "<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n</head>\n<body>\n";
             hmlsource.Html += htmlText;
             hmlsource.Html += "\n</body>\n</html>";
             }
             else
             {
+                //htmlText = htmlText.Replace("<html>", $"<html width =\"100%\">");
+                //htmlText = htmlText.Replace("<body>", $"<body width =\"100%\">");
+                htmlText = htmlText.Replace("<head>", "<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale =1\">");
                 hmlsource.Html = htmlText;
             }
             webview.Source = hmlsource;
             AbsoluteLayout.SetLayoutBounds(webview, new Rectangle(0, 0, width, App.Current.MainPage.Height - 60));
         }
+        
     }
 }

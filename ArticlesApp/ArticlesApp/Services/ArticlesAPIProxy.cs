@@ -81,7 +81,7 @@ namespace ArticlesApp.Services
             this.baseUri = baseUri;
             this.basePhotosUri = basePhotosUri;
         }
-
+        
 
         public async Task<User> LoginAsync(string email, string pass)
         {

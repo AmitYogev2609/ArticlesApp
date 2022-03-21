@@ -19,9 +19,8 @@ namespace ArticlesApp.Views
             MainPageViewModel context = new MainPageViewModel();
             this.BindingContext = context;
             context.NavigateToPopup += NavigteToLoading;
-            List<string> list = new List<string>();
-            list.Add("amit");
-            arti.ItemsSource = list;
+            
+            arti.ItemsSource =context.Articles;
             //context.readData();
         }
 

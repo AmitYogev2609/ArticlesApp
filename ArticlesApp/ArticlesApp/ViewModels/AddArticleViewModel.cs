@@ -226,7 +226,7 @@ namespace ArticlesApp.ViewModels
             {
                 Console.WriteLine(e.Message);
             }
-
+           
         }
         
         public Action navtoahow;
