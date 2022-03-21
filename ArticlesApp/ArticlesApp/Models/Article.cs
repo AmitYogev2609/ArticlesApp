@@ -15,7 +15,7 @@ namespace ArticlesApp.Models
         }
 
         public int ArticleId { get; set; }
-        public string Text { get; set; }
+        public string HtmlText { get; set; }
         public string ArticleName { get; set; }
         public string Description { get; set; }
 

@@ -22,7 +22,7 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Xamarin.Forms.PlatformConfiguration;
-
+using Spire.Pdf;
 namespace ArticlesApp.ViewModels
 {
     public class AddArticleViewModel:INotifyPropertyChanged
@@ -200,26 +200,37 @@ namespace ArticlesApp.ViewModels
 
                 if (pickResult != null)
                 {
-                    
 
-                    foreach (var pdf in pickResult)
+
+                    var pdfresultFile = pickResult.First();
+                    PdfDocument pdf = new PdfDocument();
+                   
+                    pdf.LoadFromFile(pdfresultFile.FullPath);
+                    MemoryStream stream = new MemoryStream();
+                    
+                    pdf.SaveToStream(stream, FileFormat.HTML);
+                    if(stream.Length==0)
                     {
-                      
-                        var stream = await pdf.OpenReadAsync();
-                        string directory = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, Android.OS.Environment.DirectoryDownloads);
-                        string file = Path.Combine(directory, "temp.pdf");
-                        System.IO.File.WriteAllBytes(file, File.ReadAllBytes(pdf.FullPath));
+
                     }
-                  
+                    StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                    reader.BaseStream.Position = 0;
+                    string html = reader.ReadToEnd();
+
+                    HtmlText = html;
+                    navtoahow?.Invoke();
                 }
             }
 
-            catch //User opted out or something went wrong
+            catch(Exception e) //User opted out or something went wrong
             {
-
+                Console.WriteLine(e.Message);
             }
 
         }
+        
+        public Action navtoahow;
+       
 
 
 

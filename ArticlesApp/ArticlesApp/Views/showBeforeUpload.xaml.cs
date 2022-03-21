@@ -23,12 +23,20 @@ namespace ArticlesApp.Views
             base.OnAppearing();
             AddArticleViewModel context = (AddArticleViewModel)BindingContext;
             HtmlWebViewSource hmlsource = new HtmlWebViewSource();
-            string htmlText = context.HtmlText;
             double width = App.Current.MainPage.Width;
+            string htmlText = context.HtmlText;
+            if (!htmlText.Contains("html"))
+            { 
+          
             htmlText = htmlText.Replace("width=\"auto\"", $"width =\"{width - 50}\"");
             hmlsource.Html = "<html>\n<body>\n";
             hmlsource.Html += htmlText;
             hmlsource.Html += "\n</body>\n</html>";
+            }
+            else
+            {
+                hmlsource.Html = htmlText;
+            }
             webview.Source = hmlsource;
             AbsoluteLayout.SetLayoutBounds(webview, new Rectangle(0, 0, width, App.Current.MainPage.Height - 60));
         }

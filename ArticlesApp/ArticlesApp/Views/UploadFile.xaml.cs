@@ -15,7 +15,13 @@ namespace ArticlesApp.Views
         public UploadFile(AddArticleViewModel context)
         {
             this.BindingContext = context;
+            context.navtoahow += navigate;
             InitializeComponent();
+        }
+        public void navigate()
+        {
+            Page page = new showBeforeUpload((AddArticleViewModel)this.BindingContext);
+            Navigation.PushAsync(page);
         }
     }
 }
