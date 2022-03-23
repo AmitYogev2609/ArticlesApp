@@ -32,11 +32,36 @@ namespace ArticlesApp.Views
         }
         public void NavigateToPage()
         {
-            Page page = new AddImageArticle((AddArticleViewModel)this.BindingContext);
+           
+            List<int> indecies = (List<int>)interstComboBox.SelectedIndices;
+            AddArticleViewModel context = (AddArticleViewModel)this.BindingContext;
+            IEnumerable<Interest> lst =(IEnumerable<Interest>) interstComboBox.DataSource;
+            foreach (var item in indecies)
+            {
+                context.ChooseIntrest.Add(lst.ToList<Interest>()[item]);
+            }
+            indecies = (List<int>)UserComboBox.SelectedIndices;
+            IEnumerable<User> lst1 = (IEnumerable<User>)UserComboBox.DataSource;
+            foreach (var item in indecies)
+            {
+                context.ChooseUser.Add(lst1.ToList<User>()[item]);
+            }
           
-           object interests=interstComboBox.SelectedItem;
-            Type type = interstComboBox.SelectedItem.GetType();
-            string str = type.FullName;
+           if(title.Text==null||title.Text=="")
+           {
+                pan.Border.Color = Color.Red;
+                return;
+           }
+            if(editor.Text==null||editor.Text=="")
+            {
+                editor.Text = "man field";
+                return;
+            }
+            if(context.ChooseIntrest.Count==0||context.ChooseUser.Count==0)
+            {
+                return;
+            }
+            Page page = new AddImageArticle((AddArticleViewModel)this.BindingContext);
             //List<Interest> intr=interests.ToList<Interest>();
             Navigation.PushAsync(page);
         }

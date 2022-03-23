@@ -31,6 +31,12 @@ namespace ArticlesApp.Views
         }
         private void topopUP(object sender, EventArgs e)
         {
+            AddArticleViewModel context = (AddArticleViewModel)this.BindingContext;
+            if(context.imageFileResult==null)
+            {
+                pan.Border.Color = Color.Red;
+                return;
+            }
             Navigation.ShowPopup(new SelectTypePopUp((AddArticleViewModel)this.BindingContext));
 
         }

@@ -13,7 +13,7 @@
         <StackLayout   Padding="7,0,7,0">
             <Label Text="PickMainImage" Margin="0,0,0,-20" Padding="8,0,0,50"
                 TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto" />
-            <yummy:PancakeView  Border="{yummy:BorderMarkup Color=#000000, Thickness='2'}">
+            <yummy:PancakeView  x:Name="pan" Border="{yummy:BorderMarkup Color=#000000, Thickness='2'}">
                 <Image x:Name="ProfileImage" WidthRequest="230" HeightRequest="230" Aspect="Fill" />
             </yummy:PancakeView>
 

@@ -23,6 +23,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using Xamarin.Forms.PlatformConfiguration;
 using Spire.Pdf;
+using ArticlesApp.DTO;
 namespace ArticlesApp.ViewModels
 {
     public class AddArticleViewModel:INotifyPropertyChanged
@@ -34,6 +35,13 @@ namespace ArticlesApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        
+        public ObservableCollection<Interest> ChooseIntrest
+        {
+            get ;
+            set;
+        }
+        public ObservableCollection<User> ChooseUser { get; set; }
         private string title;
         public string Title
         { 
@@ -67,7 +75,10 @@ namespace ArticlesApp.ViewModels
         {
             Interests = new ObservableCollection<Interest>();
             ImageCommand = new Command<object>(LoadImage);
-
+            
+            ChooseIntrest = new ObservableCollection<Interest>();
+            ChooseUser = new ObservableCollection<User>();
+            Proxy = ArticlesAPIProxy.CreateProxy();
         }
         public ICommand NavigateToPage => new Command(GoToPage);
         public void GoToPage()
@@ -75,6 +86,7 @@ namespace ArticlesApp.ViewModels
             NavigateToPageEvent?.Invoke();
         }
         public FileResult imageFileResult;
+        ArticlesAPIProxy Proxy;
         public Xamarin.Forms.ImageSource imgSource1;
         public event Action<Xamarin.Forms.ImageSource> SetImageSourceEvent;
         public ICommand PickImageFromDeviceCommand => new Command(OnPickImage);
@@ -228,9 +240,43 @@ namespace ArticlesApp.ViewModels
             }
            
         }
-        
         public Action navtoahow;
-       
+        public ICommand Upload => new Command(upload);
+       public async void upload()
+        {
+            Article article = new Article()
+            {
+                ArticleName = this.title,
+                HtmlText=this.HtmlText,
+                Description=this.Description,
+                PublishDate= DateTime.Now
+            };
+            foreach (var item in ChooseIntrest)
+            {
+                ArticleInterestType articleInterestType = new ArticleInterestType()
+                {
+                    InterestId = item.InterestId
+                };
+                article.ArticleInterestTypes.Add(articleInterestType);
+            }
+            foreach (var item in ChooseUser)
+            {
+                AuthorsArticle authorsArticle = new AuthorsArticle()
+                {
+                    UserId=item.UserId
+                };
+                article.AuthorsArticles.Add(authorsArticle);
+            }
+            ArticlesApp.DTO.FileInfo file = new DTO.FileInfo()
+            {
+                Name = imageFileResult.FullPath
+            };
+            bool succes = await Proxy.UploadArticle(article, file);
+            if(succes)
+            {
+
+            }
+        }
 
 
 

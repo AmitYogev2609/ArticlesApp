@@ -10,13 +10,13 @@
         <StackLayout Spacing="50" Padding="7,0,7,0">
             <Label Text="Fill article detial" Margin="0,0,0,-20" Padding="8,0,0,0"
                 TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto" />
-            <yummy:PancakeView Border="{yummy:BorderMarkup Color=#000000, Thickness='1'}" HeightRequest="40">
-                <local:MyEntry Placeholder="Enter Title" Text="{Binding Title}" FontSize="20" FontAttributes="Bold"/>
+            <yummy:PancakeView x:Name="pan" Border="{yummy:BorderMarkup Color=#000000, Thickness='1'}" HeightRequest="40">
+                <local:MyEntry x:Name="title" Placeholder="Enter Title" Text="{Binding Title}" FontSize="20" FontAttributes="Bold"/>
             </yummy:PancakeView>
-            <Editor  x:Name="editor" Placeholder="Description(optinal)" Text="{Binding Description}" HeightRequest="90" MaxLength="255"/>
+            <Editor  x:Name="editor" Placeholder="Description" Text="{Binding Description}" HeightRequest="90" MaxLength="255"/>
 
 
-            <combobox:SfComboBox Watermark="Select interests" HeightRequest="50" x:Name="interstComboBox"  IsEditableMode="True" MultiSelectMode="Token" TokensWrapMode="Wrap" IsSelectedItemsVisibleInDropDown="false"/>
+            <combobox:SfComboBox Watermark="Select interests" SelectedItem="{Binding ChooseIntrest}" HeightRequest="50" x:Name="interstComboBox"  IsEditableMode="True" MultiSelectMode="Token" TokensWrapMode="Wrap" IsSelectedItemsVisibleInDropDown="false"/>
 
             <combobox:SfComboBox Watermark="Select Usres" HeightRequest="50" x:Name="UserComboBox" IsEditableMode="True" MultiSelectMode="Token" TokensWrapMode="Wrap" IsSelectedItemsVisibleInDropDown="false" />
             <Button Command="{Binding NavigateToPage}"  TextColor="#F8FBFF"  Text="Next"  BackgroundColor ="#2934D0"  CornerRadius="29"

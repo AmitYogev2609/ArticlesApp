@@ -38,12 +38,20 @@ namespace ArticlesApp.ViewModels
             return str;
         }
     }
-    public class MainPageViewModel
+    public class MainPageViewModel:INotifyPropertyChanged
     {
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
         public ObservableCollection<ArticleWithPicture> Articles;
         public Color diviedColor { get=>new Color(196, 196, 196, 0.29);  }
         public Action<Popup> NavigateToPopup;
         public Action NavigateToPageEvent;
+       
         public MainPageViewModel()
         {
             List<Article> articles = new List<Article>();

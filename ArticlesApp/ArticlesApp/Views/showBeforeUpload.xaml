@@ -7,7 +7,7 @@
         <AbsoluteLayout>
             <WebView x:Name="webview"  />
             <Button AbsoluteLayout.LayoutBounds="330,465,65,65" 
-                 CornerRadius="33" BackgroundColor="#2934D0"  TextColor="White" FontSize="34"   Text="{x:Static fontawesome:FontIconClass.Upload}" FontFamily="MyIcon"/>
+                 CornerRadius="33" BackgroundColor="#2934D0" Command="{Binding Upload}" TextColor="White" FontSize="34"   Text="{x:Static fontawesome:FontIconClass.Upload}" FontFamily="MyIcon"/>
 
         </AbsoluteLayout>
     </ContentPage.Content>

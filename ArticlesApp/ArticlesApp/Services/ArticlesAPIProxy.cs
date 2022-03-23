@@ -340,6 +340,35 @@ namespace ArticlesApp.Services
                 return null;
             }
         }
+        public async Task<bool> UploadArticle(Article newarticle, DTO.FileInfo img)
+        {
+            try
+            {
+                var multipartFormDataContent = new MultipartFormDataContent();
+                var fileContent = new ByteArrayContent(File.ReadAllBytes(img.Name));
+                fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                multipartFormDataContent.Add(fileContent, "file", "kuku.jpg");
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.Hebrew, UnicodeRanges.BasicLatin),
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize<Article>(newarticle, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+                multipartFormDataContent.Add(content, "myJsonObject");
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/UploadArticle", multipartFormDataContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         public async Task<string> GetPasswordResetCode(string email)
         {
             return null;

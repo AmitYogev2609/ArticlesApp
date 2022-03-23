@@ -28,7 +28,7 @@ namespace ArticlesApp.Views
             if (!htmlText.Contains("html"))
             { 
           
-            //htmlText = htmlText.Replace("width=\"auto\"", $"width =\"{width - 50}\"");
+            htmlText = htmlText.Replace("width=\"auto\"", $"width =\"{width - 50}\"");
             hmlsource.Html = "<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n</head>\n<body>\n";
             hmlsource.Html += htmlText;
             hmlsource.Html += "\n</body>\n</html>";
