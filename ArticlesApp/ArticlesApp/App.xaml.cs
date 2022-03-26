@@ -70,12 +70,12 @@ namespace ArticlesApp
                 //    Console.WriteLine(e.Message);
                 //}
 
-                //Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
-                ////Login = new Page1();
-                // MainPage = Login;
-                              // MainPage = new NavigationPage(new Page1());
-                MainPage = new NavigationPage(new TabbedMenu("amity2609@gmail.com", "1234")) { BarBackgroundColor = Color.White,BarTextColor=Color.Black };
-                
+                Login = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
+                //Login = new Page1();
+                MainPage = Login;
+                // MainPage = new NavigationPage(new Page1());
+                //MainPage = new NavigationPage(new TabbedMenu("amity2609@gmail.com", "1234")) { BarBackgroundColor = Color.White,BarTextColor=Color.Black };
+
             }
             catch (Exception ex)
             {

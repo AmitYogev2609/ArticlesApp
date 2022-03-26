@@ -24,7 +24,7 @@ namespace ArticlesApp.ViewModels
         public ArticleWithPicture(Article article)
         {
             ArticlesAPIProxy proxy= ArticlesAPIProxy.CreateProxy();
-            string uri = $"{proxy.GetBasePhotoUri()}ArticleImage/{article.ArticleId}.png";
+            PhotoUrl  = $"{proxy.GetBasePhotoUri()}ArticleImage/{article.ArticleId}.jpg";
             Article= article;
             athours = getAthours(article);
         }

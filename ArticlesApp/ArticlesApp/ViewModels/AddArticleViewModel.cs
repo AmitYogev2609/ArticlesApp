@@ -274,9 +274,10 @@ namespace ArticlesApp.ViewModels
             bool succes = await Proxy.UploadArticle(article, file);
             if(succes)
             {
-
+                finish?.Invoke();
             }
         }
+        public Action finish;
 
 
 

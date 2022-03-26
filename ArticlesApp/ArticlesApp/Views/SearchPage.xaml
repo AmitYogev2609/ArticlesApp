@@ -5,9 +5,7 @@
              BackgroundColor="White">
     <ContentView.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Image Source="http://10.0.2.2:60411/Images/ArticleImage/1.jpg" x:Name="test"/>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

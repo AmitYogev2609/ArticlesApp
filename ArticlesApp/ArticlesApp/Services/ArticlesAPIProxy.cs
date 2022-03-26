@@ -382,4 +382,4 @@ namespace ArticlesApp.Services
         
     }
 }
-//http://10.0.2.2:60411/ArtiFindAPI/GetInitialInterests
+//http://10.0.2.2:60411/Images/ArticleImage/1.jpg

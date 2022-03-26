@@ -15,7 +15,7 @@ namespace ArticlesApp.Views
         public showBeforeUpload(AddArticleViewModel context)
         {
             this.BindingContext = context;
-
+            context.finish += finishup;
             InitializeComponent();
         }
         protected override void OnAppearing()
@@ -42,6 +42,13 @@ namespace ArticlesApp.Views
             }
             webview.Source = hmlsource;
             AbsoluteLayout.SetLayoutBounds(webview, new Rectangle(0, 0, width, App.Current.MainPage.Height - 60));
+        }
+        public void finishup()
+        {
+            Navigation.PopAsync();
+            Navigation.PopAsync();
+            Navigation.PopAsync();
+            Navigation.PopAsync();
         }
         
     }
