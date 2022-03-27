@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.CommunityToolkit.Extensions;
+using ArticlesApp.Models;
 namespace ArticlesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -20,7 +21,7 @@ namespace ArticlesApp.Views
             this.BindingContext = context;
             context.NavigateToPopup += NavigteToLoading;
             
-            arti.ItemsSource =context.Articles;
+            articles.ItemsSource =context.Articles;
             //context.readData();
         }
 
@@ -34,5 +35,14 @@ namespace ArticlesApp.Views
             Navigation.ShowPopup(page);
         }
 
+        private void articles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ArticleWithPicture article = (ArticleWithPicture)articles.SelectedItem;
+            
+            Page page= new ShowArticle(article,articles);
+            Navigation.PushAsync(page);
+            // articles.SelectedItem = null;
+           
+        }
     }
 }

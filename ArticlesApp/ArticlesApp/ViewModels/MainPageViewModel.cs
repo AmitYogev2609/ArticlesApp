@@ -82,7 +82,11 @@ namespace ArticlesApp.ViewModels
                 Articles = new ObservableCollection<ArticleWithPicture>();
             
         }
-      
+        public ICommand GoToshowArticle => new Command(goToShow);
+        public void goToShow()
+        {
+
+        }
         public async void ReadData()
         {
 

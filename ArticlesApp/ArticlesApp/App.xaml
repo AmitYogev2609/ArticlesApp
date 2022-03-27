@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:ArticlesApp.Services;assembly=ArticlesApp"
              x:Class="ArticlesApp.App">
     <Application.Resources>
         <ResourceDictionary>
+            <converter:ImageSourceConverter x:Key="ImageSourceConverter" />
             <OnPlatform x:TypeArguments="x:String" 
                 x:Key="FontAwesomeBrands">
                 <On Platform="Android" 

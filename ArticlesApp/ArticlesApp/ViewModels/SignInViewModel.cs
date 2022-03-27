@@ -760,7 +760,8 @@ namespace ArticlesApp.ViewModels
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
            ((App)App.Current).User = await proxy.LoginAsync(Email, Password);
             popup.DismisPopUP();
-            ((App)App.Current).MainPage = new NavigationPage(new TabbedMenu(email, password));
+            ((App)App.Current).MainPage = new NavigationPage(new TabbedMenu(email, password)) { BarTextColor= Color.Black,
+            BarBackgroundColor=Color.White};
 
         }
     }

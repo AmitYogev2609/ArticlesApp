@@ -267,6 +267,10 @@ namespace ArticlesApp.ViewModels
                 };
                 article.AuthorsArticles.Add(authorsArticle);
             }
+            AuthorsArticle authorsArticle1 = new AuthorsArticle()
+            {
+                UserId = ((App)App.Current).User.UserId
+            };
             ArticlesApp.DTO.FileInfo file = new DTO.FileInfo()
             {
                 Name = imageFileResult.FullPath
