@@ -39,6 +39,11 @@ namespace ArticlesApp.Views
             }
             webview.Source = hmlsource;
             cov = cv;
+            double height = App.Current.MainPage.Height;
+            
+            grd.WidthRequest = width;
+            gtd1.WidthRequest = width;
+            webview.WidthRequest = width;
         }
         protected override void OnDisappearing()
         {
