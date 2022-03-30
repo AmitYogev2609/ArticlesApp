@@ -49,7 +49,6 @@ namespace ArticlesApp.ViewModels
             foreach (var item in ((App)App.Current).Users)
             {
                 searchResult.Add( new UserWithPicture(item));
-
             }
             Shuffle(searchResult);
         }
