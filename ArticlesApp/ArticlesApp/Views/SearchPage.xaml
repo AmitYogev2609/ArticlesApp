@@ -2,10 +2,78 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Views.SearchPage"
-             BackgroundColor="White">
+             BackgroundColor="White"
+              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+            xmlns:controls="clr-namespace:ArticlesApp.Services"
+             xmlns:imagecirc="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" 
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentView.Resources>
+        <DataTemplate x:Key="ArticleTemplate">
+            <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Source="{Binding PhotoUrl,Converter={StaticResource ImageSourceConverter} }"   />
+                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Article.ArticleName}"  TextColor="Black" FontSize="25" FontAttributes="Bold"   Padding="10,7,0,0"/>
+                <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Article.Description}" FontSize="18"  />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding athours}" />
+                <Label Grid.Row="2" Grid.Column="2" Text="{Binding date}"/>
+
+            </Grid>
+            </yummy:PancakeView>
+        </DataTemplate>
+
+        <DataTemplate x:Key="InterestTemplate">
+            <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}">
+                <StackLayout Padding="20,0,0,0">
+                <Label Text="{Binding InterestName}" FontSize="25" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="{Binding  ArticleInterestTypes.Count, StringFormat='{0} Articles in this interest'}" FontSize="18"/>
+            </StackLayout>
+            </yummy:PancakeView>
+        </DataTemplate>
+        <DataTemplate x:Key="UserTemplate">
+            <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}">
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
+                </Grid.ColumnDefinitions>
+                <imagecirc:CircleImage Grid.Column="0" Grid.RowSpan="2" Source="{Binding PhotoUrl,Converter={StaticResource ImageSourceConverter}}"/>
+                <Label Grid.Row="0" Grid.Column="1" TextColor="Black" Text="{Binding User.UserName}" FontAttributes="Bold" FontSize="25"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding FulllName}" FontSize="18"/>
+            </Grid>
+            </yummy:PancakeView>
+        </DataTemplate>
+        <controls:SearchDataTemplateSelector x:Key="MonkeySelector"
+                                            ArticleDataTemp="{StaticResource ArticleTemplate}"
+                                             InterestDataTemp="{StaticResource InterestTemplate}"
+                                             UserDataTemp="{StaticResource UserTemplate}"/>
+    </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout>
-            <Image Source="http://10.0.2.2:60411/Images/ArticleImage/1.jpg" x:Name="test"/>
+        <StackLayout Spacing="8">
+
+            <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" CornerRadius="20" Margin="9,10,9,0">
+                <SearchBar x:Name="filterText" HeightRequest="40"
+           Placeholder="Search: interest, user, article"
+           TextChanged="OnFilterTextChanged" BackgroundColor="LightGray" />
+            </yummy:PancakeView>
+            <syncfusion:SfListView x:Name="listView"  ItemSize="100" ItemSpacing="0,5,0,5"
+                    AutoFitMode="Height" 
+                                        ItemTemplate="{StaticResource MonkeySelector}"  />
+            
         </StackLayout>
     </ContentView.Content>
 </ContentView>

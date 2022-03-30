@@ -5,7 +5,8 @@
              x:Class="ArticlesApp.Views.TabbedMenu"
              xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
              NavigationPage.HasNavigationBar="False"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:loc="clr-namespace:ArticlesApp">
 
     <StackLayout>
         <xct:TabView
@@ -41,7 +42,7 @@
                 TextColorSelected="Black"
                 FontSize="36"
                 FontSizeSelected="36">
-                <local:SearchPage/>
+                <loc:Page1/>
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="{x:Static fontawesome:FontIconClass.Account}" 
@@ -50,7 +51,7 @@
                 FontSize="36"
                 FontSizeSelected="36"
                >
-                <local:SearchPage/>
+                <loc:Page1/>
             </xct:TabViewItem>
         </xct:TabView>
     </StackLayout>

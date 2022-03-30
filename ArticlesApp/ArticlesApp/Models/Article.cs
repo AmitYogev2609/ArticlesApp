@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using ArticlesApp.Services;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Xamarin.Forms;
 namespace ArticlesApp.Models
 {
     public  class Article
@@ -25,5 +29,6 @@ namespace ArticlesApp.Models
         public virtual ICollection<ArticleReport> ArticleReports { get; set; }
         public virtual ICollection<AuthorsArticle> AuthorsArticles { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+              
     }
 }

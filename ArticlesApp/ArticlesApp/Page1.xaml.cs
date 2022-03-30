@@ -21,7 +21,7 @@ using Xamarin.Essentials;
 namespace ArticlesApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class Page1 : ContentView
     {
         public Page1()
         {
@@ -30,14 +30,10 @@ namespace ArticlesApp
             //List<Interest> interests = taskinterests.Result;
             InitializeComponent();
             //test.ItemsSource = interests;
-            this.BindingContext = new ViewModel();
+            
         }
 
-        private void save_Clicked(object sender, EventArgs e)
-        {
-            string htmltext = texteditor.HtmlText;
-            Navigation.PushAsync(new WebViewTest(htmltext));
-        }
+        
     }
     public class ViewModel : INotifyPropertyChanged
     {

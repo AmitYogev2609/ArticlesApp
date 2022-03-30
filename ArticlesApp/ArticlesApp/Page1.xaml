@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Page1"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
             xmlns:richtext="clr-namespace:Syncfusion.XForms.RichTextEditor;assembly=Syncfusion.SfRichTextEditor.XForms"
              BackgroundColor="White">
              
-    <ContentPage.Content>
+    <ContentView.Content>
         <StackLayout  >
-            <richtext:SfRichTextEditor x:Name="texteditor" MaximumHeightRequest="50" AutoSize="Disabled" VerticalOptions="FillAndExpand" Text= "The rich text editor component is WYSIWYG editor that provides the best user experience to create and update the content"  ImageInsertCommand="{Binding ImageCommand}"/>
-            <Button Text="save" x:Name="save" Clicked="save_Clicked" BackgroundColor="Red"/>
+            <Button Text="save" x:Name="save"  BackgroundColor="Red"/>
 
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </ContentView.Content>
+</ContentView>

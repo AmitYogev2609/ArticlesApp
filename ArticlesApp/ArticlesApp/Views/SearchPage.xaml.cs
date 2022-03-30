@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using ArticlesApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using ArticlesApp.ViewModels;
+using ArticlesApp.Models;
 namespace ArticlesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -14,10 +15,57 @@ namespace ArticlesApp.Views
     {
         public SearchPage()
         {
+            SearchViewModel context = new SearchViewModel();
+            this.BindingContext = context;
             InitializeComponent();
-            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
-            test.Source = ImageSource.FromFile("http://10.0.2.2:60411/Images/ArticleImage/1.jpg");
+            
+           
         }
-        
+        SearchBar searchBar = null;
+        private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchViewModel context = (SearchViewModel)this.BindingContext;
+            if(listView.ItemsSource==null)
+            {
+                listView.ItemsSource = context.searchResult;
+            }
+            searchBar = (sender as SearchBar);
+            if (listView.DataSource != null)
+            {
+                this.listView.DataSource.Filter = FilterContacts;
+                this.listView.DataSource.RefreshFilter();
+            }
+        }
+
+        private bool FilterContacts(object obj)
+        {
+            if (searchBar == null || searchBar.Text == null)
+                return true;
+            if(obj is ArticleWithPicture )
+            {
+                var arti = obj as ArticleWithPicture;
+                if (arti.Article.ArticleName.ToLower().Contains(searchBar.Text.ToLower()))
+                    return true;
+            }
+            if(obj is UserWithPicture)
+            {
+                var arti = obj as UserWithPicture;
+                if (arti.User.UserName.ToLower().Contains(searchBar.Text.ToLower()))
+                    return true;
+            }
+            if (obj is Interest)
+            {
+                var arti = obj as Interest;
+                if (arti.InterestName.ToLower().Contains(searchBar.Text.ToLower()))
+                    return true;
+            }
+            return false;
+            //var contacts = obj as Contacts;
+            //if (contacts.ContactName.ToLower().Contains(searchBar.Text.ToLower())
+            //     || contacts.ContactName.ToLower().Contains(searchBar.Text.ToLower()))
+            //    return true;
+            //else
+            //    return false;
+        }
     }
 }

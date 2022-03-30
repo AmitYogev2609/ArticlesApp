@@ -18,5 +18,6 @@ namespace ArticlesApp.Models
 
         public virtual ICollection<ArticleInterestType> ArticleInterestTypes { get; set; }
         public virtual ICollection<FollwedInterest> FollwedInterests { get; set; }
+        
     }
 }

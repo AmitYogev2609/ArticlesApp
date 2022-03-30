@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ArticlesApp.Services;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace ArticlesApp.Models
 {
@@ -39,6 +44,6 @@ namespace ArticlesApp.Models
         public virtual ICollection<Message> MessageSenders { get; set; }
         public virtual ICollection<UserReport> UserReportReportedUsers { get; set; }
         public virtual ICollection<UserReport> UserReportUserIdReportedNavigations { get; set; }
-
+        
     }
 }

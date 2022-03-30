@@ -74,6 +74,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfImageEditor">
       <Version>19.4.0.56</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfListView">
+      <Version>19.4.0.56</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfRichTextEditor">
       <Version>19.4.0.56</Version>
     </PackageReference>

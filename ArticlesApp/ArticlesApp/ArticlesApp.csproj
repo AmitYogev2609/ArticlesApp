@@ -37,6 +37,7 @@
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.4.0.56" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.4.0.56" />
     <PackageReference Include="Syncfusion.Xamarin.SfImageEditor" Version="19.4.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.56" />
     <PackageReference Include="Syncfusion.Xamarin.SfRichTextEditor" Version="19.4.0.56" />
     <PackageReference Include="System.Text.Json" Version="6.0.2" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
