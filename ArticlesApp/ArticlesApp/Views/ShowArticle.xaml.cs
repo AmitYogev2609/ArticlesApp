@@ -65,16 +65,17 @@ namespace ArticlesApp.Views
         {
             if(star.Text!= FontIconClass.Star)
             { 
-            star.Text = FontIconClass.Star;
-            star.TextColor= Color.Gold;
+                star.Text = FontIconClass.Star;
+                star.TextColor= Color.Gold;
+                ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
+                context.uptadeFavoriteArticle();
             }
             else
             {
                 star.Text = FontIconClass.StarOutline;
                 star.TextColor = Color.Black;
             }
-            ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
-            context.uptadeFavoriteArticle();
+            
         }
     }
 }
