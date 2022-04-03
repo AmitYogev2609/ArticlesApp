@@ -37,6 +37,7 @@ namespace ArticlesApp.Models
         public virtual ICollection<ArticleReport> ArticleReports { get; set; }
         public virtual ICollection<AuthorsArticle> AuthorsArticles { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<FavoriteArticle> FavoriteArticles { get; set; }
         public virtual ICollection<Followeduser> FolloweduserFollowings { get; set; }
         public virtual ICollection<Followeduser> FolloweduserUsers { get; set; }
         public virtual ICollection<FollwedInterest> FollwedInterests { get; set; }

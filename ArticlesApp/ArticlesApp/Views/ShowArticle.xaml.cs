@@ -7,14 +7,14 @@ using ArticlesApp.Models;
 using ArticlesApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ArticlesApp.Fonts;
 
 namespace ArticlesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShowArticle : ContentPage
     {
-        private CollectionView cov;
-        public ShowArticle(ArticleWithPicture article,CollectionView cv)
+        public ShowArticle(ArticleWithPicture article)
         {
             this.BindingContext= new ShowArticleViewModel(article.Article);
             InitializeComponent();
@@ -38,18 +38,43 @@ namespace ArticlesApp.Views
                 hmlsource.Html = htmlText;
             }
             webview.Source = hmlsource;
-            cov = cv;
+           
             double height = App.Current.MainPage.Height;
             
             grd.WidthRequest = width;
             gtd1.WidthRequest = width;
             webview.WidthRequest = width;
+            User logedUser = ((App)App.Current).User;
+            foreach(var obj in logedUser.FavoriteArticles )
+            {
+                if(obj.ArticleId==article.Article.ArticleId)
+                {
+                    star.Text = FontIconClass.Star;
+                    star.TextColor = Color.Gold;
+                }
+            }
         }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             
             
+        }
+
+        private void star_Clicked(object sender, EventArgs e)
+        {
+            if(star.Text!= FontIconClass.Star)
+            { 
+            star.Text = FontIconClass.Star;
+            star.TextColor= Color.Gold;
+            }
+            else
+            {
+                star.Text = FontIconClass.StarOutline;
+                star.TextColor = Color.Black;
+            }
+            ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
+            context.uptadeFavoriteArticle();
         }
     }
 }

@@ -71,7 +71,7 @@
            TextChanged="OnFilterTextChanged" BackgroundColor="LightGray" />
             </yummy:PancakeView>
             <syncfusion:SfListView x:Name="listView"  ItemSize="100" ItemSpacing="0,5,0,5"
-                    AutoFitMode="Height" 
+                    AutoFitMode="Height"  SelectionMode="Single" SelectionChanged="listView_SelectionChanged"
                                         ItemTemplate="{StaticResource MonkeySelector}"  />
             
         </StackLayout>

@@ -39,7 +39,7 @@ namespace ArticlesApp.Views
         {
             ArticleWithPicture article = (ArticleWithPicture)articles.SelectedItem;
             
-            Page page= new ShowArticle(article,articles);
+            Page page= new ShowArticle(article);
             Navigation.PushAsync(page);
             // articles.SelectedItem = null;
            

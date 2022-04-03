@@ -44,19 +44,19 @@ namespace ArticlesApp.Views
             if(obj is ArticleWithPicture )
             {
                 var arti = obj as ArticleWithPicture;
-                if (arti.Article.ArticleName.ToLower().Contains(searchBar.Text.ToLower()))
+                if (arti.Article.ArticleName.ToLower().StartsWith(searchBar.Text.ToLower()))
                     return true;
             }
             if(obj is UserWithPicture)
             {
                 var arti = obj as UserWithPicture;
-                if (arti.User.UserName.ToLower().Contains(searchBar.Text.ToLower()))
+                if (arti.User.UserName.ToLower().StartsWith(searchBar.Text.ToLower()))
                     return true;
             }
             if (obj is Interest)
             {
                 var arti = obj as Interest;
-                if (arti.InterestName.ToLower().Contains(searchBar.Text.ToLower()))
+                if (arti.InterestName.ToLower().StartsWith(searchBar.Text.ToLower()))
                     return true;
             }
             return false;
@@ -66,6 +66,19 @@ namespace ArticlesApp.Views
             //    return true;
             //else
             //    return false;
+        }
+
+        private void listView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            List<object> list = e.AddedItems.ToList<object>();
+            object obj = list[0];
+            if(obj is ArticleWithPicture)
+            {
+                var arti = obj as ArticleWithPicture;
+                ShowArticle page = new ShowArticle(arti);
+                Navigation.PushAsync(page);
+            }
+
         }
     }
 }

@@ -6,7 +6,7 @@
              xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
              NavigationPage.HasNavigationBar="False"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:loc="clr-namespace:ArticlesApp">
+             >
 
     <StackLayout>
         <xct:TabView
@@ -42,7 +42,7 @@
                 TextColorSelected="Black"
                 FontSize="36"
                 FontSizeSelected="36">
-                <loc:Page1/>
+                <local:FavoriteArticle/>
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="{x:Static fontawesome:FontIconClass.Account}" 
@@ -51,7 +51,7 @@
                 FontSize="36"
                 FontSizeSelected="36"
                >
-                <loc:Page1/>
+                <local:MyProfilePage/>
             </xct:TabViewItem>
         </xct:TabView>
     </StackLayout>

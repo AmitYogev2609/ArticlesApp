@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArticlesApp.Views.FavoriteArticle"
+             BackgroundColor="White">
+    <ContentView.Content>
+        <StackLayout Padding="20,15,17,0" Spacing="7">
+            <StackLayout>
+                <Label Text="Your Favorite Article" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

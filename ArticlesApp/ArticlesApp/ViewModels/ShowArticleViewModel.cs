@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using ArticlesApp.Models;
+using ArticlesApp.Services;
+
 namespace ArticlesApp.ViewModels
 {
     public class ShowArticleViewModel
@@ -25,6 +27,12 @@ namespace ArticlesApp.ViewModels
                 str += $" {item.User.UserName},";
             }
             return str;
+        }
+        public async void uptadeFavoriteArticle()
+        {
+            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+            ((App)App.Current).User = await proxy.UptadeFavoriteArticle(Article);
+            
         }
     }
 }
