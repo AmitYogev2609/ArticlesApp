@@ -33,5 +33,11 @@ namespace ArticlesApp.ViewModels
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
             ((App)App.Current).User = await proxy.UptadeFavoriteArticle(Article);
         }
+        public async void RemoveFavoriteArticle()
+        {
+            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+            ((App)App.Current).User = await proxy.RemoveFavoriteArticle(Article);
+            
+        }
     }
 }

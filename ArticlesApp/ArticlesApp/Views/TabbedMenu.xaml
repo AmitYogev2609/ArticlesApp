@@ -5,7 +5,7 @@
              x:Class="ArticlesApp.Views.TabbedMenu"
              xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
              NavigationPage.HasNavigationBar="False"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
              >
 
     <StackLayout>

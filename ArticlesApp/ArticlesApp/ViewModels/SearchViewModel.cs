@@ -16,22 +16,7 @@ using System.Windows.Input;
 using System.Security.Cryptography;
 namespace ArticlesApp.ViewModels
 {
-    public class UserWithPicture
-    {
-        public User User { get; set; }
-        public string PhotoUrl { get; set; }
-        public string FulllName { get; set; }
-        public UserWithPicture(User user)
-        {
-            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
-            PhotoUrl = $"{proxy.GetBasePhotoUri()}ArticleImage/{user.UserId}.jpg";
-            //  Article = article;
-            FulllName = user.FirstName + user.LastName;
-            User = user;
-          
-        }
-        
-    }
+    
     class SearchViewModel
     {
         public ObservableCollection<object> searchResult { get; set; }

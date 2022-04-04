@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+            xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+           xmlns:xctEffect="clr-namespace:Xamarin.CommunityToolkit.Effects;assembly=Xamarin.CommunityToolkit"
          x:Class="ArticlesApp.Views.AddImagePopUp"
              xmlns:Icons="clr-namespace:ArticlesApp.Fonts"
              VerticalOptions="End" Size="400,120">
 
     <StackLayout Orientation="Horizontal">
         <Button Grid.Row="2" Command="{Binding ImageFromCameraCommand}"  Clicked="PickImage" BackgroundColor="#2934D0" CornerRadius="33" HeightRequest="66" WidthRequest="66" Text="{x:Static Icons:FontIconClass.Camera}"
-         xct:ShadowEffect.Color="#2934D0" xct:TouchEffect.AnimationDuration="50" xct:TouchEffect.PressedScale="1.1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"  FontFamily="MyIcon" FontSize="35" TextColor="White" />
+         xctEffect:ShadowEffect.Color="#2934D0" xctEffect:TouchEffect.AnimationDuration="50" xctEffect:TouchEffect.PressedScale="1.1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"  FontFamily="MyIcon" FontSize="35" TextColor="White" />
         <Button Grid.Row="2" Command="{Binding PickImageFromDeviceCommand}" Clicked="PickImage" BackgroundColor="#2934D0" CornerRadius="33" HeightRequest="66" WidthRequest="66" Text="{x:Static Icons:FontIconClass.Image}"
-         xct:ShadowEffect.Color="#2934D0" xct:TouchEffect.AnimationDuration="50" xct:TouchEffect.PressedScale="1.1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontFamily="MyIcon" FontSize="35" TextColor="White"/>
+         xctEffect:ShadowEffect.Color="#2934D0" xctEffect:TouchEffect.AnimationDuration="50" xctEffect:TouchEffect.PressedScale="1.1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontFamily="MyIcon" FontSize="35" TextColor="White"/>
     </StackLayout>
 
 </xct:Popup>

@@ -63,19 +63,21 @@ namespace ArticlesApp.Views
 
         private void star_Clicked(object sender, EventArgs e)
         {
-            if(star.Text!= FontIconClass.Star)
+            ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
+            if (star.Text!= FontIconClass.Star)
             { 
                 star.Text = FontIconClass.Star;
                 star.TextColor= Color.Gold;
-                ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
                 context.uptadeFavoriteArticle();
             }
             else
             {
                 star.Text = FontIconClass.StarOutline;
                 star.TextColor = Color.Black;
+                context.RemoveFavoriteArticle();
+                
             }
-            
+
         }
     }
 }

@@ -400,6 +400,38 @@ namespace ArticlesApp.Services
                 return null;
             }
         }
+        public async Task<User> RemoveFavoriteArticle(Article article)
+        {
+
+            try
+            {
+
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.Hebrew, UnicodeRanges.BasicLatin),
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize<Article>(article, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/RemoveFavoriteArticle", content);
+
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string Responescontent = await response.Content.ReadAsStringAsync();
+                    User user = JsonSerializer.Deserialize<User>(Responescontent, options);
+                    return user;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        
         public async Task<string> GetPasswordResetCode(string email)
         {
             return null;

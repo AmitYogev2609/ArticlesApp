@@ -15,29 +15,7 @@ using Xamarin.Essentials;
 using System.Windows.Input;
 namespace ArticlesApp.ViewModels
 {
-    public class ArticleWithPicture
-    {
-        public Article Article { get; set; }
-        public string PhotoUrl { get; set; }
-        public string date { get=>Article.PublishDate.ToShortDateString();  }
-        public string athours { get; set; }
-        public ArticleWithPicture(Article article)
-        {
-            ArticlesAPIProxy proxy= ArticlesAPIProxy.CreateProxy();
-            PhotoUrl  = $"{proxy.GetBasePhotoUri()}ArticleImage/{article.ArticleId}.jpg";
-            Article= article;
-            athours = getAthours(article);
-        }
-        private string getAthours(Article article)
-        {
-            string str= "by:";
-            foreach (var item in Article.AuthorsArticles)
-            {
-                str += $" {item.User.UserName},";
-            }
-            return str;
-        }
-    }
+    
     public class MainPageViewModel:INotifyPropertyChanged
     {
         #region INotifyPropertyChanged

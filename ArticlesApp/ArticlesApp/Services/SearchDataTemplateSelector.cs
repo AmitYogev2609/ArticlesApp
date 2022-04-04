@@ -7,7 +7,7 @@ using ArticlesApp.Models;
 using ArticlesApp.ViewModels;
 namespace ArticlesApp.Services
 {
-    class SearchDataTemplateSelector:DataTemplateSelector
+   public class SearchDataTemplateSelector:DataTemplateSelector
     {
         public DataTemplate ArticleDataTemp { get; set; }
         public DataTemplate UserDataTemp { get; set; }

@@ -18,5 +18,15 @@ namespace ArticlesApp.ViewModels
 {
     class FavoriteArticleViewModel
     {
+        ObservableCollection<ArticleWithPicture> Articles;
+        public FavoriteArticleViewModel()
+        {
+            Articles = new ObservableCollection<ArticleWithPicture>();
+            User user = ((App)App.Current).User;
+            foreach (var item in user.FavoriteArticles)
+            {
+                Articles.Add(new ArticleWithPicture(item.Article));
+            }
+        }
     }
 }
