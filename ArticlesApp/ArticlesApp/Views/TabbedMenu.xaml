@@ -39,10 +39,13 @@
             <xct:TabViewItem
                 Text="{x:Static fontawesome:FontIconClass.Star}" 
                 FontFamily="MyIcon"
-                TextColorSelected="Black"
+                TextColorSelected="Yellow"
                 FontSize="36"
-                FontSizeSelected="36">
+                FontSizeSelected="36"
+                x:Name="FavoriteArticleTab"
+                TabTapped="TabViewItem_TabTapped">
                 <local:FavoriteArticle/>
+                
             </xct:TabViewItem>
             <xct:TabViewItem
                 Text="{x:Static fontawesome:FontIconClass.Account}" 

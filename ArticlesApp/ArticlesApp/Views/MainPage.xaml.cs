@@ -38,9 +38,13 @@ namespace ArticlesApp.Views
         private void articles_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ArticleWithPicture article = (ArticleWithPicture)articles.SelectedItem;
+            if (article != null)
+            {
+                Page page = new ShowArticle(article);
+                articles.SelectedItem = null;
+                Navigation.PushAsync(page);
+            }
             
-            Page page= new ShowArticle(article);
-            Navigation.PushAsync(page);
             // articles.SelectedItem = null;
            
         }

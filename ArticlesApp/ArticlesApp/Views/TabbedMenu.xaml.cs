@@ -26,7 +26,18 @@ namespace ArticlesApp.Views
             base.OnAppearing();
           
         }
-       
 
+        private void TabViewItem_TabTapped(object sender, Xamarin.CommunityToolkit.UI.Views.TabTappedEventArgs e)
+        {
+           FavoriteArticleViewModel context=(FavoriteArticleViewModel) FavoriteArticleTab.CurrentContent.BindingContext;
+            context.Articles.Clear();
+            User user = ((App)App.Current).User;
+            foreach (var item in user.FavoriteArticles)
+            {
+                context.Articles.Add(new ArticleWithPicture(item.Article));
+            }
+        }
+
+       
     }
 }
