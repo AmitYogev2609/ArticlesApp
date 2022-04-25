@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArticlesApp.Views.FavoriteArticle"
              BackgroundColor="White"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             >
     <ContentView.Resources>
         <Style TargetType="yummy:PancakeView">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -26,19 +27,21 @@
             
                 <Label Text="Your Favorite Articles" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto" Padding="0,0,0,15"/>
            
-            <CollectionView SelectionChanged="colview_SelectionChanged" SelectionMode="Single" x:Name="colview"  Margin="-12,0,-12,0" ItemsSource="{Binding Articles}" > 
+            <CollectionView SelectionChanged="colview_SelectionChanged" SelectionMode="Single" x:Name="colview"  Margin="-10,0,-10,0" ItemsSource="{Binding Articles}" > 
                
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout  Orientation="Vertical"
                         Span="2"
-                        VerticalItemSpacing="20" HorizontalItemSpacing="12" />
-                        
-                                   
+                        VerticalItemSpacing="20" HorizontalItemSpacing="17" 
+                                      />
+
+
+
                 </CollectionView.ItemsLayout>
               
                 <CollectionView.ItemTemplate>
                 <DataTemplate>
-                     <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" WidthRequest="100" HeightRequest="200">
+                     <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}"  HeightRequest="220">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />

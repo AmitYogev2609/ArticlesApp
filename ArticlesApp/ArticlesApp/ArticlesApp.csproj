@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="FreeSpire.PDF" Version="8.2.0" />
+    <PackageReference Include="Sharpnado.CollectionView" Version="2.1.0" />
     <PackageReference Include="SkiaSharp" Version="2.88.0-preview.187" />
     <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.47" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="20.1.0.47" />

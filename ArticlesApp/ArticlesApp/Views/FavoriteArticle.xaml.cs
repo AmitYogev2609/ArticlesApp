@@ -17,6 +17,7 @@ namespace ArticlesApp.Views
         {
             this.BindingContext = new FavoriteArticleViewModel(); 
             InitializeComponent();
+            
         }
 
         private void colview_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -24,7 +25,7 @@ namespace ArticlesApp.Views
             ArticleWithPicture articleWithPicture = (ArticleWithPicture)colview.SelectedItem;
             if (articleWithPicture != null)
             {
-                Page page = new ShowArticle(articleWithPicture);
+                Page page = new ShowArticle(articleWithPicture,colview);
                 colview.SelectedItem = null;
                 Navigation.PushAsync(page);
             }
