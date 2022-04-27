@@ -13,10 +13,17 @@ namespace ArticlesApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FavoriteArticle : ContentView
     {
+        public double PageWidth { get; set; }
         public FavoriteArticle()
         {
-            this.BindingContext = new FavoriteArticleViewModel(); 
+            
+            PageWidth = App.Current.MainPage.Width-60;
+            PageWidth = PageWidth / 2;
+            FavoriteArticleViewModel vm = new FavoriteArticleViewModel();
+            vm.PageWidth = PageWidth;
+            this.BindingContext = vm;
             InitializeComponent();
+            
             
         }
 

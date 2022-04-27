@@ -29,5 +29,7 @@ namespace ArticlesApp.ViewModels
                 Articles.Add(new ArticleWithPicture(item.Article));
             }
         }
+
+        public double PageWidth { get; set; }
     }
 }

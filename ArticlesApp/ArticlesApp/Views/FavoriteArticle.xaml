@@ -4,7 +4,7 @@
              x:Class="ArticlesApp.Views.FavoriteArticle"
              BackgroundColor="White"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             >
+             x:Name="favoriteArticlePage" >
     <ContentView.Resources>
         <Style TargetType="yummy:PancakeView">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -23,7 +23,7 @@
         </Style>
     </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout Padding="20,15,17,0" Spacing="7">
+        <StackLayout Padding="20,15,20,0" Spacing="7">
             
                 <Label Text="Your Favorite Articles" TextColor="#12121D" FontSize="25" FontAttributes="Bold" FontFamily="Roboto" Padding="0,0,0,15"/>
            
@@ -32,7 +32,7 @@
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout  Orientation="Vertical"
                         Span="2"
-                        VerticalItemSpacing="20" HorizontalItemSpacing="17" 
+                        VerticalItemSpacing="20" HorizontalItemSpacing="20" 
                                       />
 
 
@@ -41,7 +41,7 @@
               
                 <CollectionView.ItemTemplate>
                 <DataTemplate>
-                     <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}"  HeightRequest="220">
+                        <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" WidthRequest="{Binding Source={x:Reference colview},Path=BindingContext.PageWidth}" HeightRequest="220">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
