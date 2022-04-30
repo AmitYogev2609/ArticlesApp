@@ -78,6 +78,12 @@ namespace ArticlesApp.Views
                 ShowArticle page = new ShowArticle(arti);
                 Navigation.PushAsync(page);
             }
+            if(obj is Interest)
+            {
+                var interest = obj as Interest;
+                ViewInterest page= new ViewInterest(interest);
+                Navigation.PushAsync(page);
+            }
 
         }
     }

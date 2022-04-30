@@ -20,7 +20,7 @@ namespace ArticlesApp.ViewModels
     {
         public ObservableCollection<ArticleWithPicture> Articles { get; set; }
         public Color diviedColor { get => new Color(196, 196, 196, 0.29); }
-        public FavoriteArticleViewModel()
+        public FavoriteArticleViewModel( )
         {
             Articles = new ObservableCollection<ArticleWithPicture>();
             User user = ((App)App.Current).User;

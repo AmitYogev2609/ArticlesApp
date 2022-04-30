@@ -21,6 +21,7 @@ namespace ArticlesApp.ViewModels
         public string PhotoUrl { get; set; }
         public string date { get => Article.PublishDate.ToShortDateString(); }
         public string athours { get; set; }
+       
         public ArticleWithPicture(Article article)
         {
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();

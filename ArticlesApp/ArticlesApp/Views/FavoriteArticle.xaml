@@ -41,8 +41,8 @@
               
                 <CollectionView.ItemTemplate>
                 <DataTemplate>
-                        <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" WidthRequest="{Binding Source={x:Reference colview},Path=BindingContext.PageWidth}" HeightRequest="220">
-                            <Grid>
+                        <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" WidthRequest="{Binding with}"  HeightRequest="220">
+                            <Grid WidthRequest="{Binding with}" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />

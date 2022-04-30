@@ -34,13 +34,13 @@
     <PackageReference Include="FreeSpire.PDF" Version="8.2.0" />
     <PackageReference Include="Sharpnado.CollectionView" Version="2.1.0" />
     <PackageReference Include="SkiaSharp" Version="2.88.0-preview.187" />
-    <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="20.1.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="20.1.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.SfImageEditor" Version="20.1.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="20.1.0.47" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRichTextEditor" Version="20.1.0.47" />
-    <PackageReference Include="System.Text.Json" Version="6.0.2" />
+    <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="20.1.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="20.1.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfImageEditor" Version="20.1.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="20.1.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRichTextEditor" Version="20.1.0.51" />
+    <PackageReference Include="System.Text.Json" Version="6.0.3" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.1" />
     <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="2.0.1" />
@@ -50,7 +50,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
     <PackageReference Include="XamlCSS" Version="2.2.1-pre2" />
     <PackageReference Include="XamlCSS.XamarinForms" Version="2.2.1-pre2" />
@@ -131,6 +131,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UploadFile.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ViewInterest.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="WebViewTest.xaml">
