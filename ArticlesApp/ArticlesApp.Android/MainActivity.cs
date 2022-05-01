@@ -4,9 +4,32 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Xamarin.Forms.Platform.Android;
+using Android.Content;
+using Xamarin.Forms;
 
 namespace ArticlesApp.Droid
 {
+    public class CustomWebViewRenderer : WebViewRenderer
+    {
+        public CustomWebViewRenderer(Context context) : base(context)
+        {
+            //_context = context;
+        }
+        protected override void OnElementChanged(ElementChangedEventArgs<WebView> e)
+        {
+            base.OnElementChanged(e);
+
+            if (Control != null)
+            {
+                Control.Settings.BuiltInZoomControls = true;
+                Control.Settings.DisplayZoomControls = false;
+
+                Control.Settings.LoadWithOverviewMode = true;
+                Control.Settings.UseWideViewPort = true;
+            }
+        }
+    }
     [Activity(Label = "ArticlesApp", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

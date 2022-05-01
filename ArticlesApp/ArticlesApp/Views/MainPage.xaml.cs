@@ -40,7 +40,8 @@ namespace ArticlesApp.Views
             ArticleWithPicture article = (ArticleWithPicture)articles.SelectedItem;
             if (article != null)
             {
-                Page page = new ShowArticle(article);
+                //Page page = new ShowArticle(article);
+                Page page = new TestHtml(article.Article);
                 articles.SelectedItem = null;
                 Navigation.PushAsync(page);
             }

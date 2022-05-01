@@ -17,7 +17,7 @@ namespace ArticlesApp.Views
         public FavoriteArticle()
         {
             
-            PageWidth = App.Current.MainPage.Width-60;
+            PageWidth = App.Current.MainPage.Width-40;
             PageWidth = PageWidth / 2;
             FavoriteArticleViewModel vm = new FavoriteArticleViewModel();
             vm.PageWidth = PageWidth;

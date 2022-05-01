@@ -32,7 +32,7 @@
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout  Orientation="Vertical"
                         Span="2"
-                        VerticalItemSpacing="20" HorizontalItemSpacing="20" 
+                        VerticalItemSpacing="20" HorizontalItemSpacing="0" 
                                       />
 
 
@@ -41,8 +41,9 @@
               
                 <CollectionView.ItemTemplate>
                 <DataTemplate>
-                        <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" WidthRequest="{Binding with}"  HeightRequest="220">
-                            <Grid WidthRequest="{Binding with}" >
+                        <StackLayout Padding="10,0,10,0">
+                        <yummy:PancakeView Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" WidthRequest="{Binding Source={x:Reference colview},Path=BindingContext.PageWidth}"  HeightRequest="220" Margin="0,0,0,0" Padding="0,0,0,0">
+                            <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
@@ -52,7 +53,7 @@
                                     <RowDefinition Height="60*" />
                                     <RowDefinition Height="15*" />
                                     <RowDefinition Height="10*" />
-                                    
+
                                 </Grid.RowDefinitions>
                                 <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Article.ArticleName}" Grid.Row="0" Grid.ColumnSpan="2" TextColor="#12121D" FontSize="20" FontAttributes="Bold" FontFamily="Roboto"/>
                                 <Image HorizontalOptions="Center"  Source="{Binding PhotoUrl, Converter={StaticResource ImageSourceConverter}}" Grid.Row="1" Grid.ColumnSpan="2"/>
@@ -60,8 +61,8 @@
                                 <Label  Grid.Row="3" Grid.Column="0" Text="{Binding athours}"/>
                                 <Label  Grid.Row="3" Grid.Column="1" Text="{Binding date}"/>
                             </Grid>
-                        </yummy:PancakeView> 
-                       
+                        </yummy:PancakeView>
+                        </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
