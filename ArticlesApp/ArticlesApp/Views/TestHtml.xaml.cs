@@ -16,24 +16,32 @@ namespace ArticlesApp.Views
         public TestHtml(Article article)
         {
             InitializeComponent();
-            html.Text = "<style>\n</style>";
+            
             htmlText = article.HtmlText;
             HtmlWebViewSource hmlsource = new HtmlWebViewSource();
+            htmlText = ConvertHtml(htmlText);
             hmlsource.Html = htmlText;
             webview.Source = hmlsource;
         }
+        public static string ConvertHtml(string html)
+        {
+            //Manipulate html
+            int widthStartIndex = html.IndexOf("width=\"");
+            int heightStartIndex = html.IndexOf("height=\"");
+            int widthEndIndex = html.IndexOf("\"", widthStartIndex + 7);
+            int heightEndIndex = html.IndexOf("\"", heightStartIndex + 8);
+            string width = html.Substring(widthStartIndex + 7, widthEndIndex - widthStartIndex - 7);
+            string height = html.Substring(heightStartIndex + 8, heightEndIndex - heightStartIndex - 8);
+            int continueIndex = html.IndexOf(">", heightEndIndex);
 
+            string newHtml = html.Substring(0, widthStartIndex - 1);
+            newHtml += $" width=\"100%\" height=\"{height}\" viewBox=\"0 0 {width} {height}\" preserveaspectration=\"xMidYMid meet\"";
+            newHtml += html.Substring(continueIndex);
+            return newHtml;
+        }
         private void btn_Clicked(object sender, EventArgs e)
         {
-            HtmlWebViewSource hmlsource = new HtmlWebViewSource();
-            string newHtml = htmlText;
-            newHtml = newHtml.Replace("width=\"816\"", "width=\"100%\"");
-            newHtml = newHtml.Replace("height=\"1056\"", "height=\"100%\"");
-            newHtml = newHtml.Replace("<head>", "<head>" + html.Text);
-            newHtml = newHtml.Replace("<head>", "<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale =1\">");
-            
-            hmlsource.Html = newHtml;
-            webview.Source = hmlsource;
+          
         }
     }
 }

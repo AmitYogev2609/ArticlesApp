@@ -35,7 +35,7 @@ namespace ArticlesApp.Views
             {
                 //htmlText = htmlText.Replace("<html>", $"<html width =\"100%\">");
                 //htmlText = htmlText.Replace("<body>", $"<body width =\"100%\">");
-                htmlText = htmlText.Replace("<head>", "<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale =1\">");
+                htmlText = ConvertHtml(htmlText);
                 hmlsource.Html = htmlText;
             }
             webview.Source = hmlsource;
@@ -75,7 +75,7 @@ namespace ArticlesApp.Views
             {
                 //htmlText = htmlText.Replace("<html>", $"<html width =\"100%\">");
                 //htmlText = htmlText.Replace("<body>", $"<body width =\"100%\">");
-                htmlText = htmlText.Replace("<head>", "<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale =1\">");
+                htmlText = ConvertHtml(htmlText);
                 hmlsource.Html = htmlText;
             }
             webview.Source = hmlsource;
@@ -102,8 +102,26 @@ namespace ArticlesApp.Views
             
             
         }
+        public static string ConvertHtml(string html)
+        {
+            //Manipulate html
+            int widthStartIndex = html.IndexOf("width=\"");
+            int heightStartIndex = html.IndexOf("height=\"");
+            int widthEndIndex = html.IndexOf("\"", widthStartIndex + 7);
+            int heightEndIndex = html.IndexOf("\"", heightStartIndex + 8);
+            string width = html.Substring(widthStartIndex + 7, widthEndIndex - widthStartIndex - 7);
+            string height = html.Substring(heightStartIndex + 8, heightEndIndex - heightStartIndex - 8);
+            int continueIndex = html.IndexOf(">", heightEndIndex);
 
-        private void star_Clicked(object sender, EventArgs e)
+            string newHtml = html.Substring(0, widthStartIndex - 1);
+            newHtml += $" width=\"100%\" height=\"{height}\" viewBox=\"0 0 {width} {height}\" preserveaspectration=\"xMidYMid meet\"";
+            newHtml += html.Substring(continueIndex);
+            return newHtml;
+        }
+
+    
+
+    private void star_Clicked(object sender, EventArgs e)
         {
             ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
             if (star.Text!= FontIconClass.Star)

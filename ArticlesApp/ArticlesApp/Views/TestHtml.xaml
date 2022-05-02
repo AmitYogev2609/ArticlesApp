@@ -1,21 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ArticlesApp.Views.TestHtml">
+             x:Class="ArticlesApp.Views.TestHtml"
+             NavigationPage.IconColor="Black">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="47*" />
-                <RowDefinition Height="47*" />
-                <RowDefinition Height="6*"/>
-            </Grid.RowDefinitions>
-            
+        <Frame>
 
-            <WebView x:Name="webview" Grid.Row="0"/>
-            <Editor x:Name="html" Grid.Row="1"/>
-            <Button x:Name="btn" Text="Reload" Clicked="btn_Clicked" Grid.Row="2"/>
-            
-        </Grid>
+            <WebView x:Name="webview"/>
+        </Frame>
+        
         
     </ContentPage.Content>
 </ContentPage>
