@@ -1,12 +1,88 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ArticlesApp.Views.MyProfilePage">
+             x:Class="ArticlesApp.Views.MyProfilePage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:local="clr-namespace:ArticlesApp.Renderer"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ffTransf="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
     <ContentView.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Spacing="0" Style="{DynamicResource MainBackgroundStyle}" Margin="0" >
+            <StackLayout Orientation="Horizontal" Padding="5,10,20,10" BackgroundColor="#2934D0">
+                <BoxView Color="#2934D0" HeightRequest="10" Margin="0" HorizontalOptions="StartAndExpand" />
+                <!-- <ffSvg:SvgCachedImage Source="icon_settings.svg" HeightRequest="24" WidthRequest="24" HorizontalOptions="End">
+                            <ff:CachedImage.Transformations>
+                                <ffTransf:TintTransformation HexColor="#623814" EnableSolidColor="True"/>
+                            </ff:CachedImage.Transformations>
+                            <ffSvg:SvgCachedImage.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SettingsCommand}" />
+                            </ffSvg:SvgCachedImage.GestureRecognizers>
+                        </ffSvg:SvgCachedImage> -->
+            </StackLayout>
+
+            <Frame Padding="0" HasShadow="False">
+                <RelativeLayout>
+                    <StackLayout Spacing="0" x:Name="svgStackView" HeightRequest="155"
+                                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+                        <ffSvg:SvgCachedImage Source="wave.svg" Margin="0" TranslationY="-1" Scale="1.01">
+                            <ff:CachedImage.Transformations>
+                                <ffTransf:TintTransformation HexColor="#2934D0" EnableSolidColor="true" />
+                            </ff:CachedImage.Transformations>
+                        </ffSvg:SvgCachedImage>
+                    </StackLayout>
+
+                    <ffSvg:SvgCachedImage Source="lock_black_24dp.svg" HeightRequest="26" WidthRequest="26"
+                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.81}"
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=-10}">
+                        <ff:CachedImage.Transformations>
+                            <ffTransf:TintTransformation HexColor="#623814" EnableSolidColor="True"/>
+                        </ff:CachedImage.Transformations>
+                        <ffSvg:SvgCachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                        </ffSvg:SvgCachedImage.GestureRecognizers>
+                    </ffSvg:SvgCachedImage>
+                    <ffSvg:SvgCachedImage Source="lock_black_24dp.svg" HeightRequest="26" WidthRequest="26"
+                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.88}"
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=-10}">
+                        <ff:CachedImage.Transformations>
+                            <ffTransf:TintTransformation HexColor="#623814" EnableSolidColor="True"/>
+                        </ff:CachedImage.Transformations>
+                        <ffSvg:SvgCachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                        </ffSvg:SvgCachedImage.GestureRecognizers>
+                    </ffSvg:SvgCachedImage>
+
+                    <controls:CircleImage x:Name="ProfilePictureImage" Source="me.png" WidthRequest="110" HeightRequest="110" 
+                                                  BorderColor="{DynamicResource primaryText}" BorderThickness="1"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.1}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height, Factor=0.2}" />
+
+                    <Label Text="Amit Yogev" TextColor="{DynamicResource primaryText}" LineBreakMode="TailTruncation"
+                        FontSize="24" x:Name="accountNameView"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePictureImage, Property=X}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" />
+
+                    <Label TextColor="{DynamicResource tertiaryText}" x:Name="usernameView" LineBreakMode="TailTruncation" FontSize="19"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=accountNameView, Property=X}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=accountNameView, Property=Y, Constant=32}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="@" />
+                                <Span Text="amit123" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <local:ButtonNoPadding Text="Edit Profile" FontAttributes="Bold" CornerRadius="11" HeightRequest="32" WidthRequest="108" Margin="0" FontSize="16" TextColor="White" Command="{Binding EditProfileCommand}"
+                                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.67}"
+                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=accountNameView, Property=Y, Constant=16}" BackgroundColor="#2934D0"/>
+
+
+                </RelativeLayout>
+            </Frame>
         </StackLayout>
     </ContentView.Content>
 </ContentView>
