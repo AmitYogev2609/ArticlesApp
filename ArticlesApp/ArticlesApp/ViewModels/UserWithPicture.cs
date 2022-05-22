@@ -21,6 +21,7 @@ namespace ArticlesApp.ViewModels
         public User User { get; set; }
         public string PhotoUrl { get; set; }
         public string FulllName { get; set; }
+        public string UserName { get; set; }
         public UserWithPicture(User user)
         {
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
@@ -28,6 +29,7 @@ namespace ArticlesApp.ViewModels
             //  Article = article;
             FulllName = user.FirstName + user.LastName;
             User = user;
+            UserName = user.UserName;
 
         }
 

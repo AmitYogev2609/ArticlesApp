@@ -32,8 +32,8 @@
                         </ffSvg:SvgCachedImage>
                     </StackLayout>
 
-                    <ffSvg:SvgCachedImage Source="lock_black_24dp.svg" HeightRequest="26" WidthRequest="26"
-                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.81}"
+                    <ffSvg:SvgCachedImage x:Name="mangeIcon" Source="manageAccount.svg" HeightRequest="26" WidthRequest="26"
+                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.8}"
                                 RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=-10}">
                         <ff:CachedImage.Transformations>
                             <ffTransf:TintTransformation HexColor="#623814" EnableSolidColor="True"/>
@@ -42,23 +42,23 @@
                             <TapGestureRecognizer Command="{Binding LogoutCommand}" />
                         </ffSvg:SvgCachedImage.GestureRecognizers>
                     </ffSvg:SvgCachedImage>
-                    <ffSvg:SvgCachedImage Source="lock_black_24dp.svg" HeightRequest="26" WidthRequest="26"
+                    <ffSvg:SvgCachedImage Source="logout.svg" HeightRequest="26" WidthRequest="26"
                                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.88}"
                                 RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=-10}">
                         <ff:CachedImage.Transformations>
                             <ffTransf:TintTransformation HexColor="#623814" EnableSolidColor="True"/>
                         </ff:CachedImage.Transformations>
                         <ffSvg:SvgCachedImage.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                            <TapGestureRecognizer Tapped="logOut"  />
                         </ffSvg:SvgCachedImage.GestureRecognizers>
                     </ffSvg:SvgCachedImage>
 
-                    <controls:CircleImage x:Name="ProfilePictureImage" Source="me.png" WidthRequest="110" HeightRequest="110" 
-                                                  BorderColor="{DynamicResource primaryText}" BorderThickness="1"
+                    <controls:CircleImage  x:Name="ProfilePictureImage" Source="{Binding User.PhotoUrl,Converter={StaticResource ImageSourceConverter}}" WidthRequest="110" HeightRequest="110" 
+                                                  BorderColor="Gray" BorderThickness="1"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.1}"
                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height, Factor=0.2}" />
 
-                    <Label Text="Amit Yogev" TextColor="{DynamicResource primaryText}" LineBreakMode="TailTruncation"
+                    <Label Text="{Binding User.FulllName}" TextColor="{DynamicResource primaryText}" LineBreakMode="TailTruncation"
                         FontSize="24" x:Name="accountNameView"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePictureImage, Property=X}"
                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height}"
@@ -71,7 +71,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="@" />
-                                <Span Text="amit123" />
+                                <Span Text="{Binding User.UserName}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -79,6 +79,10 @@
                     <local:ButtonNoPadding Text="Edit Profile" FontAttributes="Bold" CornerRadius="11" HeightRequest="32" WidthRequest="108" Margin="0" FontSize="16" TextColor="White" Command="{Binding EditProfileCommand}"
                                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.67}"
                                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=accountNameView, Property=Y, Constant=16}" BackgroundColor="#2934D0"/>
+                    <Grid  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.1}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height, Factor=0.2}">
+                        
+                    </Grid>
 
 
                 </RelativeLayout>
