@@ -79,9 +79,9 @@
                     <local:ButtonNoPadding Text="Edit Profile" FontAttributes="Bold" CornerRadius="11" HeightRequest="32" WidthRequest="108" Margin="0" FontSize="16" TextColor="White" Command="{Binding EditProfileCommand}"
                                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.67}"
                                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=accountNameView, Property=Y, Constant=16}" BackgroundColor="#2934D0"/>
-                    <Grid  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.1}"
-                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height, Factor=0.2}">
-                        
+                    <Grid  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.6}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height, Factor=0.4}">
+                        <Label Text="gbfdjgbjgb"/>
                     </Grid>
 
 
