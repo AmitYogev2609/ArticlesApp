@@ -23,7 +23,8 @@
                 TextColorSelected="Black"
                 FontSize="36"
                 FontSizeSelected="36"
-                x:Name="HomeTab">
+                x:Name="HomeTab"
+                TabTapped="HomeTab_TabTapped">
                 <local:MainPage/>
             </xct:TabViewItem>
 
@@ -33,7 +34,8 @@
                 TextColorSelected="Black"
                 FontSize="36"
                 x:Name="SearchTab"
-                FontSizeSelected="36">
+                FontSizeSelected="36"
+                >
                 <local:SearchPage/>
             </xct:TabViewItem>
             <xct:TabViewItem
@@ -53,7 +55,8 @@
                 TextColorSelected="Black"
                 FontSize="36"
                 FontSizeSelected="36"
-               >
+                x:Name="MyprofileTab"
+               TabTapped="MyprofileTab_TabTapped" >
                 <local:MyProfilePage/>
             </xct:TabViewItem>
         </xct:TabView>

@@ -51,7 +51,7 @@ namespace ArticlesApp.ViewModels
                 List<ArticleWithPicture> list = new List<ArticleWithPicture>();
                 foreach (var article in articles)
                 {
-                    list.Add(new ArticleWithPicture(article));
+                    list.Add(new ArticleWithPicture(article, ((App)App.Current).User));
                 }
                 
                 Articles = new ObservableCollection<ArticleWithPicture>(list.OrderByDescending(a => a.Article.ArticleId));

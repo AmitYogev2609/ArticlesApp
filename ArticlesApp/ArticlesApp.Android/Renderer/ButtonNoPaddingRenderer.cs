@@ -25,6 +25,8 @@ namespace ArticlesApp.Droid.CustomRenderers
             var view = (ButtonNoPadding)this.Element;
             var nativeButton = (global::Android.Widget.Button)this.Control;
             nativeButton.SetPadding((int)view.Padding.Left, (int)view.Padding.Top, (int)view.Padding.Right, (int)view.Padding.Bottom);
+            var button = this.Control;
+            button.SetAllCaps(false);
         }
     }
 }

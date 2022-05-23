@@ -22,18 +22,19 @@ namespace ArticlesApp.ViewModels
         public string date { get => Article.PublishDate.ToShortDateString(); }
         public string athours { get; set; }
        
-        public ArticleWithPicture(Article article)
+        public ArticleWithPicture(Article article,User user)
         {
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
             PhotoUrl = $"{proxy.GetBasePhotoUri()}ArticleImage/{article.ArticleId}.jpg";
             Article = article;
-            athours = getAthours(article);
+            athours = getAthours(article,user);
         }
-        private string getAthours(Article article)
+        private string getAthours(Article article,User user)
         {
             string str = "by:";
             foreach (var item in Article.AuthorsArticles)
             {
+                if(user.UserName!=item.User.UserName)
                 str += $" {item.User.UserName},";
             }
             return str;

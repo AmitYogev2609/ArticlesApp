@@ -25,7 +25,7 @@ namespace ArticlesApp.ViewModels
             searchResult = new ObservableCollection<object>();
             foreach (var item in ((App)App.Current).Articles)
             {
-                searchResult.Add( new ArticleWithPicture(item));
+                searchResult.Add( new ArticleWithPicture(item, ((App)App.Current).User));
             }
             foreach (var item in ((App)App.Current).Interests)
             {

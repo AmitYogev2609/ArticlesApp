@@ -70,21 +70,24 @@ namespace ArticlesApp.Views
 
         private void listView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            List<object> list = e.AddedItems.ToList<object>();
-            object obj = list[0];
-            if(obj is ArticleWithPicture)
-            {
-                var arti = obj as ArticleWithPicture;
-                ShowArticle page = new ShowArticle(arti);
-                Navigation.PushAsync(page);
-            }
-            if(obj is Interest)
-            {
-                var interest = obj as Interest;
-                ViewInterest page= new ViewInterest(interest);
-                Navigation.PushAsync(page);
-            }
 
+                List<object> list = e.AddedItems.ToList<object>();
+                object obj = list[0];
+                if (obj is ArticleWithPicture)
+                {
+                    var arti = obj as ArticleWithPicture;
+                    ShowArticle page = new ShowArticle(arti);
+                    Navigation.PushAsync(page);
+                }
+                if (obj is Interest)
+                {
+                    var interest = obj as Interest;
+                    ViewInterest page = new ViewInterest(interest.InterestId);
+                    Navigation.PushAsync(page);
+                }
+
+            listView.SelectedItem = null;
+            listView.SelectedItems.Clear();
         }
     }
 }

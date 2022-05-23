@@ -24,6 +24,7 @@ namespace ArticlesApp.ViewModels
             string str = "by:";
             foreach (var item in Article.AuthorsArticles)
             {
+               
                 str += $" {item.User.UserName},";
             }
             return str;

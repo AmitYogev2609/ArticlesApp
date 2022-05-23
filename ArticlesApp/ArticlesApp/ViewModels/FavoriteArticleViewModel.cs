@@ -26,7 +26,7 @@ namespace ArticlesApp.ViewModels
             User user = ((App)App.Current).User;
             foreach (var item in user.FavoriteArticles)
             {
-                Articles.Add(new ArticleWithPicture(item.Article));
+                Articles.Add(new ArticleWithPicture(item.Article,user));
             }
         }
 

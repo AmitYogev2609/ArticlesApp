@@ -15,8 +15,10 @@ namespace ArticlesApp.Views
     public partial class ShowArticle : ContentPage
     {
         public CollectionView collectionView;
+        
         public ShowArticle(ArticleWithPicture article)
         {
+            
             this.BindingContext= new ShowArticleViewModel(article.Article);
             InitializeComponent();
             ti.Text = article.Article.ArticleName;
