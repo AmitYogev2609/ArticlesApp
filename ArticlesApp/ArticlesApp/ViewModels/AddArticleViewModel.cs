@@ -258,6 +258,8 @@ namespace ArticlesApp.ViewModels
                     InterestId = item.InterestId
                 };
                 article.ArticleInterestTypes.Add(articleInterestType);
+                Interest interest = ((App)App.Current).Interests.Find(u=>u.InterestId==item.InterestId);
+                interest.ArticleInterestTypes.Add(articleInterestType);
             }
             foreach (var item in ChooseUser)
             {
@@ -267,10 +269,14 @@ namespace ArticlesApp.ViewModels
                 };
                 article.AuthorsArticles.Add(authorsArticle);
             }
+            if(ChooseUser.Any(u=>u.UserId!= ((App)App.Current).User.UserId))
+            { 
             AuthorsArticle authorsArticle1 = new AuthorsArticle()
             {
                 UserId = ((App)App.Current).User.UserId
             };
+                article.AuthorsArticles.Add(authorsArticle1);
+            }
             ArticlesApp.DTO.FileInfo file = new DTO.FileInfo()
             {
                 Name = imageFileResult.FullPath
@@ -278,12 +284,53 @@ namespace ArticlesApp.ViewModels
             bool succes = await Proxy.UploadArticle(article, file);
             if(succes)
             {
+                bool num= await getUptadetData();
                 finish?.Invoke();
             }
         }
         public Action finish;
 
+        public async Task<bool> getUptadetData()
+        {
 
+            try
+            {
+                List<Interest> list = new List<Interest>();
+                ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+                list = await proxy.GetInterests();
+                ((App)App.Current).Interests = list;
+                
+                try
+                {
+                    foreach (Interest interest in list)
+                        foreach (ArticleInterestType type in interest.ArticleInterestTypes)
+                        {
+                            if (!((App)App.Current).Articles.Contains(type.Article))
+                                ((App)App.Current).Articles.Add(type.Article);
+
+                        }
+                    foreach (Interest interest1 in list)
+                        foreach (FollwedInterest follwed in interest1.FollwedInterests)
+                        {
+                            if (!((App)App.Current).Users.Contains(follwed.User))
+                                ((App)App.Current).Users.Add(follwed.User);
+
+                        }
+                    ((App)App.Current).User = await proxy.LogInWithoutSession(((App)App.Current).User.Email, ((App)App.Current).User.Pswd);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return false;
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
 
     }
 

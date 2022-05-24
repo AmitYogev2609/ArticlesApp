@@ -10,6 +10,7 @@ using System.Windows.Input;
 using ArticlesApp.Services;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Linq;
 namespace ArticlesApp.ViewModels
 {
     public class ViewInterestViewModel: INotifyPropertyChanged
@@ -60,6 +61,7 @@ namespace ArticlesApp.ViewModels
                 if (!articles1.Contains(item.Article))
                     articles1.Add(item.Article);
             }
+           articles1= articles1.OrderByDescending(a => a.ArticleId).ToList<Article>();
             articles = new ObservableCollection<ArticleWithPicture>();
             foreach (var item in articles1)
             {
@@ -83,7 +85,7 @@ namespace ArticlesApp.ViewModels
                 ButtonTextColor = Color.White;
                 ButtonText = "follow";
             }
-
+            List<ArticleWithPicture> articleWithPictures = new List<ArticleWithPicture>();
         }
         public ICommand ButtonPress => new Command(buttonPress);
         public async void buttonPress()

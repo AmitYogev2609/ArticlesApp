@@ -85,8 +85,11 @@ namespace ArticlesApp.Views
                 {
                     list.Add(new ArticleWithPicture(article, ((App)App.Current).User));
                 }
-
-                context.Articles = new ObservableCollection<ArticleWithPicture>(list.OrderByDescending(a => a.Article.ArticleId));
+                List<ArticleWithPicture> sortedList = list.OrderByDescending(a => a.Article.ArticleId).ToList<ArticleWithPicture>();
+                foreach(var article in sortedList)
+                {
+                    context.Articles.Add(article);
+                }
             }
             else
                 context.Articles = new ObservableCollection<ArticleWithPicture>();

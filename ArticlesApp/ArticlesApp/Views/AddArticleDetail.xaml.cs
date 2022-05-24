@@ -25,47 +25,64 @@ namespace ArticlesApp.Views
             InitializeComponent();
             interstComboBox.DataSource = ((App)App.Current).Interests;
             interstComboBox.DisplayMemberPath = "InterestName";
-            UserComboBox.DataSource = ((App)App.Current).Users;
+            UserComboBox.DataSource = ((App)App.Current).Users;                
             UserComboBox.DisplayMemberPath = "UserName";
             
            
         }
         public void NavigateToPage()
         {
-            List<int> indecies = new List<int>();
-            foreach (int val in (IEnumerable<int>)interstComboBox.SelectedIndices)
-                indecies.Add(val);
-            //List<int> indecies = (List<int>)interstComboBox.SelectedIndices;
             AddArticleViewModel context = (AddArticleViewModel)this.BindingContext;
+            //extract interest
+            List<int> indecies = new List<int>();
+            if((IEnumerable<int>)interstComboBox.SelectedIndices==null)
+            {
+                interstComboBox.Watermark= "must Pick at least on intrest";
+                interstComboBox.BorderColor = Color.Red;
+                return;
+            }
+            foreach (int val in (IEnumerable<int>)interstComboBox.SelectedIndices)
+            { 
+                indecies.Add(val);
+            }
+            if (indecies.Count==0)
+            {
+                interstComboBox.Watermark = "must Pick at least on intrest";
+                interstComboBox.BorderColor = Color.Red;
+
+                return;
+            }
             IEnumerable<Interest> lst =(IEnumerable<Interest>) interstComboBox.DataSource;
             foreach (var item in indecies)
             {
                 context.ChooseIntrest.Add(lst.ToList<Interest>()[item]);
             }
             indecies.Clear();
-            foreach (int val in (IEnumerable<int>)UserComboBox.SelectedIndices)
-                indecies.Add(val);
-            //indecies = (List<int>)UserComboBox.SelectedIndices;
+            //extract users
             IEnumerable<User> lst1 = (IEnumerable<User>)UserComboBox.DataSource;
-            foreach (var item in indecies)
-            {
-                context.ChooseUser.Add(lst1.ToList<User>()[item]);
+            if((IEnumerable<int>)UserComboBox.SelectedIndices!=null)
+            { 
+                foreach (int val in (IEnumerable<int>)UserComboBox.SelectedIndices)
+                {
+                    indecies.Add(val);
+                }
+                foreach (var item in indecies)
+                {
+                    context.ChooseUser.Add(lst1.ToList<User>()[item]);
+                }
             }
-          
-           if(title.Text==null||title.Text=="")
-           {
+            
+            if (title.Text==null||title.Text=="")
+            {
                 pan.Border.Color = Color.Red;
                 return;
-           }
+            }
             if(editor.Text==null||editor.Text=="")
             {
                 editor.Text = "man field";
                 return;
             }
-            if(context.ChooseIntrest.Count==0||context.ChooseUser.Count==0)
-            {
-                return;
-            }
+           
             Page page = new AddImageArticle((AddArticleViewModel)this.BindingContext);
             //List<Interest> intr=interests.ToList<Interest>();
             Navigation.PushAsync(page);
