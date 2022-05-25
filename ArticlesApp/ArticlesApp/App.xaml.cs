@@ -57,13 +57,7 @@ namespace ArticlesApp
                                 ((App)App.Current).Articles.Add(type.Article);
 
                         }
-                    foreach (Interest interest1 in list)
-                        foreach (FollwedInterest follwed in interest1.FollwedInterests)
-                        {
-                            if (!((App)App.Current).Users.Contains(follwed.User))
-                                ((App)App.Current).Users.Add(follwed.User);
-
-                        }
+                    ((App)App.Current).Users = users;
                 }
                 catch (Exception e)
                 {

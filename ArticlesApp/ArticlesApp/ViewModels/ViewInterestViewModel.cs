@@ -95,9 +95,9 @@ namespace ArticlesApp.ViewModels
             //remove
             Interest interest = ((App)App.Current).Interests.Find(u => u.InterestId == this.Interest.InterestId);
             FollwedInterest fu=null;
-            foreach (var item in interest.FollwedInterests)
+            foreach (var item in user.FollwedInterests)
             {
-                if (item.InterestId == interest.InterestId && item.UserId == user.UserId)
+                if (item.InterestId == interest.InterestId )
                     fu = item;
             }
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();

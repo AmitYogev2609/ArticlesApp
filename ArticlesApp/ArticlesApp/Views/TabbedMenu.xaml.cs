@@ -50,10 +50,10 @@ namespace ArticlesApp.Views
 
             User user = ((App)App.Current).User;
             context.User=new UserWithPicture(user);
-            context.userIntrest = new ObservableCollection<FollwedInterest>(user.FollwedInterests);
-            context.followedUsers = new ObservableCollection<Followeduser>(user.FolloweduserFollowings);
-            context.follwedBy = new ObservableCollection<Followeduser>(user.FolloweduserUsers);
-            context.articles = new ObservableCollection<ArticleWithPicture>();
+            context.articles.Clear();
+            //context.userIntrest = new ObservableCollection<FollwedInterest>(user.FollwedInterests);
+            //context.followedUsers = new ObservableCollection<Followeduser>(user.FolloweduserFollowings);
+            //context.follwedBy = new ObservableCollection<Followeduser>(user.FolloweduserUsers);
             foreach (var item in user.AuthorsArticles)
             {
                 context.articles.Add(new ArticleWithPicture(item.Article,user));

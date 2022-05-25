@@ -269,7 +269,7 @@ namespace ArticlesApp.ViewModels
                 };
                 article.AuthorsArticles.Add(authorsArticle);
             }
-            if(ChooseUser.Any(u=>u.UserId!= ((App)App.Current).User.UserId))
+            if(ChooseUser.Any(u=>u.UserId!= ((App)App.Current).User.UserId)||ChooseUser.Count==0)
             { 
             AuthorsArticle authorsArticle1 = new AuthorsArticle()
             {

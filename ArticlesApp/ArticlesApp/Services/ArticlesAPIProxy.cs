@@ -14,6 +14,7 @@ using Xamarin.Essentials;
 using System.IO;
 using ArticlesApp.DTO;
 using System.Net.Http.Headers;
+using System.Net;
 
 namespace ArticlesApp.Services
 {
@@ -199,6 +200,7 @@ namespace ArticlesApp.Services
              
             try
             {
+                
                 HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetInterests");
                 if(response.IsSuccessStatusCode)
                 {

@@ -32,11 +32,11 @@ namespace ArticlesApp.ViewModels
         private string getAthours(Article article,User user)
         {
             string str = "by:";
-            foreach (var item in Article.AuthorsArticles)
-            {
-                if(user.UserName!=item.User.UserName)
-                str += $" {item.User.UserName},";
-            }
+            //foreach (var item in Article.AuthorsArticles)
+            //{
+            //    if(user.UserName!=item.User.UserName)
+            //    str += $" {item.User.UserName},";
+            //}
             return str;
         }
     }
