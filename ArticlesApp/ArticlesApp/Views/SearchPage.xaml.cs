@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ArticlesApp.ViewModels;
 using ArticlesApp.Models;
+using ArticlesApp.Services;
 namespace ArticlesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -68,24 +69,30 @@ namespace ArticlesApp.Views
             //    return false;
         }
 
-        private void listView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        private  void listView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
+            List<object> list = e.AddedItems.ToList<object>();
+            object obj = list[0];
+            if (obj is ArticleWithPicture)
+            {
+                var arti = obj as ArticleWithPicture;
+                ShowArticle page = new ShowArticle(arti);
+                Navigation.PushAsync(page);
+            }
+            if (obj is Interest)
+            {
+                var interest = obj as Interest;
+                InterestPage page = new InterestPage(interest.InterestId);
+                Navigation.PushAsync(page);    
+            }
+            if(obj is UserWithPicture)
+            {
+                var user = obj as UserWithPicture;
+                ArticlesAPIProxy proxy= ArticlesAPIProxy.CreateProxy();
 
-                List<object> list = e.AddedItems.ToList<object>();
-                object obj = list[0];
-                if (obj is ArticleWithPicture)
-                {
-                    var arti = obj as ArticleWithPicture;
-                    ShowArticle page = new ShowArticle(arti);
-                    Navigation.PushAsync(page);
-                }
-                if (obj is Interest)
-                {
-                    var interest = obj as Interest;
-                    ViewInterest page = new ViewInterest(interest.InterestId);
-                    Navigation.PushAsync(page);
-                }
-
+                ProfilePage page = new ProfilePage(user.User.UserId);
+                Navigation.PushAsync(page);
+            }
             listView.SelectedItem = null;
             listView.SelectedItems.Clear();
         }

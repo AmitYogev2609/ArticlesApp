@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using ArticlesApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Xamarin.CommunityToolkit.UI.Views;
+using Xamarin.CommunityToolkit.Extensions;
 namespace ArticlesApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -22,6 +23,7 @@ namespace ArticlesApp.Views
         {
             base.OnAppearing();
             AddArticleViewModel context = (AddArticleViewModel)BindingContext;
+            context.navtopop += NavigteToLoading;
             HtmlWebViewSource hmlsource = new HtmlWebViewSource();
             double width = App.Current.MainPage.Width;
             string htmlText = context.HtmlText;
@@ -50,6 +52,9 @@ namespace ArticlesApp.Views
             Navigation.PopAsync();
             Navigation.PopAsync();
         }
-        
+        private void NavigteToLoading(LoadingPopUp page)
+        {
+            Navigation.ShowPopup(page);
+        }
     }
 }

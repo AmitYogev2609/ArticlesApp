@@ -64,6 +64,9 @@
     <Compile Update="Views\SelectTypePopUp.xaml.cs">
       <DependentUpon>SelectTypePopUp.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\InterestPage.xaml.cs">
+      <DependentUpon>InterestPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -112,6 +115,9 @@
     <EmbeddedResource Update="Views\MyProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\SelectTypePopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -136,7 +142,7 @@
     <EmbeddedResource Update="Views\UploadFile.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ViewInterest.xaml">
+    <EmbeddedResource Update="Views\InterestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="WebViewTest.xaml">

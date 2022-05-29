@@ -58,6 +58,21 @@ namespace ArticlesApp.Views
             {
                 context.articles.Add(new ArticleWithPicture(item.Article,user));
             }
+            context.userIntrest.Clear();
+            foreach (var item in user.FollwedInterests)
+            {
+                context.userIntrest.Add(item);
+            }
+            context.followedUsers.Clear();
+            foreach (var item in user.FolloweduserFollowings)
+            {
+                context.followedUsers.Add(item);
+            }
+            context.follwedBy.Clear();
+            foreach (var item in user.FolloweduserUsers)
+            {
+                context.follwedBy.Add(item);
+            }
         }
 
         private void HomeTab_TabTapped(object sender, Xamarin.CommunityToolkit.UI.Views.TabTappedEventArgs e)

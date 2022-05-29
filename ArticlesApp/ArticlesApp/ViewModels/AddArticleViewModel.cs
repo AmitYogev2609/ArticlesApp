@@ -244,6 +244,8 @@ namespace ArticlesApp.ViewModels
         public ICommand Upload => new Command(upload);
        public async void upload()
         {
+            LoadingPopUp pop=new LoadingPopUp();
+            navtopop?.Invoke(pop);
             Article article = new Article()
             {
                 ArticleName = this.title,
@@ -285,11 +287,16 @@ namespace ArticlesApp.ViewModels
             if(succes)
             {
                 bool num= await getUptadetData();
+                pop.DismisPopUP();
                 finish?.Invoke();
+            }
+            else
+            {
+                pop.DismisPopUP();
             }
         }
         public Action finish;
-
+        public Action<LoadingPopUp> navtopop;
         public async Task<bool> getUptadetData()
         {
 
