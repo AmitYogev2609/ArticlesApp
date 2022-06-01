@@ -20,16 +20,35 @@ namespace ArticlesApp.Views
             ProfilePageViewModel context = new ProfilePageViewModel(userid);
             this.BindingContext = context;
             InitializeComponent();
-            UserWithPicture userWP = context.User;
-            mangeIcon.IsVisible = userWP.User.IsManger;
-            colview.ItemsSource = context.articles;
+         
         }
 
-        private void logOut(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            ((App)App.Current).User = null;
-            ((App)App.Current).MainPage = new NavigationPage(new LogInPage()) { BarBackgroundColor = Color.White };
-
+            ProfilePageViewModel context = (ProfilePageViewModel)this.BindingContext;
+            int userid = context.userid;
+            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+            User user = await proxy.GetUserDetails(userid);
+            context.User = new UserWithPicture(user);
+            foreach (var item in context.User.User.FollwedInterests)
+            {
+                context.userIntrest.Add(item);
+            }
+            foreach (var item in context.User.User.FolloweduserFollowings)
+            {
+                context.followedUsers.Add(item);
+            }
+            foreach (var item in context.User.User.FolloweduserUsers)
+            {
+                context.follwedBy.Add(item);
+            }
+            foreach (var item in context.User.User.AuthorsArticles)
+            {
+                context.articles.Add(new ArticleWithPicture(item.Article,item.User));
+            }
+            UserWithPicture userWP = context.User;
+            colview.ItemsSource = context.articles;
+            base.OnAppearing();
         }
 
         private void colview_SelectionChanged(object sender, SelectionChangedEventArgs e)

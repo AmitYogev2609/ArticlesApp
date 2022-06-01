@@ -23,7 +23,7 @@ namespace ArticlesApp.Views
             mangeIcon.IsVisible = userWP.User.IsManger;
             colview.ItemsSource = context.articles;
         }
-
+        
         private void logOut(object sender, EventArgs e)
         {
             ((App)App.Current).User = null;
