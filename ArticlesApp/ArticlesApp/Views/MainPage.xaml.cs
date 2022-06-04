@@ -41,7 +41,7 @@ namespace ArticlesApp.Views
             if (article != null)
             {
                 //Page page = new ShowArticle(article);
-                Page page = new TestHtml(article.Article);
+                Page page = new ShowArticle(new ArticleWithPicture( article.Article,((App)App.Current).User));
                 articles.SelectedItem = null;
                 Navigation.PushAsync(page);
             }

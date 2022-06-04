@@ -541,6 +541,259 @@ namespace ArticlesApp.Services
                 return null;
             }
         }
+        public async Task<User> FollowUser(int follewid)
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/FollowUser?follewUserId={follewid}");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    User u = JsonSerializer.Deserialize<User>(content, options);
+                    return u;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        public async Task<User> UnFollowUser(int follewid)
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/UnFollowUser?follewUserId={follewid}");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    User u = JsonSerializer.Deserialize<User>(content, options);
+                    return u;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        public async Task<List<Interest>> LogOut()
+        {
+            try
+            {
+
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/LogOut");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<Interest> interests = JsonSerializer.Deserialize<List<Interest>>(content, options);
+                    return interests;
+                }
+                else
+                {
+                    return null;
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        public async Task<bool> UptadeDetails(User newUser, DTO.FileInfo img)
+        {
+            try
+            {
+                var multipartFormDataContent = new MultipartFormDataContent();
+                var fileContent = new ByteArrayContent(File.ReadAllBytes(img.Name));
+                fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
+                multipartFormDataContent.Add(fileContent, "file", "kuku.jpg");
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.Hebrew, UnicodeRanges.BasicLatin),
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize<User>(newUser, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+                multipartFormDataContent.Add(content, "myJsonObject");
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/uptadeUserDetailsWithImage", multipartFormDataContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        public async Task<bool> UptadeDetails(User newUser)
+        {
+            try
+            {
+
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.Hebrew, UnicodeRanges.BasicLatin),
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize<User>(newUser, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/uptadeUserDetails", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public async Task<Comment> UploadComment(Comment comment)
+        {
+            try
+            {
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.Hebrew, UnicodeRanges.BasicLatin),
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize<Comment>(comment, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/UploadComment", content);
+                if(response.IsSuccessStatusCode)
+                {
+                    options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string contentFromSever = await response.Content.ReadAsStringAsync();
+                     Comment  comments = JsonSerializer.Deserialize<Comment>(contentFromSever, options);
+                    return comments;
+                }
+                return null;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        public async Task<List<Comment>> GetArticleComments(int id)
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetArticleComments?articleId={id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string contentFromSever = await response.Content.ReadAsStringAsync();
+                    List<Comment> comments = JsonSerializer.Deserialize<List<Comment>>(contentFromSever, options);
+                    return comments;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        public async Task<string> GetArticleAuthors(int articleId)
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetArticleAuthors?articleId={articleId}");
+                if(response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions()
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content= await response.Content.ReadAsStringAsync();
+                    string authors = JsonSerializer.Deserialize<string>(content,options);
+                    return authors;
+                }
+                return "by: Error";
+            }
+            catch(Exception e)
+            {
+                return "by: Error";
+            }
+        }
+        public async Task<Interest> AddInterest(string IntrestName)
+        {
+            try
+            {
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.Hebrew, UnicodeRanges.BasicLatin),
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize<string>(IntrestName, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/AddInterest", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string contentFromSever = await response.Content.ReadAsStringAsync();
+                    Interest interest = JsonSerializer.Deserialize<Interest>(contentFromSever, options);
+                    return interest;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
         public async Task<string> GetPasswordResetCode(string email)
         {
             return null;

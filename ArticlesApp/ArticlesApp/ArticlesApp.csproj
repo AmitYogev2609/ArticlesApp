@@ -34,12 +34,12 @@
     <PackageReference Include="FreeSpire.PDF" Version="8.2.0" />
     <PackageReference Include="Sharpnado.CollectionView" Version="2.1.0" />
     <PackageReference Include="SkiaSharp" Version="2.88.0" />
-    <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.56" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="20.1.0.56" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="20.1.0.56" />
-    <PackageReference Include="Syncfusion.Xamarin.SfImageEditor" Version="20.1.0.56" />
-    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="20.1.0.56" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRichTextEditor" Version="20.1.0.56" />
+    <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="20.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="20.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfImageEditor" Version="20.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="20.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRichTextEditor" Version="20.1.0.58" />
     <PackageReference Include="System.Text.Json" Version="6.0.4" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
@@ -88,10 +88,19 @@
     <EmbeddedResource Update="Views\AddImagePopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdminPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ChooseInterest.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\CommentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\CropImage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EditProfile.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\FavoriteArticle.xaml">
@@ -143,6 +152,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InterestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ViewInterests.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ViewUsers.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="WebViewTest.xaml">

@@ -13,19 +13,23 @@ namespace ArticlesApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
-       
-        public  ProfilePage(int userid)
+        Action acs;
+        public  ProfilePage(int userid, Action acs=null)
         {
-            
+
             ProfilePageViewModel context = new ProfilePageViewModel(userid);
             this.BindingContext = context;
+            context.navigateTopage += NavigateToAsync;
             InitializeComponent();
-         
+            this.acs = acs;
         }
 
         protected override async void OnAppearing()
         {
             ProfilePageViewModel context = (ProfilePageViewModel)this.BindingContext;
+            context.userIntrest.Clear();
+            context.follwedBy.Clear();
+            context.followedUsers.Clear();
             int userid = context.userid;
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
             User user = await proxy.GetUserDetails(userid);
@@ -36,11 +40,11 @@ namespace ArticlesApp.Views
             }
             foreach (var item in context.User.User.FolloweduserFollowings)
             {
-                context.followedUsers.Add(item);
+                context.follwedBy.Add(item);
             }
             foreach (var item in context.User.User.FolloweduserUsers)
             {
-                context.follwedBy.Add(item);
+                context.followedUsers.Add(item);
             }
             foreach (var item in context.User.User.AuthorsArticles)
             {
@@ -48,6 +52,7 @@ namespace ArticlesApp.Views
             }
             UserWithPicture userWP = context.User;
             colview.ItemsSource = context.articles;
+            context.inButton();
             base.OnAppearing();
         }
 
@@ -60,6 +65,17 @@ namespace ArticlesApp.Views
                 colview.SelectedItem = null;
                 Navigation.PushAsync(page);
             }
+        }
+        public async void NavigateToAsync(Page p)
+        {
+
+            await Navigation.PushAsync(p);
+        }
+        protected override void OnDisappearing()
+        {
+            if (acs != null)
+                acs?.Invoke();
+            base.OnDisappearing();
         }
     }
 }

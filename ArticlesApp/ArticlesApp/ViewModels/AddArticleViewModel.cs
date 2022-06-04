@@ -35,7 +35,9 @@ namespace ArticlesApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-        
+
+        public ObservableCollection<int> sind { get; set; }
+        public ObservableCollection<int> usind { get; set; }
         public ObservableCollection<Interest> ChooseIntrest
         {
             get ;
@@ -75,7 +77,8 @@ namespace ArticlesApp.ViewModels
         {
             Interests = new ObservableCollection<Interest>();
             ImageCommand = new Command<object>(LoadImage);
-            
+            sind= new ObservableCollection<int>();
+            usind = new ObservableCollection<int>();
             ChooseIntrest = new ObservableCollection<Interest>();
             ChooseUser = new ObservableCollection<User>();
             Proxy = ArticlesAPIProxy.CreateProxy();

@@ -63,17 +63,18 @@ namespace ArticlesApp.Views
             {
                 context.userIntrest.Add(item);
             }
-            context.followedUsers.Clear();
-            foreach (var item in user.FolloweduserFollowings)
-            {
-                context.followedUsers.Add(item);
-            }
             context.follwedBy.Clear();
-            foreach (var item in user.FolloweduserUsers)
+            foreach (var item in user.FolloweduserFollowings)
             {
                 context.follwedBy.Add(item);
             }
+            context.followedUsers.Clear();
+            foreach (var item in user.FolloweduserUsers)
+            {
+                context.followedUsers.Add(item);
+            }
         }
+        
 
         private void HomeTab_TabTapped(object sender, Xamarin.CommunityToolkit.UI.Views.TabTappedEventArgs e)
         {
@@ -82,8 +83,8 @@ namespace ArticlesApp.Views
             context.Articles.Clear();
             if (((App)App.Current).User != null)
             {
-                foreach (Followeduser followedUser in ((App)App.Current).User.FolloweduserFollowings)
-                    foreach (AuthorsArticle author in followedUser.User.AuthorsArticles)
+                foreach (Followeduser followedUser in ((App)App.Current).User.FolloweduserUsers)
+                    foreach (AuthorsArticle author in followedUser.Following.AuthorsArticles)
                     {
                         if (!articles.Contains(author.Article))
                             articles.Add(author.Article);
@@ -108,6 +109,28 @@ namespace ArticlesApp.Views
             }
             else
                 context.Articles = new ObservableCollection<ArticleWithPicture>();
+        }
+
+        private void SearchTab_TabTapped(object sender, Xamarin.CommunityToolkit.UI.Views.TabTappedEventArgs e)
+        {
+            SearchViewModel context = (SearchViewModel)SearchTab.CurrentContent.BindingContext;
+            context.searchResult.Clear();
+            foreach (var item in ((App)App.Current).Articles)
+            {
+                context.searchResult.Add(new ArticleWithPicture(item, ((App)App.Current).User));
+            }
+            
+            foreach (var item in ((App)App.Current).Interests)
+            {
+                context.searchResult.Add(item);
+            }
+            
+            foreach (var item in ((App)App.Current).Users)
+            {
+                context.searchResult.Add(new UserWithPicture(item));
+            }
+            //SearchViewModel.Shuffle(context.searchResult);
+
         }
     }
 }

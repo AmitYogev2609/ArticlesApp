@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArticlesApp.Views.EditProfile"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:Icons="clr-namespace:ArticlesApp.Fonts"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+              xmlns:local="clr-namespace:ArticlesApp.Renderer"
+             xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ffTransf="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             BackgroundColor="#FFFFFF" NavigationPage.IconColor="Black" >
+    <ContentPage.Resources>
+        <Style TargetType="local:MyEntry" x:Key="Entry">
+            <Setter Property="PlaceholderColor" Value="{Binding border}"/>
+
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="0,0,0,25">
+            <StackLayout >
+                <controls:CircleImage x:Name="ProfileImage" WidthRequest="180" HeightRequest="180" Aspect="Fill" BorderColor="Black" BorderThickness="2" />
+                <Button   BackgroundColor="#2934D0" CornerRadius="5" HeightRequest="40" WidthRequest="40" 
+                   Clicked="MoveToPopUp"  Text="{x:Static Icons:FontIconClass.FileImage}"
+                   xct:ShadowEffect.Color="#2934D0" xct:TouchEffect.AnimationDuration="50" xct:TouchEffect.PressedScale="1.1" 
+                   HorizontalOptions="Center" VerticalOptions="Center" Margin="-18" FontFamily="MyIcon" FontSize="20" TextColor="White"/>
+            </StackLayout>
+            <StackLayout Padding="20,30,17,0" Spacing="10">
+                
+                <StackLayout  Padding="0,5,0,0">
+                    <Frame CornerRadius="37" BorderColor="{Binding EmailBorderColor}">
+                        <StackLayout Orientation="Horizontal" HeightRequest="22">
+                            <Label Text="{x:Static fontawesome:FontAwesomeIcons.Envelope}" 
+                 FontSize="24" TextColor="Black"
+                        FontFamily="{StaticResource FontAwesomeRegular }"  />
+                            <local:MyEntry x:Name="EmailEntry" Placeholder="Email" HorizontalOptions="StartAndExpand" TextColor="Black"  WidthRequest="300" Text="{Binding Email}" 
+                             Unfocused="EmailEntry_Unfocused" Style="{StaticResource Entry}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Label Text="{Binding EmailError}"  TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Frame CornerRadius="37" BorderColor="{Binding UserNameBorderColor}">
+                        <StackLayout Orientation="Horizontal" HeightRequest="22">
+                            <Label Text="{x:Static fontawesome:FontAwesomeIcons.User}" 
+                 FontSize="24" TextColor="Black"
+                        FontFamily="{StaticResource FontAwesomeRegular }"  />
+                            <local:MyEntry Placeholder="User Name" Text="{Binding UserName}" TextColor="Black" Unfocused="UserName_Unfocused" HorizontalOptions="StartAndExpand" WidthRequest="300" Style="{StaticResource Entry}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Label Text="{Binding UserNameError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+                </StackLayout>
+                <StackLayout>
+                    <Frame CornerRadius="37" BorderColor="{Binding FullNameBorderColor}">
+                        <StackLayout Orientation="Horizontal" HeightRequest="22">
+                            <Label Text="{x:Static fontawesome:FontAwesomeIcons.AddressCard}" 
+                 FontSize="24" TextColor="Black"
+                        FontFamily="{StaticResource FontAwesomeRegular }" VerticalOptions="Center" />
+                            <local:MyEntry TextColor="Black"  Placeholder="Full Name" HorizontalOptions="StartAndExpand" WidthRequest="300" Unfocused="FullName_Unfocused" Text="{Binding FullName}" Style="{StaticResource Entry}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Label Text="{Binding FullNameError}" TextColor="Red" FontSize="13" Padding="24,0,0,0"/>
+                </StackLayout>
+
+                
+                   
+
+            </StackLayout>
+            <Button Command="{Binding finishUptade}" TextColor="#F8FBFF"  Text="Next" BackgroundColor ="#2934D0" 
+                    CornerRadius="30" FontFamily="Rubik" FontSize="15" HeightRequest="50"
+                    VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="320"  />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

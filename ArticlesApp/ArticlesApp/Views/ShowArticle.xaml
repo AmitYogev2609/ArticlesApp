@@ -5,6 +5,7 @@
              NavigationPage.IconColor="Black" BackgroundColor="White" 
                           xmlns:fontawesome="clr-namespace:ArticlesApp.Fonts"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:renders="clr-namespace:ArticlesApp.Renderer"
              
 >
     <NavigationPage.TitleView>
@@ -15,9 +16,9 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="6*" />
+                <RowDefinition Height="5*" />
                 <RowDefinition Height="89*" />
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
             <Grid x:Name="grd" Grid.Row="0" >
                 <Grid.RowDefinitions>
@@ -43,10 +44,18 @@
                     <ColumnDefinition Width="7*"/>
                     
                 </Grid.ColumnDefinitions>
-                <yummy:PancakeView Grid.Column="0" CornerRadius="20" Padding="0,0,0,0">
-                <SearchBar  Placeholder="Search here to filter" BackgroundColor="Gray" />
+                <yummy:PancakeView Grid.Column="0" BackgroundColor="Gray" CornerRadius="20" Padding="0,0,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="93*"/>
+                            <ColumnDefinition Width="7*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <renders:MyEntry Placeholder="add a comment" Text="{Binding CommentText}" Grid.Column="0" />
+                        <ImageButton  Grid.Column="1" Source="sendIcon.png" Command="{Binding addACommentCommand}" Padding="0,0,5,0" BackgroundColor="Transparent"/>
+                    </Grid>
                 </yummy:PancakeView>
-                <ImageButton Grid.Column="1" Source="ChatIcon.png" BackgroundColor="Transparent"/>
+                <ImageButton Grid.Column="1" Source="ChatIcon.png" BackgroundColor="Transparent" Clicked="ImageButton_Clicked"/>
             </Grid>
         </Grid>
         

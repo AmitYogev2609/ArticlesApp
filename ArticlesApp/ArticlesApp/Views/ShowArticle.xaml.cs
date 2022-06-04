@@ -145,5 +145,12 @@ namespace ArticlesApp.Views
                 }
             }
         }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            ShowArticleViewModel context=(ShowArticleViewModel)this.BindingContext;
+            Page page = new CommentPage(context.Article);
+            Navigation.PushAsync(page);
+        }
     }
 }

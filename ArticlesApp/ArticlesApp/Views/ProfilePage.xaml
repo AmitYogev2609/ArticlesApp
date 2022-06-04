@@ -40,7 +40,7 @@
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.055}"
                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height, Factor=0.2}" />
 
-                    <Label  Text="{Binding User.FulllName}" TextColor="{DynamicResource primaryText}" LineBreakMode="TailTruncation"
+                    <Label  Text=" " TextColor="{DynamicResource primaryText}" LineBreakMode="TailTruncation"
                         FontSize="24" x:Name="accountNameView"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ProfilePictureImage, Property=X}"
                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height}"
@@ -58,9 +58,9 @@
                         </Label.FormattedText>
                     </Label>
 
-                    <local:ButtonNoPadding Text="follow" FontAttributes="Bold" CornerRadius="11" HeightRequest="32" WidthRequest="108" Margin="0" FontSize="16" TextColor="White" Command="{Binding EditProfileCommand}"
+                    <local:ButtonNoPadding Text="{Binding Text}" FontAttributes="Bold" CornerRadius="11" HeightRequest="32" WidthRequest="108" Margin="0" FontSize="16" TextColor="{Binding BtTextColor}" Command="{Binding buttonPress}"
                                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.67}"
-                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=accountNameView, Property=Y, Constant=98}" BackgroundColor="#2934D0"/>
+                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=accountNameView, Property=Y, Constant=98}" BackgroundColor="{Binding BtBackColor}"/>
                     <Grid  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.31}"
                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Height, Factor=5.5}">
                         <Grid.RowDefinitions>
@@ -71,9 +71,9 @@
                             <ColumnDefinition />
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <local:ButtonNoPadding FontSize="17" TextColor="Black" Grid.Column="0" Text="{Binding userIntrest.Count, StringFormat='{0}&#10;Interest'}"  BackgroundColor="Transparent" />
-                        <local:ButtonNoPadding FontSize="17" TextColor="Black" Grid.Column="1" Text="{Binding follwedBy.Count, StringFormat='{0}&#10;Follwers'}"  BackgroundColor="Transparent" />
-                        <local:ButtonNoPadding FontSize="17" TextColor="Black" Grid.Column="2"  Text="{Binding followedUsers.Count, StringFormat='{0}&#10;Follwing'}"  BackgroundColor="Transparent" />
+                        <local:ButtonNoPadding FontSize="17" Command="{Binding moveToViewInterestsCommmand}" TextColor="Black" Grid.Column="0" Text="{Binding userIntrest.Count, StringFormat='{0}&#10;Interest'}"  BackgroundColor="Transparent" />
+                        <local:ButtonNoPadding FontSize="17" TextColor="Black" Grid.Column="1" Command="{Binding movetoViewUsersCommand2}" Text="{Binding follwedBy.Count, StringFormat='{0}&#10;Follwers'}"  BackgroundColor="Transparent" />
+                        <local:ButtonNoPadding FontSize="17" TextColor="Black" Grid.Column="2" Command="{Binding movetoViewUsersCommand1}" Text="{Binding followedUsers.Count, StringFormat='{0}&#10;Follwing'}"  BackgroundColor="Transparent" />
 
 
 

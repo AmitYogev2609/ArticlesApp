@@ -51,7 +51,7 @@ namespace ArticlesApp.ViewModels
                 }
             } }
         public ObservableCollection<ArticleWithPicture> articles { get; set; }
-       
+        public Action ac;
         public InterestPageViewModel(Interest interest,User user)
         {
             this.Interest = interest;
@@ -129,8 +129,9 @@ namespace ArticlesApp.ViewModels
                 ButtonTextColor = Color.FromHex("#2934D0");
                 ButtonText = "unfollow";
             }
-          
 
+            if(ac!=null)
+            ac?.Invoke();
         }
     }
 }

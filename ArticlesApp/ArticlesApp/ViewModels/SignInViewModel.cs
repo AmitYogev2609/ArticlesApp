@@ -440,9 +440,9 @@ namespace ArticlesApp.ViewModels
             {
                 try
                 {
-                    var addr = new System.Net.Mail.MailAddress(Email);
-
-                    IsEmailValid = addr.Address == Email;
+                    var regex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+                     IsEmailValid = Regex.IsMatch(Email, regex, RegexOptions.IgnoreCase);
+                   
 
                     if (!IsEmailValid)
                     {

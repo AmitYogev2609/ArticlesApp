@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArticlesApp.Views.ViewInterests"
+             xmlns:local="clr-namespace:ArticlesApp.Renderer" NavigationPage.IconColor="Black" BackgroundColor="White"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" x:Name="thepage" >
+    <ContentPage.Resources>
+        <Style TargetType="yummy:PancakeView">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <CollectionView x:Name="colview" ItemsSource="{Binding interests}"  SelectionMode="Single" SelectionChanged="colview_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    
+                    <DataTemplate >
+                        <yummy:PancakeView Margin="-10,0" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness=1 }">
+                        <Grid Padding="12,7">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding InterestName}" FontSize="18" TextColor="Black" FontAttributes="Bold" Grid.Column="0" Grid.Row="0"/>
+                            <Label Text="{Binding numOfArticle,StringFormat='{0} on this interest'}" TextColor="Black" Grid.Column="0" Grid.Row="1"/>
+                                <local:ButtonNoPadding HorizontalOptions="CenterAndExpand" CommandParameter="{Binding}" Command="{Binding buttonPresscommand}"   Text="{Binding ButtonText}" TextColor="{Binding ButtonTextColor}" BackgroundColor="{Binding ButtonBackColor}" Grid.Column="1" Grid.RowSpan="2"/>
+                        </Grid>
+                        </yummy:PancakeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

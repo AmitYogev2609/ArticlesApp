@@ -35,7 +35,7 @@ namespace ArticlesApp.ViewModels
             {
                 searchResult.Add( new UserWithPicture(item));
             }
-            Shuffle(searchResult);
+            //Shuffle(searchResult);
         }
         public static void Shuffle(ObservableCollection<object> list)
         {

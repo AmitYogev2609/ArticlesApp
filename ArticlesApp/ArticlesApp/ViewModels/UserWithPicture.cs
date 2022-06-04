@@ -16,18 +16,32 @@ using System.Windows.Input;
 using System.Security.Cryptography;
 namespace ArticlesApp.ViewModels
 {
-    public class UserWithPicture
+    public class UserWithPicture:INotifyPropertyChanged
     {
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
         public User User { get; set; }
-        public string PhotoUrl { get; set; }
+        private string photourl;
+        public string PhotoUrl { get=>photourl; set { 
+            if(photourl!= value)
+                {
+                    photourl = value;
+                    OnPropertyChanged(PhotoUrl);
+                }
+            } }
         public string FulllName { get; set; }
         public string UserName { get; set; }
         public UserWithPicture(User user)
         {
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
-            PhotoUrl = $"{proxy.GetBasePhotoUri()}ArticleImage/{user.UserId}.jpg";
+            PhotoUrl = $"{proxy.GetBasePhotoUri()}UserImage/{user.UserId}.jpg";
             //  Article = article;
-            FulllName = user.FirstName + user.LastName;
+            FulllName = user.FirstName + " "+ user.LastName;
             User = user;
             UserName = user.UserName;
 

@@ -27,7 +27,7 @@ namespace ArticlesApp.Views
             interstComboBox.DisplayMemberPath = "InterestName";
             UserComboBox.DataSource = ((App)App.Current).Users;                
             UserComboBox.DisplayMemberPath = "UserName";
-            
+             
            
         }
         public void NavigateToPage()
@@ -35,6 +35,7 @@ namespace ArticlesApp.Views
             AddArticleViewModel context = (AddArticleViewModel)this.BindingContext;
             //extract interest
             List<int> indecies = new List<int>();
+
             if((IEnumerable<int>)interstComboBox.SelectedIndices==null)
             {
                 interstComboBox.Watermark= "must Pick at least on intrest";

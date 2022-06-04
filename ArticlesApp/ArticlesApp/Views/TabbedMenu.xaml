@@ -35,6 +35,7 @@
                 FontSize="36"
                 x:Name="SearchTab"
                 FontSizeSelected="36"
+                TabTapped="SearchTab_TabTapped"
                 >
                 <local:SearchPage/>
             </xct:TabViewItem>

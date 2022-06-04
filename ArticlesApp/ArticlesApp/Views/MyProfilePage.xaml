@@ -57,7 +57,7 @@
                             <ffTransf:TintTransformation HexColor="#623814" EnableSolidColor="True"/>
                         </ff:CachedImage.Transformations>
                         <ffSvg:SvgCachedImage.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                            <TapGestureRecognizer Tapped="ToAdminPage" />
                         </ffSvg:SvgCachedImage.GestureRecognizers>
                     </ffSvg:SvgCachedImage>
                     <ffSvg:SvgCachedImage Source="logout.svg" HeightRequest="30" WidthRequest="30"
@@ -94,7 +94,7 @@
                         </Label.FormattedText>
                     </Label>
 
-                    <local:ButtonNoPadding Text="Edit Profile" FontAttributes="Bold" CornerRadius="11" HeightRequest="32" WidthRequest="108" Margin="0" FontSize="16" TextColor="White" Command="{Binding EditProfileCommand}"
+                    <local:ButtonNoPadding Text="Edit Profile" x:Name="EditProfileButton" FontAttributes="Bold" CornerRadius="11" HeightRequest="32" WidthRequest="108" Margin="0" FontSize="16" TextColor="White" Clicked="EditProfileButton_Clicked"
                                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.67}"
                                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=accountNameView, Property=Y, Constant=16}" BackgroundColor="#2934D0"/>
                     <Grid  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=svgStackView, Property=Width, Factor=0.31}"
@@ -107,9 +107,9 @@
                             <ColumnDefinition />
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <local:ButtonNoPadding FontSize="17" TextColor="Black" Grid.Column="0" Text="{Binding userIntrest.Count, StringFormat='{0}&#10;Interest'}"  BackgroundColor="Transparent" />
-                        <local:ButtonNoPadding FontSize="17" TextColor="Black" Grid.Column="1" Text="{Binding follwedBy.Count, StringFormat='{0}&#10;Follwers'}"  BackgroundColor="Transparent" />
-                        <local:ButtonNoPadding FontSize="17" TextColor="Black" Grid.Column="2"  Text="{Binding followedUsers.Count, StringFormat='{0}&#10;Follwing'}"  BackgroundColor="Transparent" />
+                        <local:ButtonNoPadding Command="{Binding moveToViewInterestsCommmand}" FontSize="17" TextColor="Black" Grid.Column="0" Text="{Binding userIntrest.Count, StringFormat='{0}&#10;Interest'}"  BackgroundColor="Transparent" />
+                        <local:ButtonNoPadding Command="{Binding movetoViewUsersCommand2}"  FontSize="17" TextColor="Black" Grid.Column="1" Text="{Binding follwedBy.Count, StringFormat='{0}&#10;Follwers'}"  BackgroundColor="Transparent" />
+                        <local:ButtonNoPadding Command="{Binding movetoViewUsersCommand1}"  FontSize="17" TextColor="Black" Grid.Column="2"  Text="{Binding followedUsers.Count, StringFormat='{0}&#10;Follwing'}"  BackgroundColor="Transparent" />
                        
 
 

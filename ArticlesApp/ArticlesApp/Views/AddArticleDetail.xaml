@@ -16,9 +16,9 @@
             <Editor  x:Name="editor" Placeholder="Description" Text="{Binding Description}" HeightRequest="90" MaxLength="255"/>
 
 
-            <combobox:SfComboBox Watermark="Select interests" SelectedItem="{Binding ChooseIntrest}" HeightRequest="50" x:Name="interstComboBox"  IsEditableMode="True" MultiSelectMode="Token" TokensWrapMode="Wrap" IsSelectedItemsVisibleInDropDown="false"/>
+            <combobox:SfComboBox SelectedIndices="{Binding sind}" Watermark="Select interests" SelectedItem="{Binding ChooseIntrest}" HeightRequest="50" x:Name="interstComboBox"  IsEditableMode="True" MultiSelectMode="Token" TokensWrapMode="Wrap" IsSelectedItemsVisibleInDropDown="false"/>
 
-            <combobox:SfComboBox Watermark="Select Usres" HeightRequest="50" x:Name="UserComboBox" IsEditableMode="True" MultiSelectMode="Token" TokensWrapMode="Wrap" IsSelectedItemsVisibleInDropDown="false" />
+            <combobox:SfComboBox SelectedIndices="{Binding usind}" Watermark="Select Usres" HeightRequest="50" x:Name="UserComboBox" IsEditableMode="True" MultiSelectMode="Token" TokensWrapMode="Wrap" IsSelectedItemsVisibleInDropDown="false" />
             <Button Command="{Binding NavigateToPage}"  TextColor="#F8FBFF"  Text="Next"  BackgroundColor ="#2934D0"  CornerRadius="29"
                     FontFamily="Rubik" FontSize="15" HeightRequest="54"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="350" Margin="0,0,0,25" />
         </StackLayout>

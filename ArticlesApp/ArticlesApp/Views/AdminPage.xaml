@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArticlesApp.Views.AdminPage"
+             xmlns:renderers="clr-namespace:ArticlesApp.Renderer"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" NavigationPage.IconColor="Black"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Padding="10,0">
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition  />
+                        <RowDefinition />
+                        
+                    </Grid.RowDefinitions>
+                    <yummy:PancakeView Grid.Column="0" Grid.Row="0" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}">
+                        <renderers:MyEntry Grid.Column="0" Grid.Row="0" Text="{Binding NewIntrestName}" Placeholder="enter intret to add"/>
+                    </yummy:PancakeView>
+                        <renderers:ButtonNoPadding Grid.Column="0" Command="{Binding AddInterestCommand}" Grid.Row="1" Text="Add"/>
+                    <yummy:PancakeView Grid.Column="1" Grid.Row="0" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}">
+                        <renderers:MyEntry Grid.Column="1" Grid.Row="0" x:Name="InterestTodlete" Placeholder="intrest id to delete"/>
+                    </yummy:PancakeView>
+                    <renderers:ButtonNoPadding Grid.Column="1" x:Name="InterestTodleteBt" Clicked="InterestTodleteBt_Clicked" Grid.Row="1" Text="delete"/>
+                </Grid>
+                <yummy:PancakeView HeightRequest="200" WidthRequest="300" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" HorizontalOptions="CenterAndExpand"  >
+                <CollectionView ItemsSource="{Binding Interests}"  HorizontalOptions="CenterAndExpand" >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="1" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                                <Grid Padding="10,0" HorizontalOptions="Center">
+                                    
+                                    <Label Grid.Column="0" HorizontalOptions="StartAndExpand" Text="{Binding InterestName}" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                                    <Label Grid.Column="1" HorizontalOptions="Center" Text="{Binding InterestId,StringFormat='id: {0}' }" Margin="0,5,0,0" TextColor="Black" FontSize="15" />
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                </yummy:PancakeView>
+            </StackLayout>
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                      
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition  />
+                        <RowDefinition />
+
+                    </Grid.RowDefinitions>
+                    <yummy:PancakeView Grid.Column="0" Grid.Row="0" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}">
+                        <renderers:MyEntry Grid.Column="0" Grid.Row="0" x:Name="UserTodlete" Placeholder="enter user id to delete"/>
+                    </yummy:PancakeView>
+                    <renderers:ButtonNoPadding Grid.Column="0" x:Name="UserIdDeleteBt" Clicked="UserIdDeleteBt_Clicked" Grid.Row="1" Text="Add"/>
+                    
+                </Grid>
+                <yummy:PancakeView HeightRequest="200" WidthRequest="300" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" HorizontalOptions="CenterAndExpand"  >
+                    <CollectionView ItemsSource="{Binding Users}"  HorizontalOptions="CenterAndExpand" >
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Span="1" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10,0" HorizontalOptions="Center">
+
+                                    <Label Grid.Column="0" HorizontalOptions="StartAndExpand" Text="{Binding UserName}" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                                    <Label Grid.Column="1" HorizontalOptions="Center" Text="{Binding UserId,StringFormat='id: {0}' }" Margin="0,5,0,0" TextColor="Black" FontSize="15" />
+
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </yummy:PancakeView>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

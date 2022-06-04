@@ -15,29 +15,40 @@ using Xamarin.Essentials;
 using System.Windows.Input;
 namespace ArticlesApp.ViewModels
 {
-    public class ArticleWithPicture
+    public class ArticleWithPicture : INotifyPropertyChanged
     {
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
         public Article Article { get; set; }
         public string PhotoUrl { get; set; }
         public string date { get => Article.PublishDate.ToShortDateString(); }
-        public string athours { get; set; }
+        private string Athours;
+        public string athours { get=>Athours; set
+            {
+                if(value!=Athours)
+                {
+                    Athours=value;
+                    OnPropertyChanged(nameof(athours));
+                }
+            } }
        
         public ArticleWithPicture(Article article,User user)
         {
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
             PhotoUrl = $"{proxy.GetBasePhotoUri()}ArticleImage/{article.ArticleId}.jpg";
             Article = article;
-            athours = getAthours(article,user);
+            getAthours(Article.ArticleId);
+            this.Athours = "by:add later";
         }
-        private string getAthours(Article article,User user)
+        private async void getAthours(int articleId)
         {
-            string str = "by:";
-            //foreach (var item in Article.AuthorsArticles)
-            //{
-            //    if(user.UserName!=item.User.UserName)
-            //    str += $" {item.User.UserName},";
-            //}
-            return str;
+            //ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+            //athours = await proxy.GetArticleAuthors(articleId);
         }
     }
 }

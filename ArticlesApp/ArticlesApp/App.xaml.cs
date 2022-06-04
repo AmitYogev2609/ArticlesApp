@@ -27,7 +27,7 @@ namespace ArticlesApp
         }
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTY1Nzk3QDMxMzkyZTM0MmUzMGdKZ1JlTzM1elE3T2RpZXVwSHRuOC8xd09uc3prSGptOC9jdXU2WTQ0QXc9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjUwNDc2QDMyMzAyZTMxMmUzMGY4T3Vab1N2SVdSditUV3hxNEtUSGNGaGx1aWlyRHdUaSszZW1IQmttNkk9");
             Interests = new List<Interest>();
             Users=new List<User>();
             Articles=new List<Article>();

@@ -35,7 +35,7 @@ namespace ArticlesApp.ViewModels
             List<Article> articles = new List<Article>();
             if (((App)App.Current).User != null)
             {
-                foreach (Followeduser followedUser in ((App)App.Current).User.FolloweduserFollowings)
+                foreach (Followeduser followedUser in ((App)App.Current).User.FolloweduserUsers)
                     foreach (AuthorsArticle author in followedUser.User.AuthorsArticles)
                     {
                         if (!articles.Contains(author.Article))
