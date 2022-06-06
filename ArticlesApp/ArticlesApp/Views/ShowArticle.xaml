@@ -26,14 +26,42 @@
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="45*"/>
-                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="10*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Auther}" Padding="7,0,0,0"/>
-                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Date}"/>
-                <Button Grid.Row="0" Grid.Column="2" Text="{x:Static fontawesome:FontIconClass.StarOutline}" x:Name="star" Clicked="star_Clicked" FontSize="18"  Margin="-5,-11,0,0" FontFamily="MyIcon"  BackgroundColor="Transparent"/>
-                <BoxView BackgroundColor="Black" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3"/>
+                <Label Padding="7,0,0,0" Grid.Row="0" Grid.Column="0" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Authors"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Authors_Tapped" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                           
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Padding="7,0,0,0" Grid.Row="0" Grid.Column="1" x:Name="Authors">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Intrests"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Interests_Tapped" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                            
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Date}"/>
+                <Button Grid.Row="0" Grid.Column="3" Text="{x:Static fontawesome:FontIconClass.StarOutline}" x:Name="star" Clicked="star_Clicked" FontSize="18"  Margin="-5,-11,0,0" FontFamily="MyIcon"  BackgroundColor="Transparent"/>
+                <BoxView BackgroundColor="Black" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="4"/>
             </Grid>
 
             <WebView x:Name="webview" Grid.Row="1"/>

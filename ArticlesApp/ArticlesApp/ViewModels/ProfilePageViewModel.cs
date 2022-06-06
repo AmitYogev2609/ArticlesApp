@@ -138,7 +138,7 @@ namespace ArticlesApp.ViewModels
             List<Interest> interestslist = new List<Interest>();
             foreach (var item in user.User.FollwedInterests)
                 interestslist.Add(item.Interest);
-            Page page = new ViewInterests(interestslist,user.User);
+            Page page = new ViewInterests(interestslist,user.User, $"@{user.User.UserName} Intrests");
            
             navigateTopage?.Invoke(page);
         }
@@ -154,8 +154,9 @@ namespace ArticlesApp.ViewModels
             {
                 users.Add(item.Following);
             }
+
+            Page page = new ViewUsers(users, $"Pepole who @{user.UserName} follow");
             
-            Page page = new ViewUsers(users);
             navigateTopage?.Invoke(page);
 
 
@@ -170,8 +171,9 @@ namespace ArticlesApp.ViewModels
             {
                 users.Add(item.User);
             }
-           
-            Page page = new ViewUsers(users);
+
+            Page page = new ViewUsers(users, $"@{user.User} follwers");
+            
             navigateTopage?.Invoke(page);
         }
     }

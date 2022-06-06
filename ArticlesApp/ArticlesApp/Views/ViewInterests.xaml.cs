@@ -16,21 +16,26 @@ namespace ArticlesApp.Views
     public partial class ViewInterests : ContentPage
     {
         public User user;
-        public ViewInterests(List<Interest> list, User user)
+        public bool IsMain;
+        public ViewInterests(List<Interest> list, User user,string title,bool Ismain= true)
         {
             ViewInterestsViewModel context = new ViewInterestsViewModel(list);
             this.BindingContext = context;
             InitializeComponent();
             this.user = user;
+            this.IsMain = Ismain;
+            ti.Text= title;
         }
         public Action acs;
-        public ViewInterests(List<Interest> list,Action ac,User user)
+        public ViewInterests(List<Interest> list,Action ac,User user, string title,bool Ismain=true)
         {
             ViewInterestsViewModel context = new ViewInterestsViewModel(list);
             this.BindingContext = context;
             InitializeComponent();
             acs=ac;
             this.user = user;
+            this.IsMain=Ismain;
+            ti.Text = title;
         }
         private void colview_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -50,6 +55,8 @@ namespace ArticlesApp.Views
         }
         protected override void OnAppearing()
         {
+            if(this.IsMain)
+            { 
             List<Interest> interests = new List<Interest>();
            
             foreach (var item in user.FollwedInterests)
@@ -58,6 +65,7 @@ namespace ArticlesApp.Views
             }
             ViewInterestsViewModel context=(ViewInterestsViewModel)this.BindingContext;
             context.update(interests);
+            }
             base.OnAppearing();
         }
         protected override void OnDisappearing()

@@ -14,12 +14,13 @@ namespace ArticlesApp.Views
     public partial class ViewUsers : ContentPage
     {
         Action acs;
-        public ViewUsers(List<User> users,Action ac=null)
+        public ViewUsers(List<User> users, string title, Action ac=null)
         {
             ViewUsersViewModel context = new ViewUsersViewModel(users);
             this.BindingContext = context;
             InitializeComponent();
             acs = ac;
+            ti.Text = title;
         }
         protected override void OnAppearing()
         {

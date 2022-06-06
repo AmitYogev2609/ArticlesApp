@@ -4,6 +4,9 @@
              x:Class="ArticlesApp.Views.ViewInterests"
              xmlns:local="clr-namespace:ArticlesApp.Renderer" NavigationPage.IconColor="Black" BackgroundColor="White"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" x:Name="thepage" >
+    <NavigationPage.TitleView>
+        <Label x:Name="ti"  FontSize="35" FontAttributes="Bold" TextColor="Black"/>
+    </NavigationPage.TitleView>
     <ContentPage.Resources>
         <Style TargetType="yummy:PancakeView">
             <Setter Property="VisualStateManager.VisualStateGroups">

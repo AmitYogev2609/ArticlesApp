@@ -794,6 +794,52 @@ namespace ArticlesApp.Services
                 return null;
             }
         }
+        public async Task<List<ArticleInterestType>> GetArticleIntersetType(int articleId)
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetArticleIntersetType?articleId={articleId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions()
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<ArticleInterestType> ArticleInterestTypes = JsonSerializer.Deserialize<List<ArticleInterestType>>(content, options);
+                    return ArticleInterestTypes;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public async Task<List<AuthorsArticle>> GetAuthorsArticle(int articleId)
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetAuthorsArticle?articleId={articleId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions()
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<AuthorsArticle> ArticleInterestTypes = JsonSerializer.Deserialize<List<AuthorsArticle>>(content, options);
+                    return ArticleInterestTypes;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         public async Task<string> GetPasswordResetCode(string email)
         {
             return null;

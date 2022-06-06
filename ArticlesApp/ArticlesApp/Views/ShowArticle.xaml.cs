@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ArticlesApp.Models;
 using ArticlesApp.ViewModels;
+using ArticlesApp.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ArticlesApp.Fonts;
@@ -120,10 +121,20 @@ namespace ArticlesApp.Views
             newHtml += html.Substring(continueIndex);
             return newHtml;
         }
+        protected async override void OnAppearing()
+        {
+            ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
+            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+            List<ArticleInterestType> InterestTypes = await proxy.GetArticleIntersetType(context.Article.ArticleId);
+            context.Article.ArticleInterestTypes=InterestTypes;
+            List<AuthorsArticle> authorsArticles = await proxy.GetAuthorsArticle(context.Article.ArticleId);
+            context.Article.AuthorsArticles = authorsArticles;
+            base.OnAppearing();
+        }
 
-    
 
-    private void star_Clicked(object sender, EventArgs e)
+
+        private void star_Clicked(object sender, EventArgs e)
         {
             ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
             if (star.Text!= FontIconClass.Star)
@@ -150,6 +161,31 @@ namespace ArticlesApp.Views
         {
             ShowArticleViewModel context=(ShowArticleViewModel)this.BindingContext;
             Page page = new CommentPage(context.Article);
+            Navigation.PushAsync(page);
+        }
+
+        private void Authors_Tapped(object sender, EventArgs e)
+        {
+            ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
+            List<User> usres = new List<User>();
+            foreach (var item in context.Article.AuthorsArticles)
+            {
+                usres.Add(item.User);
+            }
+            Page page = new ViewUsers(usres, $"\"{context.Article.ArticleName}\" authors");
+            Navigation.PushAsync(page);
+
+        }
+        private void Interests_Tapped(object sender, EventArgs e)
+        {
+            ShowArticleViewModel context = (ShowArticleViewModel)this.BindingContext;
+            List<Interest> interests = new List<Interest>();
+            foreach (var item in context.Article.ArticleInterestTypes)
+            {
+                Interest in1 = ((App)App.Current).Interests.Where(intr => intr.InterestId == item.InterestId).FirstOrDefault();
+                interests.Add(in1);
+            }
+            Page page = new ViewInterests(interests, ((App)App.Current).User, $"\"{context.Article.ArticleName}\" intrests", false);
             Navigation.PushAsync(page);
         }
     }
