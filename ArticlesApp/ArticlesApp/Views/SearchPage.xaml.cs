@@ -88,7 +88,7 @@ namespace ArticlesApp.Views
             if(obj is UserWithPicture)
             {
                 var user = obj as UserWithPicture;
-                ArticlesAPIProxy proxy= ArticlesAPIProxy.CreateProxy();
+                //ArticlesAPIProxy proxy= ArticlesAPIProxy.CreateProxy();
 
                 ProfilePage page = new ProfilePage(user.User.UserId);
                 Navigation.PushAsync(page);

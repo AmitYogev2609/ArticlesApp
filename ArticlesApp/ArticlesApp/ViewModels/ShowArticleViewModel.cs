@@ -40,10 +40,11 @@ namespace ArticlesApp.ViewModels
         }
         private string getAthours(Article article)
         {
+          
             string str = "by:";
             foreach (var item in Article.AuthorsArticles)
             {
-               
+               if(item.User!=null)
                 str += $" {item.User.UserName},";
             }
             return str;
