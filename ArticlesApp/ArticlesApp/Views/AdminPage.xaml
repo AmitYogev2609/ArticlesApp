@@ -61,8 +61,8 @@
                         <renderers:MyEntry Grid.Column="0" Grid.Row="0" x:Name="UserTodlete" Placeholder="enter user id to delete"/>
                     </yummy:PancakeView>
                     <renderers:ButtonNoPadding Grid.Column="0" x:Name="UserIdDeleteBt" Clicked="UserIdDeleteBt_Clicked" Grid.Row="1" Text="Add"/>
-                    <yummy:PancakeView Grid.Column="0" Grid.Row="0" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}">
-                            <renderers:MyEntry Grid.Column="1" Grid.Row="0" x:Name="UserToMakeAsmin" Text="{Binding UserToMakeAdmin}" Placeholder="enter user to make manger"/>
+                    <yummy:PancakeView Grid.Column="1" Grid.Row="0" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}">
+                            <renderers:MyEntry Grid.Column="1" Grid.Row="0" x:Name="UserToMakeAsmin"  Placeholder="User id"/>
                         </yummy:PancakeView>
                         <renderers:ButtonNoPadding Grid.Column="1" x:Name="UserTomakeAdmin" Text="make admin" Command="{Binding makeMange}" Grid.Row="1"/>
 

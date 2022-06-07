@@ -30,6 +30,7 @@ namespace ArticlesApp.Views
             context.userIntrest.Clear();
             context.follwedBy.Clear();
             context.followedUsers.Clear();
+            context.articles.Clear();
             int userid = context.userid;
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
             User user = await proxy.GetUserDetails(userid);
