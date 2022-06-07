@@ -43,7 +43,7 @@ namespace ArticlesApp.ViewModels
             PhotoUrl = $"{proxy.GetBasePhotoUri()}ArticleImage/{article.ArticleId}.jpg";
             Article = article;
             getAthours(Article.ArticleId);
-            this.Athours = "by:add later";
+            this.Athours = Article.AuthorsList;
         }
         private async void getAthours(int articleId)
         {

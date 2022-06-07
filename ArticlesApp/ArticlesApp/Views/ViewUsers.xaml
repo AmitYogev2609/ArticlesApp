@@ -7,7 +7,7 @@
                           xmlns:imagecirc="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" 
 >
     <NavigationPage.TitleView>
-        <Label x:Name="ti"  FontSize="35" FontAttributes="Bold" TextColor="Black"/>
+        <Label x:Name="ti"  FontSize="18" FontAttributes="Bold" TextColor="Black"/>
     </NavigationPage.TitleView>
     <ContentPage.Resources>
         <Style TargetType="yummy:PancakeView">

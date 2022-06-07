@@ -185,6 +185,8 @@ namespace ArticlesApp.ViewModels
             {
                 Title = "בחר תמונה"
             });
+            if (FileResult == null)
+                return;
             using (Stream imageStream = await FileResult.OpenReadAsync())
             {
                 if (imageStream != null)

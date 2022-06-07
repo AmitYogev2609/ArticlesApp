@@ -9,7 +9,7 @@
              
 >
     <NavigationPage.TitleView>
-        <Label x:Name="ti"  FontSize="35" FontAttributes="Bold" TextColor="Black"/>
+        <Label x:Name="ti"  FontSize="18" FontAttributes="Bold" TextColor="Black"/>
     </NavigationPage.TitleView>
     
     <ContentPage.Content>
