@@ -69,6 +69,22 @@ namespace ArticlesApp.ViewModels
                 this.NewIntrestName = "";
             }
         }
+        private int usertomakeadmin;
+        public int UserToMakeAdmin { get=>usertomakeadmin; set 
+            {
+                if(usertomakeadmin!=value)
+                {
+                    usertomakeadmin = value;
+                    OnPropertyChanged(nameof(UserToMakeAdmin));
+                }
+            } }
+        public ICommand makeMange => new Command(makeUser);
+        public async void makeUser()
+        {
+            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
+            bool con = await proxy.MakeUserAdmin(this.UserToMakeAdmin);
+            ((App)App.Current).User.IsManger = con;
+        }
         private int interestid;
         public int InterestId
         {

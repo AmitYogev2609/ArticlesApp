@@ -840,6 +840,29 @@ namespace ArticlesApp.Services
                 return null;
             }
         }
+        public async Task<bool> MakeUserAdmin(int userId)
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/MakeUserAdmin?userId={userId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions()
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    bool con = JsonSerializer.Deserialize<bool>(content, options);
+                    return con;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         public async Task<string> GetPasswordResetCode(string email)
         {
             return null;

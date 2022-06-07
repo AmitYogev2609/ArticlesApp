@@ -50,8 +50,8 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
-                      
-                    </Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition  />
                         <RowDefinition />
@@ -61,8 +61,12 @@
                         <renderers:MyEntry Grid.Column="0" Grid.Row="0" x:Name="UserTodlete" Placeholder="enter user id to delete"/>
                     </yummy:PancakeView>
                     <renderers:ButtonNoPadding Grid.Column="0" x:Name="UserIdDeleteBt" Clicked="UserIdDeleteBt_Clicked" Grid.Row="1" Text="Add"/>
-                    
-                </Grid>
+                    <yummy:PancakeView Grid.Column="0" Grid.Row="0" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}">
+                            <renderers:MyEntry Grid.Column="1" Grid.Row="0" x:Name="UserToMakeAsmin" Text="{Binding UserToMakeAdmin}" Placeholder="enter user to make manger"/>
+                        </yummy:PancakeView>
+                        <renderers:ButtonNoPadding Grid.Column="1" x:Name="UserTomakeAdmin" Text="make admin" Command="{Binding makeMange}" Grid.Row="1"/>
+
+                    </Grid>
                 <yummy:PancakeView HeightRequest="200" WidthRequest="300" Border="{yummy:BorderMarkup Color={Binding diviedColor}, Thickness='1'}" HorizontalOptions="CenterAndExpand"  >
                     <CollectionView ItemsSource="{Binding Users}"  HorizontalOptions="CenterAndExpand" >
                         <CollectionView.ItemsLayout>

@@ -38,7 +38,7 @@ namespace ArticlesApp.Views
             {
                 //htmlText = htmlText.Replace("<html>", $"<html width =\"100%\">");
                 //htmlText = htmlText.Replace("<body>", $"<body width =\"100%\">");
-                htmlText = ConvertHtml(htmlText);
+                //htmlText = ConvertHtml(htmlText);
                 hmlsource.Html = htmlText;
             }
             webview.Source = hmlsource;
