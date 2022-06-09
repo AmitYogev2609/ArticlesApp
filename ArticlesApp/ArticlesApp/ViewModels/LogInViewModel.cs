@@ -182,7 +182,7 @@ namespace ArticlesApp.ViewModels
         public static void MoveToMainPge()
         { }
         public ICommand SignInCommand => new Command(MoveToSignIn);
-        public ICommand ForgetPasswordCommand => new Command(MoveToForgetPassWord);
+        //public ICommand ForgetPasswordCommand => new Command(MoveToForgetPassWord);
 
         public Action<Page> NavigateToPageEvent;
         public void MoveToSignIn()
@@ -190,16 +190,7 @@ namespace ArticlesApp.ViewModels
             Page sign = new SignIn();
            NavigateToPageEvent?.Invoke(sign);
         }
-        public void MoveToForgetPassWord()
-        {
-            Page page = new ForgotPasswordEnterEmail();
-            page.BindingContext = new ForgotPassWordViewModel()
-            {
-                Email = this.Email,
-                
-            };
-            NavigateToPageEvent?.Invoke(page);
-        }
+        
       
 
     }

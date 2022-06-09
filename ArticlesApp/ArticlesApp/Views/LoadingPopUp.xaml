@@ -9,7 +9,7 @@
            IsLightDismissEnabled="False">
 
     <StackLayout Orientation="Horizontal">
-        <Label Text="loading"/>
+        <Label Text="loading" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
     </StackLayout>
 
 </xct:Popup>

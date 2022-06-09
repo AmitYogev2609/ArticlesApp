@@ -52,7 +52,6 @@ namespace ArticlesApp.Views
         }
         protected override void OnDisappearing()
         {
-            ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
             shac?.Invoke();
             base.OnDisappearing();
         }

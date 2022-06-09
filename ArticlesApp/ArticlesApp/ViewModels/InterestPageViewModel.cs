@@ -61,7 +61,7 @@ namespace ArticlesApp.ViewModels
                 if (!articles1.Contains(item.Article))
                     articles1.Add(item.Article);
             }
-           articles1= articles1.OrderByDescending(a => a.ArticleId).ToList<Article>();
+            articles1= articles1.OrderByDescending(a => a.ArticleId).ToList<Article>();
             articles = new ObservableCollection<ArticleWithPicture>();
             foreach (var item in articles1)
             {

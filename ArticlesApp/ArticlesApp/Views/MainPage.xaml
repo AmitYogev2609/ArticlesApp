@@ -63,7 +63,7 @@
                                     </Grid.ColumnDefinitions>
                                       <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Source="{Binding PhotoUrl,Converter={StaticResource ImageSourceConverter} }"   />
                                     <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Article.ArticleName}"  TextColor="Black" FontSize="18" FontAttributes="Bold"   Padding="0,7,10,0"/>
-                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Article.Description}" />
+                                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Article.Description}" Padding="0,0,8,0" />
                                     <Label Grid.Row="2" Grid.Column="1" Text="{Binding athours}"/>
                                     <Label Grid.Row="2" Grid.Column="2" Text="{Binding date}"/>
                                    

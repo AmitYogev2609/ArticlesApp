@@ -20,7 +20,7 @@ namespace ArticlesApp.ViewModels
         public Article Article;
         public string Date { get; set; }
         public string Title { get; set; }
-        public string Auther { get; set; }
+       
         private string commentText;
         public string CommentText { get=>commentText; set
             {
@@ -36,19 +36,9 @@ namespace ArticlesApp.ViewModels
             this.Article = article;
             Date= article.PublishDate.ToShortDateString();
             Title = article.ArticleName;
-            Auther = getAthours(article); 
+            
         }
-        private string getAthours(Article article)
-        {
-          
-            string str = "by:";
-            foreach (var item in Article.AuthorsArticles)
-            {
-               if(item.User!=null)
-                str += $" {item.User.UserName},";
-            }
-            return str;
-        }
+        
         public async void uptadeFavoriteArticle()
         {
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();

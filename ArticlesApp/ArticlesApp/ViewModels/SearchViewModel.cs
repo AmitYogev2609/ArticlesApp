@@ -17,7 +17,7 @@ using System.Security.Cryptography;
 namespace ArticlesApp.ViewModels
 {
     
-    class SearchViewModel
+    public class SearchViewModel
     {
         public ObservableCollection<object> searchResult { get; set; }
         public SearchViewModel()
