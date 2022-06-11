@@ -17,17 +17,23 @@ namespace ArticlesApp.Views
         {
             AdminPageViewModel context= new AdminPageViewModel();
             this.BindingContext= context;
+            context.uptade += upt;
             InitializeComponent();
+            yum.Border.Color = Color.Black;
         }
 
-        private void UserIdDeleteBt_Clicked(object sender, EventArgs e)
+        public void upt()
         {
-
+            UserToMakeAsmin.Text = "";
         }
 
-        private void InterestTodleteBt_Clicked(object sender, EventArgs e)
+        private void UserTomakeAdmin_Clicked(object sender, EventArgs e)
         {
-
+            AdminPageViewModel context = ( AdminPageViewModel)this.BindingContext;
+            context.UserToMakeAdmin = int.Parse(UserToMakeAsmin.Text);
+            context.makeUser();
+            yum.Border.Color = Color.Green;
+           
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
-
+using System.Linq;
 namespace ArticlesApp.ViewModels
 {
     public class AdminPageViewModel : INotifyPropertyChanged
@@ -22,16 +22,27 @@ namespace ArticlesApp.ViewModels
         public ObservableCollection<Interest> Interests { get; set; }
         public ObservableCollection<User> Users { get; set; }
         public ObservableCollection<Article> Articles { get; set; }
-
-        private string newIntrestName;
-        public string NewIntrestName { get=>newIntrestName; set
+        private Color newinterestcolor;
+        public Color NewInterestColor { get=>newinterestcolor; set 
             {
-                if(value!=newIntrestName)
+                if(newinterestcolor != value)
                 {
-                    newIntrestName=value;
+                    newinterestcolor = value;
                     OnPropertyChanged(nameof(NewIntrestName));
                 }
             } }
+        private string newIntrestName;
+        public string NewIntrestName
+        {
+            get => newIntrestName; set
+            {
+                if (value != newIntrestName)
+                {
+                    newIntrestName = value;
+                    OnPropertyChanged(nameof(NewIntrestName));
+                }
+            }
+        }
         public AdminPageViewModel()
         {
             Interests = new ObservableCollection<Interest>();
@@ -47,72 +58,65 @@ namespace ArticlesApp.ViewModels
                 Users.Add(item);
             }
             Articles = new ObservableCollection<Article>();
-            List<Article> lstar= ((App)App.Current).Articles;
+            List<Article> lstar = ((App)App.Current).Articles;
             foreach (var item in lstar)
             {
                 Articles.Add(item);
             }
+            NewInterestColor = new Color(0, 0, 0, 0.51);
         }
         public ICommand AddInterestCommand => new Command(AddInterest);
         public async void AddInterest()
         {
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
-            if(this.NewIntrestName==""|| this.NewIntrestName == null || this.NewIntrestName == " ")
+            if (this.NewIntrestName == "" || this.NewIntrestName == null || this.NewIntrestName == " ")
             {
-                return ;
+                return;
             }
             else
             {
-                Interest newInterest =await proxy.AddInterest(this.NewIntrestName);
+                Interest newInterest = await proxy.AddInterest(this.NewIntrestName);
                 this.Interests.Add(newInterest);
                 ((App)App.Current).Interests.Add(newInterest);
                 this.NewIntrestName = "";
+                NewInterestColor = Color.Green;
             }
         }
         private int usertomakeadmin;
-        public int UserToMakeAdmin { get=>usertomakeadmin; set 
+        public int UserToMakeAdmin
+        {
+            get => usertomakeadmin; set
             {
-                if(usertomakeadmin!=value)
+                if (usertomakeadmin != value)
                 {
                     usertomakeadmin = value;
                     OnPropertyChanged(nameof(UserToMakeAdmin));
                 }
-            } }
-        public ICommand makeMange => new Command(makeUser);
+            }
+        }
+        private Color usercolor;
+        public Color UserColor { get => usercolor;
+            set { 
+                if(usercolor != value)
+                {
+                    usercolor=value;
+                    OnPropertyChanged(nameof(UserColor));
+                }
+            }
+        }
+        public Action uptade;
         public async void makeUser()
         {
             ArticlesAPIProxy proxy = ArticlesAPIProxy.CreateProxy();
             bool con = await proxy.MakeUserAdmin(this.UserToMakeAdmin);
-            ((App)App.Current).User.IsManger = con;
-        }
-        private int interestid;
-        public int InterestId
-        {
-            get => interestid; set
+            User user= ((App)App.Current).Users.Where(u=>u.UserId==this.UserToMakeAdmin).FirstOrDefault();
+            if(user!=null&&con)
             {
-                if (interestid != value)
-                {
-                    interestid = value; OnPropertyChanged(nameof(InterestId));
-                }
+                user.IsManger = con;
+                UserColor = Color.Green;
+                uptade?.Invoke();
             }
+
         }
-        private int userid;
-        public int UserId { get=>userid; set { 
-                if(userid!=value)
-                {
-                    userid = value; OnPropertyChanged(nameof(UserId));
-                }
-            } }
-        private int articleid;
-        public int ArticleId
-        {
-            get => articleid; set
-            {
-                if (articleid != value)
-                {
-                    articleid = value; OnPropertyChanged(nameof(ArticleId));
-                }
-            }
-        }
-    }
+    }    
 }
